@@ -1,0 +1,13 @@
+{
+  "name": "phala-rebrand-preview",
+  "version": 2,
+  "public": true,
+  "buildCommand": "echo 'No build needed for static site'",
+  "outputDirectory": "public",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

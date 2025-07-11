@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phala Cloud - Build AI People Can Trust</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+        .btn-phala {
+            background: #CDFA50;
+            color: #000;
+            padding: 16px 32px;
+            border-radius: 999px;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        .btn-phala:hover {
+            background: #B8E645;
+            transform: translateY(-1px);
+        }
+        .btn-blk {
+            background: #000;
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 999px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        .hero-bg {
+            background: #F0F2ED;
+            border-radius: 32px 32px 32px 128px;
+        }
+        .mask-teacup {
+            width: 100%;
+            height: 100%;
+            background: #F0F2ED;
+            border-radius: 32px 32px 32px 128px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .rounded-br-80 {
+            border-bottom-right-radius: 80px;
+        }
+        .rounded-bl-80 {
+            border-bottom-left-radius: 80px;
+        }
+        .tab-active {
+            background: #000;
+            color: #fff;
+        }
+        .tab-inactive {
+            color: #666;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 p-6">
+        <div class="max-w-7xl mx-auto bg-white rounded-[32px] shadow-lg px-12 py-8 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-12 h-12 bg-black rounded-lg"></div>
+            </div>
+            <div class="hidden md:flex space-x-12">
+                <a href="#" class="text-gray-700 hover:text-gray-900 font-medium text-[16px]">Developers</a>
+                <a href="#" class="text-gray-700 hover:text-gray-900 font-medium text-[16px]">AI Solutions</a>
+                <a href="#" class="text-gray-700 hover:text-gray-900 font-medium text-[16px]">Security</a>
+                <a href="#" class="text-gray-700 hover:text-gray-900 font-medium text-[16px]">Phala Cloud</a>
+            </div>
+            <div class="flex space-x-4">
+                <div class="w-10 h-10 bg-black rounded-full"></div>
+                <div class="w-10 h-10 bg-black rounded-full"></div>
+                <div class="w-10 h-10 bg-black rounded-full"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen pt-40 pb-20 mx-6 mt-32 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 text-center relative z-10">
+            <div class="mb-8">
+                <span class="border border-gray-300 rounded-full px-4 py-2 text-sm font-medium inline-flex items-center gap-2 bg-white">
+                    <div class="w-2 h-2 bg-lime-400 rounded-full"></div>
+                    Secure AI Platform
+                </span>
+            </div>
+            
+            <div class="mb-12">
+                <h1 class="text-[48px] md:text-[64px] font-bold text-white bg-black inline-block px-8 py-4 rounded-lg mb-6">
+                    BUILD AI PEOPLE CAN TRUST
+                </h1>
+                <h2 class="text-[36px] md:text-[48px] font-bold text-black mt-4">
+                    Deploy today, trust AI instantly.
+                </h2>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <a href="https://cloud.phala.network" class="btn-phala">Get Started</a>
+                <a href="#demo" class="btn-blk">Request Demo</a>
+            </div>
+        </div>
+        
+        <!-- Decorative circle -->
+        <div class="absolute right-12 top-12 w-[400px] h-[400px] bg-stone-50/50 rounded-full border-4 border-zinc-100"></div>
+    </section>
+
+    <!-- Problem/Why Care Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h3 class="text-[48px] font-bold mb-4">When they trust AI:</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <div class="bg-zinc-100 p-12 rounded-[32px] rounded-br-80">
+                    <h4 class="text-[32px] font-bold mb-4">Unlock more usecases</h4>
+                    <p class="text-[18px] text-gray-600 leading-relaxed">
+                        Onboard privacy-cared enterprises into AI. Enable sensitive data processing that was previously impossible.
+                    </p>
+                </div>
+                <div class="bg-zinc-100 p-12 rounded-[32px] rounded-bl-80">
+                    <h4 class="text-[32px] font-bold mb-4">Win the market</h4>
+                    <p class="text-[18px] text-gray-600 leading-relaxed">
+                        When enterprises trust your AI, they'll pay for more use cases. Trust drives adoption and revenue.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-[56px] font-semibold mb-4">
+                Trusted by more than <span class="text-lime-400 font-bold">50,000</span> users
+            </h2>
+            <p class="text-[24px] text-gray-600 mb-16">
+                Trusted by industry leaders and developers worldwide
+            </p>
+            
+            <!-- Logo wall - single line -->
+            <div class="flex justify-center items-center gap-12 mb-12 flex-wrap">
+                <div class="w-24 h-24 bg-neutral-300 rounded-full opacity-80"></div>
+                <div class="w-24 h-24 bg-neutral-300 rounded-full opacity-80"></div>
+                <div class="w-24 h-24 bg-neutral-300 rounded-full opacity-80"></div>
+                <div class="w-24 h-24 bg-neutral-300 rounded-full opacity-80"></div>
+                <div class="w-24 h-24 bg-neutral-300 rounded-full opacity-80"></div>
+                <div class="w-24 h-24 bg-neutral-300 rounded-full opacity-80"></div>
+                <div class="w-24 h-24 bg-neutral-300 rounded-full opacity-80"></div>
+                <div class="w-24 h-24 bg-neutral-300 rounded-full opacity-80"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <a href="#cases" class="btn-phala">Explore All TEE Apps</a>
+                <a href="#cases" class="btn-blk">Explore Cases</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- USP Section with Tabs -->
+    <section class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[56px] font-bold mb-4">The Only Platform That Delivers All Three</h2>
+            </div>
+            
+            <!-- Tab Navigation -->
+            <div class="flex justify-center mb-16">
+                <div class="bg-zinc-100 p-2 rounded-full">
+                    <button onclick="showTab('instant')" id="tab-instant" class="px-10 py-4 rounded-full font-semibold transition-all text-[18px] tab-active">
+                        Instant
+                    </button>
+                    <button onclick="showTab('open')" id="tab-open" class="px-10 py-4 rounded-full font-semibold transition-all text-[18px] tab-inactive">
+                        Open
+                    </button>
+                    <button onclick="showTab('private')" id="tab-private" class="px-10 py-4 rounded-full font-semibold transition-all text-[18px] tab-inactive">
+                        Private
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Content -->
+            <div id="content-instant" class="tab-content">
+                <div class="text-center mb-12">
+                    <h3 class="text-[40px] font-bold mb-4">Instant</h3>
+                    <p class="text-[24px] font-semibold text-gray-600">Build in Minutes, Not Months</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-zinc-100 p-8 rounded-[32px] rounded-br-80">
+                        <div class="text-3xl mb-4">🐳</div>
+                        <h4 class="text-[24px] font-bold mb-3">Docker Deploy</h4>
+                        <p class="text-[18px] font-semibold text-gray-600 mb-4">Write, Dockerize, Deploy</p>
+                        <p class="text-[16px] text-gray-700 mb-6">Write code, dockerize, and deploy it as trustless TEE apps.</p>
+                        <ul class="text-[14px] text-gray-600 space-y-2 mb-8">
+                            <li>• Docker compatible</li>
+                            <li>• CLI deployment</li>
+                            <li>• One-click setup</li>
+                        </ul>
+                        <a href="https://cloud.phala.network" class="btn-phala">Try Now</a>
+                    </div>
+                    <div class="bg-zinc-100 p-8 rounded-[32px]">
+                        <div class="text-3xl mb-4">🔧</div>
+                        <h4 class="text-[24px] font-bold mb-3">Hardware Abstraction</h4>
+                        <p class="text-[18px] font-semibold text-gray-600 mb-4">We Handle the Pain</p>
+                        <p class="text-[16px] text-gray-700 mb-6">We deal with the pain of hardware maintenance across Intel, AMD, and Nvidia TEEs.</p>
+                        <ul class="text-[14px] text-gray-600 space-y-2 mb-8">
+                            <li>• Intel SGX/TDX</li>
+                            <li>• AMD SEV</li>
+                            <li>• NVIDIA H100/H200</li>
+                        </ul>
+                        <a href="#hardware" class="btn-phala">See Hardware</a>
+                    </div>
+                    <div class="bg-zinc-100 p-8 rounded-[32px] rounded-bl-80">
+                        <div class="text-3xl mb-4">⚡</div>
+                        <h4 class="text-[24px] font-bold mb-3">Production Templates</h4>
+                        <p class="text-[18px] font-semibold text-gray-600 mb-4">Minutes to Production</p>
+                        <p class="text-[16px] text-gray-700 mb-6">Deploy production-grade TEE workloads in minutes with pre-built templates.</p>
+                        <ul class="text-[14px] text-gray-600 space-y-2 mb-8">
+                            <li>• AI/ML templates</li>
+                            <li>• Web services</li>
+                            <li>• Custom workloads</li>
+                        </ul>
+                        <a href="#templates" class="btn-phala">Browse Templates</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-open" class="tab-content hidden">
+                <div class="text-center mb-12">
+                    <h3 class="text-[40px] font-bold mb-4">Open</h3>
+                    <p class="text-[24px] font-semibold text-gray-600">Audit Everything</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-zinc-100 p-8 rounded-[32px] rounded-br-80">
+                        <div class="text-3xl mb-4">🔓</div>
+                        <h4 class="text-[24px] font-bold mb-3">Open Source</h4>
+                        <p class="text-[18px] font-semibold text-gray-600 mb-4">Fork, Verify, Own</p>
+                        <p class="text-[16px] text-gray-700 mb-6">Fully open-source infrastructure you can audit, fork, and customize.</p>
+                        <ul class="text-[14px] text-gray-600 space-y-2 mb-8">
+                            <li>• Dstack framework</li>
+                            <li>• 100% open code</li>
+                            <li>• Community driven</li>
+                        </ul>
+                        <a href="https://github.com/dstack-TEE/dstack" class="btn-phala">View Code</a>
+                    </div>
+                    <div class="bg-zinc-100 p-8 rounded-[32px]">
+                        <div class="text-3xl mb-4">🔍</div>
+                        <h4 class="text-[24px] font-bold mb-3">Audited Cloud</h4>
+                        <p class="text-[18px] font-semibold text-gray-600 mb-4">Real-time Transparency</p>
+                        <p class="text-[16px] text-gray-700 mb-6">Live attestation and verification for every running workload.</p>
+                        <ul class="text-[14px] text-gray-600 space-y-2 mb-8">
+                            <li>• 10K+ attestations daily</li>
+                            <li>• Public verification</li>
+                            <li>• Audit trails</li>
+                        </ul>
+                        <a href="https://proof.t16z.com/" class="btn-phala">Verify Now</a>
+                    </div>
+                    <div class="bg-zinc-100 p-8 rounded-[32px] rounded-bl-80">
+                        <div class="text-3xl mb-4">🛡️</div>
+                        <h4 class="text-[24px] font-bold mb-3">Trust Center</h4>
+                        <p class="text-[18px] font-semibold text-gray-600 mb-4">Zero Trust by Design</p>
+                        <p class="text-[16px] text-gray-700 mb-6">Complete transparency with public trust center and compliance reports.</p>
+                        <ul class="text-[14px] text-gray-600 space-y-2 mb-8">
+                            <li>• SOC 2 Type II</li>
+                            <li>• HIPAA ready</li>
+                            <li>• GDPR compliant</li>
+                        </ul>
+                        <a href="#trust" class="btn-phala">Trust Center</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-private" class="tab-content hidden">
+                <div class="text-center mb-12">
+                    <h3 class="text-[40px] font-bold mb-4">Private</h3>
+                    <p class="text-[24px] font-semibold text-gray-600">Hardware-Level Security</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-zinc-100 p-8 rounded-[32px] rounded-br-80">
+                        <div class="text-3xl mb-4">🔒</div>
+                        <h4 class="text-[24px] font-bold mb-3">Confidential Compute</h4>
+                        <p class="text-[18px] font-semibold text-gray-600 mb-4">TEE Protection</p>
+                        <p class="text-[16px] text-gray-700 mb-6">Hardware-level isolation using Trusted Execution Environments.</p>
+                        <ul class="text-[14px] text-gray-600 space-y-2 mb-8">
+                            <li>• CPU/GPU TEE</li>
+                            <li>• <5% overhead</li>
+                            <li>• Zero breaches</li>
+                        </ul>
+                        <a href="#tee" class="btn-phala">Learn TEE</a>
+                    </div>
+                    <div class="bg-zinc-100 p-8 rounded-[32px]">
+                        <div class="text-3xl mb-4">🔑</div>
+                        <h4 class="text-[24px] font-bold mb-3">Zero-Trust KMS</h4>
+                        <p class="text-[18px] font-semibold text-gray-600 mb-4">Customer-Controlled Keys</p>
+                        <p class="text-[16px] text-gray-700 mb-6">Zero-trust key management with customer-controlled encryption keys.</p>
+                        <ul class="text-[14px] text-gray-600 space-y-2 mb-8">
+                            <li>• Customer keys</li>
+                            <li>• Hardware isolation</li>
+                            <li>• Zero-trust HTTP</li>
+                        </ul>
+                        <a href="#kms" class="btn-phala">Key Management</a>
+                    </div>
+                    <div class="bg-zinc-100 p-8 rounded-[32px] rounded-bl-80">
+                        <div class="text-3xl mb-4">🏢</div>
+                        <h4 class="text-[24px] font-bold mb-3">On-Premise Privacy</h4>
+                        <p class="text-[18px] font-semibold text-gray-600 mb-4">Private as On-Premise</p>
+                        <p class="text-[16px] text-gray-700 mb-6">Cloud convenience with on-premise privacy guarantees.</p>
+                        <ul class="text-[14px] text-gray-600 space-y-2 mb-8">
+                            <li>• 500+ teams</li>
+                            <li>• $2M ARR</li>
+                            <li>• Enterprise grade</li>
+                        </ul>
+                        <a href="#demo" class="btn-phala">Enterprise Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center mb-16">
+                <h2 class="text-[56px] font-bold">Solutions</h2>
+                <a href="#products" class="btn-phala">View All Products</a>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Phala Cloud -->
+                <div class="bg-zinc-100 p-10 rounded-[32px]">
+                    <div class="mb-8">
+                        <div class="w-full h-48 bg-gradient-to-br from-lime-200 to-lime-400 rounded-[24px] flex items-center justify-center mb-4">
+                            <span class="text-4xl">☁️</span>
+                            <span class="ml-3 font-semibold text-[20px]">Cloud Platform</span>
+                        </div>
+                    </div>
+                    <h3 class="text-[28px] font-bold mb-4">Phala Cloud</h3>
+                    <p class="text-[16px] text-gray-600 mb-4">All-in-one confidential compute platform for AI workloads</p>
+                    <p class="text-[14px] text-gray-500 mb-8">Starting at $50.37/month</p>
+                    <a href="https://cloud.phala.network" class="btn-phala w-full text-center">Start Building</a>
+                </div>
+
+                <!-- Confidential AI Models -->
+                <div class="bg-zinc-100 p-10 rounded-[32px]">
+                    <div class="mb-8">
+                        <div class="space-y-3">
+                            <div class="bg-white p-4 rounded-[16px] flex justify-between items-center">
+                                <span class="text-[16px] font-medium">Llama-3.1-8B</span>
+                                <span class="text-[14px] text-gray-500">$2.88/hr</span>
+                            </div>
+                            <div class="bg-white p-4 rounded-[16px] flex justify-between items-center">
+                                <span class="text-[16px] font-medium">GPT-4o-mini</span>
+                                <span class="text-[14px] text-gray-500">$4.50/hr</span>
+                            </div>
+                            <div class="bg-white p-4 rounded-[16px] flex justify-between items-center">
+                                <span class="text-[16px] font-medium">Custom Model</span>
+                                <span class="text-[14px] text-gray-500">Quote</span>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-[28px] font-bold mb-4">Confidential AI Models</h3>
+                    <p class="text-[16px] text-gray-600 mb-4">Pre-configured secure AI models ready to deploy</p>
+                    <p class="text-[14px] text-gray-500 mb-8">From $2.88/hour</p>
+                    <a href="#models" class="btn-phala w-full text-center">Browse Models</a>
+                </div>
+
+                <!-- Dstack -->
+                <div class="bg-zinc-100 p-10 rounded-[32px]">
+                    <div class="mb-8">
+                        <div class="w-full h-48 bg-gradient-to-br from-gray-200 to-gray-400 rounded-[24px] flex items-center justify-center mb-4">
+                            <span class="text-4xl">🔓</span>
+                            <span class="ml-3 font-semibold text-[20px]">Open Source</span>
+                        </div>
+                    </div>
+                    <h3 class="text-[28px] font-bold mb-4">Dstack</h3>
+                    <p class="text-[16px] text-gray-600 mb-4">Open-source TEE orchestration framework</p>
+                    <p class="text-[14px] text-gray-500 mb-8">Free & Open Source</p>
+                    <a href="https://github.com/dstack-TEE/dstack" class="btn-phala w-full text-center">Download Framework</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases (Interactive) -->
+    <section class="py-24 bg-zinc-100 mx-6 rounded-[32px]">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-[56px] font-bold text-center mb-16">AI Trust Across Industries</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Financial Services -->
+                <a href="#financial" class="block">
+                    <div class="bg-white p-10 rounded-[32px] hover:shadow-xl transition-shadow cursor-pointer">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="text-5xl">🏦</div>
+                            <h3 class="text-[28px] font-bold">Financial Services</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-4 mb-6">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-[14px] font-semibold">JPM</div>
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-[14px] font-semibold">GS</div>
+                            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center text-[14px] font-semibold">MS</div>
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center text-[14px] font-semibold">BOA</div>
+                        </div>
+                        <p class="text-[16px] text-gray-600 leading-relaxed">
+                            Run risk models on sensitive financial data with verifiable security. Prove data isolation to auditors.
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Data Collaboration -->
+                <a href="#collaboration" class="block">
+                    <div class="bg-white p-10 rounded-[32px] hover:shadow-xl transition-shadow cursor-pointer">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="text-5xl">🤝</div>
+                            <h3 class="text-[28px] font-bold">Data Collaboration</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-4 mb-6">
+                            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center text-[14px] font-semibold">NHS</div>
+                            <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center text-[14px] font-semibold">MIT</div>
+                            <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center text-[14px] font-semibold">IBM</div>
+                            <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center text-[14px] font-semibold">AI2</div>
+                        </div>
+                        <p class="text-[16px] text-gray-600 leading-relaxed">
+                            Enable secure multi-party AI training without exposing sensitive datasets. Perfect for research consortiums.
+                        </p>
+                    </div>
+                </a>
+
+                <!-- AI SaaS -->
+                <a href="#saas" class="block">
+                    <div class="bg-white p-10 rounded-[32px] hover:shadow-xl transition-shadow cursor-pointer">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="text-5xl">🚀</div>
+                            <h3 class="text-[28px] font-bold">AI SaaS</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-4 mb-6">
+                            <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-[14px] font-semibold">SF</div>
+                            <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center text-[14px] font-semibold">HF</div>
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-[14px] font-semibold">OAI</div>
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-[14px] font-semibold">CL</div>
+                        </div>
+                        <p class="text-[16px] text-gray-600 leading-relaxed">
+                            Build AI features your enterprise customers can trust. Provide verifiable security guarantees.
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Web3 -->
+                <a href="#web3" class="block">
+                    <div class="bg-white p-10 rounded-[32px] hover:shadow-xl transition-shadow cursor-pointer">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="text-5xl">⛓️</div>
+                            <h3 class="text-[28px] font-bold">Web3</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-4 mb-6">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center text-[14px] font-semibold">ETH</div>
+                            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center text-[14px] font-semibold">DOT</div>
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-[14px] font-semibold">SOL</div>
+                            <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center text-[14px] font-semibold">AVA</div>
+                        </div>
+                        <p class="text-[16px] text-gray-600 leading-relaxed">
+                            Power decentralized AI with trustless infrastructure. Enable autonomous agents with verifiable execution.
+                        </p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="/partnerships" class="btn-phala">Discover All Use Cases</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-black text-white mx-6 mt-16 rounded-[32px]">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-[56px] font-bold mb-6">Ready to Build AI People Trust?</h2>
+            <p class="text-[24px] mb-12 opacity-90">
+                Join 500+ teams deploying trustworthy AI in production
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <a href="https://cloud.phala.network" class="btn-phala">Start with $500 Free Credits</a>
+                <a href="#demo" class="bg-white text-black px-8 py-4 rounded-full font-semibold text-[16px]">Request Demo</a>
+            </div>
+            <p class="text-[14px] text-gray-300 mt-6">No credit card required. Deploy your first model in 5 minutes.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16 mt-16">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-12 mb-8 flex-wrap">
+                <span class="text-[14px]">🛡️ SOC 2 Type II</span>
+                <span class="text-[14px]">🏥 HIPAA Ready</span>
+                <span class="text-[14px]">🔓 Open Source</span>
+                <span class="text-[14px]">⚡ 99.9% Uptime</span>
+                <span class="text-[14px]">🌍 GDPR Compliant</span>
+            </div>
+            <p class="text-gray-400 text-[16px]">© 2025 Phala Cloud. Build AI People Can Trust.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('[id^="tab-"]').forEach(tab => {
+                tab.classList.remove('tab-active');
+                tab.classList.add('tab-inactive');
+            });
+            
+            // Show selected content
+            document.getElementById('content-' + tabName).classList.remove('hidden');
+            
+            // Add active class to selected tab
+            document.getElementById('tab-' + tabName).classList.add('tab-active');
+            document.getElementById('tab-' + tabName).classList.remove('tab-inactive');
+        }
+    </script>
+</body>
+</html>
