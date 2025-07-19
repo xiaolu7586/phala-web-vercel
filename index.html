@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phala Network - The New Cloud for Confidential AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'phala-lime': '#CDFA50',
+                        'phala-green': '#C4F144',
+                        'phala-blue': '#8DD7FF',
+                        'phala-purple': '#AABBFF',
+                        'phala-dark': '#1E2119',
+                        'phala-gray': '#61645B',
+                    },
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .hero-bg {
+            background: #F0F1EE;
+            border-radius: 32px 32px 32px 128px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-lime { background: #CDFA50; }
+        .card-blue { background: #8DD7FF; }
+        .card-purple { background: #AABBFF; }
+        
+        .drag-item {
+            cursor: grab;
+            transition: all 0.3s ease;
+        }
+        
+        .drag-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .drag-item.dragging {
+            cursor: grabbing;
+            transform: scale(1.1);
+            z-index: 1000;
+        }
+        
+        .tee-box {
+            background: #0D0D0D;
+            border-radius: 16px;
+            position: relative;
+            min-height: 300px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .tee-box.highlight {
+            border-color: #CDFA50;
+            box-shadow: 0 0 20px rgba(205, 250, 80, 0.3);
+        }
+        
+        .output-area {
+            min-height: 100px;
+            border: 2px dashed #ccc;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .output-area.active {
+            border-color: #CDFA50;
+            background: rgba(205, 250, 80, 0.1);
+        }
+        
+        .blob-blur {
+            filter: blur(100px);
+            border-radius: 50%;
+        }
+
+        .tab-active {
+            background: #000;
+            color: #fff;
+        }
+        .tab-inactive {
+            color: #666;
+        }
+
+        .btn-phala {
+            background: #CDFA50;
+            color: #000;
+            padding: 16px 32px;
+            border-radius: 999px;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        .btn-phala:hover {
+            background: #B8E645;
+            transform: translateY(-1px);
+        }
+        .btn-blk {
+            background: #000;
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 999px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        .rounded-br-80 {
+            border-bottom-right-radius: 80px;
+        }
+        .rounded-bl-80 {
+            border-bottom-left-radius: 80px;
+        }
+    </style>
+</head>
+<body class="font-montserrat bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 p-6">
+        <div class="max-w-7xl mx-auto bg-white rounded-[32px] shadow-lg px-12 py-6 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-12 h-12 bg-phala-lime rounded-lg"></div>
+            </div>
+            <div class="hidden md:flex space-x-12">
+                <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Developers</a>
+                <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">AI Solutions</a>
+                <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Security</a>
+                <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">Phala Cloud</a>
+            </div>
+            <div class="flex space-x-4">
+                <div class="w-10 h-10 bg-black rounded-full"></div>
+                <div class="w-10 h-10 bg-black rounded-full"></div>
+                <div class="w-10 h-10 bg-black rounded-full"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen pt-40 pb-20 mx-6 mt-32 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 text-center relative z-10">
+            <div class="mb-8">
+                <span class="border border-gray-300 rounded-full px-4 py-2 text-sm font-medium inline-flex items-center gap-2 bg-white">
+                    <div class="w-2 h-2 bg-lime-400 rounded-full"></div>
+                    Secure AI Platform
+                </span>
+            </div>
+            
+            <div class="mb-12">
+                <h1 class="text-[48px] md:text-[64px] font-bold text-black mb-6">
+                    The New Cloud for Confidential AI
+                </h1>
+                <h2 class="text-[36px] md:text-[48px] font-bold text-white bg-black inline-block px-8 py-4 rounded-lg mb-6">
+                    Build AI People Can Trust
+                </h2>
+                <p class="text-[20px] text-gray-700 max-w-4xl mx-auto leading-relaxed">
+                    Hardware-secured compute platform that delivers verifiable AI with enterprise-grade privacy. 
+                    Deploy confidential AI models with TEE protection in minutes, not months.
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <a href="https://cloud.phala.network" class="btn-phala">Get Started</a>
+                <a href="#demo" class="btn-blk">Request Demo</a>
+            </div>
+        </div>
+        
+        <!-- Decorative circle -->
+        <div class="absolute right-12 top-12 w-[400px] h-[400px] bg-stone-50/50 rounded-full border-4 border-zinc-100"></div>
+    </section>
+
+    <!-- When Your Users Trust AI -->
+    <section class="py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="bg-white rounded-t-2xl rounded-br-[80px] rounded-bl-2xl p-12 mb-12">
+                <div class="max-w-4xl">
+                    <h2 class="text-4xl font-bold text-phala-dark mb-3">When Your Users Trust AI</h2>
+                    <p class="text-lg text-phala-gray">Trust creates a powerful cycle that drives business growth and market leadership</p>
+                </div>
+                <div class="flex items-center gap-2 mt-8">
+                    <div class="w-6 h-1.5 bg-phala-lime rounded-full"></div>
+                    <div class="w-6 h-1.5 bg-phala-blue rounded-full"></div>
+                    <div class="w-6 h-1.5 bg-phala-purple rounded-full"></div>
+                </div>
+            </div>
+
+            <!-- Three Cards with Animation -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Side: Three Value Cards -->
+                <div class="space-y-8">
+                    <!-- Card 1: Trust AI -->
+                    <div class="card-lime p-12 rounded-2xl relative overflow-hidden cursor-pointer transition-all hover:scale-105" onclick="selectUseCase(0)">
+                        <div class="absolute inset-0 opacity-30">
+                            <div class="w-full h-full bg-gradient-to-br from-lime-200 to-lime-400"></div>
+                        </div>
+                        <div class="relative z-10">
+                            <div class="text-8xl font-medium text-phala-dark mb-16">1</div>
+                            <h3 class="text-2xl font-semibold text-phala-dark mb-4">Trust AI</h3>
+                            <p class="text-phala-dark">Users gain confidence in AI systems with verifiable security</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Unlock Use Cases -->
+                    <div class="card-blue p-12 rounded-2xl relative overflow-hidden cursor-pointer transition-all hover:scale-105" onclick="selectUseCase(1)">
+                        <div class="absolute inset-0 opacity-30">
+                            <div class="w-full h-full bg-gradient-to-br from-blue-200 to-blue-400"></div>
+                        </div>
+                        <div class="relative z-10">
+                            <div class="text-8xl font-medium text-phala-dark mb-16">2</div>
+                            <h3 class="text-2xl font-semibold text-phala-dark mb-4">Unlock Use Cases</h3>
+                            <p class="text-phala-dark">Enable sensitive data processing previously impossible</p>
+                        </div>
+                    </div>
+
+                    <!-- Win the Market Card -->
+                    <div class="card-purple p-12 rounded-2xl relative overflow-hidden cursor-pointer transition-all hover:scale-105" onclick="selectUseCase(2)">
+                        <div class="absolute inset-0 opacity-30">
+                            <div class="w-full h-full bg-gradient-to-br from-purple-200 to-purple-400"></div>
+                        </div>
+                        <div class="relative z-10">
+                            <div class="text-8xl font-medium text-phala-dark absolute bottom-12 right-12">3</div>
+                            <h3 class="text-2xl font-semibold text-phala-dark mb-4">Win the Market</h3>
+                            <p class="text-phala-dark mb-8">Trust drives adoption, revenue, and competitive advantage</p>
+                            <div class="w-48 h-48 border-2 border-phala-dark rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Interactive Animation -->
+                <div class="space-y-8">
+                    <!-- Use Case Selector Buttons -->
+                    <div class="flex gap-4 justify-center">
+                        <button class="px-4 py-2 rounded-lg bg-phala-lime text-phala-dark font-semibold use-case-btn active" onclick="selectUseCase(0)">Financial</button>
+                        <button class="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 font-semibold use-case-btn" onclick="selectUseCase(1)">Data + Model</button>
+                        <button class="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 font-semibold use-case-btn" onclick="selectUseCase(2)">SaaS + AI</button>
+                    </div>
+
+                    <!-- Drag and Drop Animation Area -->
+                    <div class="bg-gray-100 rounded-3xl p-8 min-h-96">
+                        <div class="text-center mb-6">
+                            <h4 class="text-lg font-semibold text-gray-700 mb-2">
+                                Drag <span class="text-blue-600" id="input1">Financial Data</span> and <span class="text-yellow-600" id="input2">AI Models</span> into the TEE
+                            </h4>
+                            <p class="text-gray-500">Get <span class="text-green-600" id="output">Trusted Financial AI</span> in secure environment</p>
+                        </div>
+
+                        <!-- Draggable Input Items -->
+                        <div class="flex justify-around mb-8">
+                            <div class="drag-item bg-blue-200 p-4 rounded-lg border-2 border-dashed border-blue-400" draggable="true">
+                                <div class="text-sm font-semibold text-blue-700" id="card1">Market Data</div>
+                            </div>
+                            <div class="drag-item bg-yellow-200 p-4 rounded-lg border-2 border-dashed border-yellow-400" draggable="true">
+                                <div class="text-sm font-semibold text-yellow-700" id="card2">AI Model</div>
+                            </div>
+                        </div>
+
+                        <!-- TEE Black Box (Drop Zone) -->
+                        <div class="tee-box mx-auto mb-8 p-6 text-white text-center max-w-sm" id="tee-drop-zone">
+                            <div class="text-lg font-bold mb-4 text-white">Secured & Private</div>
+                            <div class="bg-pink-200 text-black p-4 rounded-lg mb-4">
+                                <div class="text-blue-600 text-sm border border-blue-300 rounded p-2 mb-2" id="question">
+                                    What should I invest in AI?
+                                </div>
+                                <div class="bg-green-200 p-3 rounded text-sm" id="response">
+                                    <div>Here's a stock list</div>
+                                    <div class="mt-2 space-y-1">
+                                        <div>$NVIDIA $3.2</div>
+                                        <div>$META $3.2</div>
+                                        <div>$COIN $3.2</div>
+                                    </div>
+                                    <button class="bg-yellow-400 px-3 py-1 rounded mt-2 text-xs font-bold">Buy</button>
+                                </div>
+                            </div>
+                            <div class="output-area" id="output-area">
+                                <span class="text-gray-400">AI Output appears here</span>
+                            </div>
+                        </div>
+
+                        <!-- Output Examples -->
+                        <div class="flex justify-around">
+                            <div class="bg-blue-200 p-3 rounded-lg border-2 border-dashed border-blue-400">
+                                <div class="text-xs font-semibold text-blue-700" id="output1">DeepSeek</div>
+                            </div>
+                            <div class="bg-yellow-200 p-3 rounded-lg border-2 border-dashed border-yellow-400">
+                                <div class="text-xs font-semibold text-yellow-700" id="output2">Coinbase API</div>
+                            </div>
+                            <div class="bg-green-200 p-3 rounded-lg border-2 border-dashed border-green-400">
+                                <div class="text-xs font-semibold text-green-700" id="output3">Research.pdf</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="py-16 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="max-w-4xl mx-auto mb-16">
+                <div class="flex items-center justify-center gap-4 mb-6">
+                    <span class="text-5xl font-semibold text-phala-dark">Trusted By More Than</span>
+                    <span class="text-5xl font-bold text-green-500">50,000</span>
+                    <span class="text-5xl font-semibold text-phala-dark">Users</span>
+                </div>
+                <p class="text-lg text-phala-gray">Trusted by industry leaders and developers worldwide</p>
+            </div>
+
+            <!-- Logo Row -->
+            <div class="flex items-center justify-center gap-8 mb-16 flex-wrap">
+                <div class="w-24 h-24 bg-neutral-300 rounded-full opacity-80 flex items-center justify-center">
+                    <span class="text-sm font-bold">LOGO</span>
+                </div>
+                <div class="w-24 h-24 bg-neutral-300 rounded-full opacity-80 flex items-center justify-center">
+                    <span class="text-sm font-bold">LOGO</span>
+                </div>
+                <div class="w-24 h-24 bg-neutral-300 rounded-full opacity-80 flex items-center justify-center">
+                    <span class="text-sm font-bold">LOGO</span>
+                </div>
+                <div class="w-24 h-24 bg-neutral-300 rounded-full opacity-80 flex items-center justify-center">
+                    <span class="text-sm font-bold">LOGO</span>
+                </div>
+                <div class="w-24 h-24 bg-neutral-300 rounded-full opacity-80 flex items-center justify-center">
+                    <span class="text-sm font-bold">LOGO</span>
+                </div>
+                <div class="w-24 h-24 bg-neutral-300 rounded-full opacity-80 flex items-center justify-center">
+                    <span class="text-sm font-bold">LOGO</span>
+                </div>
+                <div class="w-24 h-24 bg-neutral-300 rounded-full opacity-80 flex items-center justify-center">
+                    <span class="text-sm font-bold">LOGO</span>
+                </div>
+                <div class="w-24 h-24 bg-neutral-300 rounded-full opacity-80 flex items-center justify-center">
+                    <span class="text-sm font-bold">LOGO</span>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex items-center justify-center gap-4">
+                <a href="#cases" class="btn-phala">Explore All TEE Apps</a>
+                <a href="#cases" class="btn-blk">Explore Cases</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Confidential AI Section -->
+    <section class="py-16 px-6 bg-orange-50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-orange-600 mb-12">Confidential AI</h2>
+            
+            <!-- Confidential AI Models -->
+            <div class="mb-16">
+                <div class="flex justify-between items-center mb-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-phala-dark mb-2">Confidential AI Models</h3>
+                        <p class="text-phala-gray">Pre-configured secure AI models ready to deploy</p>
+                    </div>
+                    <a href="#models" class="btn-phala">Browse Models</a>
+                </div>
+
+                <!-- Model Cards -->
+                <div class="bg-phala-blue rounded-2xl p-8 overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <!-- Llama Model -->
+                        <div class="bg-white p-6 rounded-xl">
+                            <div class="w-12 h-12 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">
+                                <span class="text-xl">🤖</span>
+                            </div>
+                            <h4 class="font-semibold text-phala-dark mb-2">Llama-3.1-8B</h4>
+                            <div class="text-sm text-phala-gray mb-4">
+                                <div>Price</div>
+                                <div class="font-semibold">$2.88/hour</div>
+                            </div>
+                            <a href="#llama" class="w-full bg-gray-100 text-phala-dark py-2 px-4 rounded-lg font-semibold text-sm text-center block">
+                                Deploy →
+                            </a>
+                        </div>
+
+                        <!-- GPT-4o-mini Model -->
+                        <div class="bg-white p-6 rounded-xl">
+                            <div class="w-12 h-12 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">
+                                <span class="text-xl">🧠</span>
+                            </div>
+                            <h4 class="font-semibold text-phala-dark mb-2">GPT-4o-mini</h4>
+                            <div class="text-sm text-phala-gray mb-4">
+                                <div>Price</div>
+                                <div class="font-semibold">$4.50/hour</div>
+                            </div>
+                            <a href="#gpt4o" class="w-full bg-gray-100 text-phala-dark py-2 px-4 rounded-lg font-semibold text-sm text-center block">
+                                Deploy →
+                            </a>
+                        </div>
+
+                        <!-- DeepSeek Model -->
+                        <div class="bg-white p-6 rounded-xl">
+                            <div class="w-12 h-12 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">
+                                <span class="text-xl">🔍</span>
+                            </div>
+                            <h4 class="font-semibold text-phala-dark mb-2">DeepSeek-V3</h4>
+                            <div class="text-sm text-phala-gray mb-4">
+                                <div>Price</div>
+                                <div class="font-semibold">$1.50/hour</div>
+                            </div>
+                            <a href="#deepseek" class="w-full bg-gray-100 text-phala-dark py-2 px-4 rounded-lg font-semibold text-sm text-center block">
+                                Deploy →
+                            </a>
+                        </div>
+
+                        <!-- Custom Model -->
+                        <div class="bg-white p-6 rounded-xl">
+                            <div class="w-12 h-12 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">
+                                <span class="text-xl">⚙️</span>
+                            </div>
+                            <h4 class="font-semibold text-phala-dark mb-2">Custom Model</h4>
+                            <div class="text-sm text-phala-gray mb-4">
+                                <div>Price</div>
+                                <div class="font-semibold">Quote</div>
+                            </div>
+                            <a href="#custom" class="w-full bg-gray-100 text-phala-dark py-2 px-4 rounded-lg font-semibold text-sm text-center block">
+                                Contact →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Private Cloud Compute Section -->
+    <section class="py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-orange-600 mb-12">Private Cloud Compute</h2>
+            
+            <!-- Phala Cloud -->
+            <div class="mb-16">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Left: Cloud Icon -->
+                    <div class="bg-phala-lime rounded-2xl p-16 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="w-32 h-24 bg-white rounded-3xl flex items-center justify-center mb-8">
+                                <span class="text-6xl">☁️</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Content -->
+                    <div>
+                        <h3 class="text-3xl font-bold text-phala-dark mb-4">Phala Cloud</h3>
+                        <p class="text-lg text-phala-gray mb-8">All-in-one confidential compute platform for AI workloads</p>
+                        
+                        <div class="mb-8">
+                            <span class="bg-phala-lime text-phala-dark px-6 py-2 rounded-full font-semibold">
+                                Starting at $50.37/month
+                            </span>
+                            <a href="https://cloud.phala.network" class="bg-phala-dark text-white px-6 py-2 rounded-full font-semibold ml-4">
+                                Start Building
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Only AI Trust Layer (Part of Phala Cloud) -->
+            <div class="space-y-8">
+                <h2 class="text-5xl font-semibold text-phala-dark text-center mb-16">The Only AI Trust Layer</h2>
+                
+                <!-- Tab Navigation -->
+                <div class="bg-white rounded-2xl p-6 mb-8 max-w-md mx-auto">
+                    <div class="flex items-center justify-center gap-6">
+                        <div class="px-2 py-3 border-b-4 border-phala-lime cursor-pointer" onclick="showSimpleTab('easy')" id="simple-tab-easy">
+                            <span class="text-2xl font-semibold text-phala-dark">Easy</span>
+                        </div>
+                        <div class="px-2 py-3 cursor-pointer" onclick="showSimpleTab('open')" id="simple-tab-open">
+                            <span class="text-2xl font-medium text-phala-dark">Open</span>
+                        </div>
+                        <div class="px-2 py-3 cursor-pointer" onclick="showSimpleTab('private')" id="simple-tab-private">
+                            <span class="text-2xl font-medium text-phala-dark">Private</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Easy Tab Content -->
+                <div id="simple-content-easy" class="simple-tab-content">
+                    <div class="bg-phala-green rounded-t-2xl rounded-br-[80px] rounded-bl-2xl p-12 mb-4">
+                        <div class="flex items-center gap-12">
+                            <span class="text-4xl font-medium text-phala-dark">Easy</span>
+                            <div class="w-0.5 h-12 bg-phala-dark rounded-full"></div>
+                            <span class="text-3xl font-normal text-phala-gray">Build in Minutes, Not Months</span>
+                        </div>
+                    </div>
+
+                    <!-- Main Content Area -->
+                    <div class="bg-white rounded-2xl border border-phala-lime p-10">
+                        <h3 class="text-xl font-semibold text-phala-dark mb-10 max-w-md">
+                            Write code, dockerize, and deploy it as trustless TEE apps.
+                        </h3>
+                        <a href="https://cloud.phala.network" class="bg-black text-white px-6 py-3 rounded-full font-semibold text-sm">
+                            Try Now
+                        </a>
+                        
+                        <!-- Code Example Area -->
+                        <div class="mt-10 bg-gray-50 rounded-xl p-8 min-h-64">
+                            <div class="text-gray-500 mb-4">// Deploy your AI model with confidence</div>
+                            <div class="space-y-2 font-mono text-sm">
+                                <div><span class="text-blue-600">import</span> phala <span class="text-blue-600">from</span> <span class="text-green-600">'@phala/sdk'</span></div>
+                                <div></div>
+                                <div><span class="text-blue-600">const</span> model = <span class="text-blue-600">await</span> phala.<span class="text-purple-600">deploy</span>({</div>
+                                <div class="ml-4">image: <span class="text-green-600">'my-ai-model'</span>,</div>
+                                <div class="ml-4">security: <span class="text-green-600">'tee'</span>,</div>
+                                <div class="ml-4">attestation: <span class="text-green-600">'real-time'</span></div>
+                                <div>})</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Open Tab Content -->
+                <div id="simple-content-open" class="simple-tab-content hidden">
+                    <div class="bg-phala-blue rounded-t-2xl rounded-br-[80px] rounded-bl-2xl p-12 mb-4">
+                        <div class="flex items-center gap-12">
+                            <span class="text-4xl font-medium text-phala-dark">Open</span>
+                            <div class="w-0.5 h-12 bg-phala-dark rounded-full"></div>
+                            <span class="text-3xl font-normal text-phala-gray">Audit Everything</span>
+                        </div>
+                    </div>
+
+                    <!-- Main Content Area -->
+                    <div class="bg-white rounded-2xl border border-phala-blue p-10">
+                        <h3 class="text-xl font-semibold text-phala-dark mb-10 max-w-md">
+                            Fully open-source infrastructure you can audit, fork, and customize.
+                        </h3>
+                        <a href="https://github.com/dstack-TEE/dstack" class="bg-black text-white px-6 py-3 rounded-full font-semibold text-sm">
+                            View Code
+                        </a>
+                        
+                        <!-- Features Area -->
+                        <div class="mt-10 bg-gray-50 rounded-xl p-8 min-h-64">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <div class="text-3xl mb-4">🔓</div>
+                                    <h4 class="text-lg font-bold mb-2">Open Source</h4>
+                                    <p class="text-gray-600 mb-4">100% open code, community driven</p>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Dstack framework</li>
+                                        <li>• MIT licensed</li>
+                                        <li>• Community contributions</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="text-3xl mb-4">🔍</div>
+                                    <h4 class="text-lg font-bold mb-2">Real-time Transparency</h4>
+                                    <p class="text-gray-600 mb-4">Live attestation and verification</p>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• 10K+ daily attestations</li>
+                                        <li>• Public verification</li>
+                                        <li>• Audit trails</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Private Tab Content -->
+                <div id="simple-content-private" class="simple-tab-content hidden">
+                    <div class="bg-phala-purple rounded-t-2xl rounded-br-[80px] rounded-bl-2xl p-12 mb-4">
+                        <div class="flex items-center gap-12">
+                            <span class="text-4xl font-medium text-phala-dark">Private</span>
+                            <div class="w-0.5 h-12 bg-phala-dark rounded-full"></div>
+                            <span class="text-3xl font-normal text-phala-gray">Hardware-Level Security</span>
+                        </div>
+                    </div>
+
+                    <!-- Main Content Area -->
+                    <div class="bg-white rounded-2xl border border-phala-purple p-10">
+                        <h3 class="text-xl font-semibold text-phala-dark mb-10 max-w-md">
+                            Hardware-level isolation using Trusted Execution Environments with customer-controlled keys.
+                        </h3>
+                        <a href="#demo" class="bg-black text-white px-6 py-3 rounded-full font-semibold text-sm">
+                            Enterprise Demo
+                        </a>
+                        
+                        <!-- Features Area -->
+                        <div class="mt-10 bg-gray-50 rounded-xl p-8 min-h-64">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <div class="text-3xl mb-4">🔒</div>
+                                    <h4 class="text-lg font-bold mb-2">TEE Protection</h4>
+                                    <p class="text-gray-600 mb-4">Hardware-level isolation</p>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• CPU/GPU TEE</li>
+                                        <li>• <5% performance overhead</li>
+                                        <li>• Zero security breaches</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="text-3xl mb-4">🔑</div>
+                                    <h4 class="text-lg font-bold mb-2">Customer-Controlled Keys</h4>
+                                    <p class="text-gray-600 mb-4">Zero-trust key management</p>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Customer keys only</li>
+                                        <li>• Hardware isolation</li>
+                                        <li>• Zero-trust HTTP</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data & Customer Proof Section -->
+    <section class="py-24 bg-zinc-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-[56px] font-bold text-center mb-16">Proven at Scale</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="text-center">
+                    <div class="text-[64px] font-bold text-phala-lime mb-4">500+</div>
+                    <h3 class="text-[24px] font-bold mb-2">Teams Building</h3>
+                    <p class="text-gray-600">Active developers deploying confidential AI</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-[64px] font-bold text-phala-blue mb-4">10K+</div>
+                    <h3 class="text-[24px] font-bold mb-2">Daily Attestations</h3>
+                    <p class="text-gray-600">Real-time security verifications</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-[64px] font-bold text-phala-purple mb-4">$2M+</div>
+                    <h3 class="text-[24px] font-bold mb-2">ARR</h3>
+                    <p class="text-gray-600">Annual recurring revenue from enterprise</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-12 rounded-[32px]">
+                <h3 class="text-[32px] font-bold text-center mb-8">Enterprise Trust</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">✓</span>
+                            </div>
+                            <span>SOC 2 Type II Certified</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">✓</span>
+                            </div>
+                            <span>HIPAA Ready Infrastructure</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">✓</span>
+                            </div>
+                            <span>GDPR Compliant Processing</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">✓</span>
+                            </div>
+                            <span>99.9% Uptime SLA</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">✓</span>
+                            </div>
+                            <span>24/7 Enterprise Support</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">✓</span>
+                            </div>
+                            <span>Zero Security Breaches</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies & Use Cases -->
+    <section class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-[56px] font-bold text-center mb-16">Real-World Success Stories</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Financial Services Case -->
+                <div class="bg-zinc-100 p-10 rounded-[32px] hover:shadow-xl transition-shadow">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="text-5xl">🏦</div>
+                        <h3 class="text-[28px] font-bold">Financial Services</h3>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-[20px] font-semibold mb-2">Major Investment Bank</h4>
+                        <p class="text-gray-600 mb-4">
+                            "Phala enabled us to process sensitive trading data with AI while maintaining complete regulatory compliance. 
+                            We've reduced compliance costs by 40% while improving model accuracy."
+                        </p>
+                        <div class="flex items-center gap-4 text-sm text-gray-500">
+                            <span>• Risk Management AI</span>
+                            <span>• $2B+ Assets Under Management</span>
+                        </div>
+                    </div>
+                    <a href="#financial-case" class="btn-phala">Read Case Study</a>
+                </div>
+
+                <!-- Healthcare Case -->
+                <div class="bg-zinc-100 p-10 rounded-[32px] hover:shadow-xl transition-shadow">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="text-5xl">🏥</div>
+                        <h3 class="text-[28px] font-bold">Healthcare Research</h3>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-[20px] font-semibold mb-2">Research Consortium</h4>
+                        <p class="text-gray-600 mb-4">
+                            "Multi-party collaboration on patient data without privacy compromise. 
+                            Accelerated drug discovery by 60% while maintaining HIPAA compliance."
+                        </p>
+                        <div class="flex items-center gap-4 text-sm text-gray-500">
+                            <span>• 5 Hospital Network</span>
+                            <span>• 100K+ Patient Records</span>
+                        </div>
+                    </div>
+                    <a href="#healthcare-case" class="btn-phala">Read Case Study</a>
+                </div>
+
+                <!-- AI SaaS Case -->
+                <div class="bg-zinc-100 p-10 rounded-[32px] hover:shadow-xl transition-shadow">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="text-5xl">🚀</div>
+                        <h3 class="text-[28px] font-bold">AI SaaS Platform</h3>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-[20px] font-semibold mb-2">Enterprise Software Company</h4>
+                        <p class="text-gray-600 mb-4">
+                            "Phala's confidential AI helped us land Fortune 500 clients who required verifiable data protection. 
+                            Increased enterprise sales by 300%."
+                        </p>
+                        <div class="flex items-center gap-4 text-sm text-gray-500">
+                            <span>• B2B AI Platform</span>
+                            <span>• 50+ Enterprise Clients</span>
+                        </div>
+                    </div>
+                    <a href="#saas-case" class="btn-phala">Read Case Study</a>
+                </div>
+
+                <!-- Web3 Case -->
+                <div class="bg-zinc-100 p-10 rounded-[32px] hover:shadow-xl transition-shadow">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="text-5xl">⛓️</div>
+                        <h3 class="text-[28px] font-bold">Decentralized AI</h3>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-[20px] font-semibold mb-2">DeFi Protocol</h4>
+                        <p class="text-gray-600 mb-4">
+                            "Built autonomous trading agents with verifiable execution. 
+                            Users trust our AI because they can verify every decision on-chain."
+                        </p>
+                        <div class="flex items-center gap-4 text-sm text-gray-500">
+                            <span>• Autonomous Agents</span>
+                            <span>• $50M+ TVL</span>
+                        </div>
+                    </div>
+                    <a href="#web3-case" class="btn-phala">Read Case Study</a>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="/case-studies" class="btn-phala">View All Case Studies</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 bg-zinc-100">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-[56px] font-bold text-center mb-16">Frequently Asked Questions</h2>
+            
+            <div class="space-y-6">
+                <div class="bg-white p-8 rounded-[24px]">
+                    <h3 class="text-[24px] font-bold mb-4">What is Trusted Execution Environment (TEE)?</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        TEE is a secure area inside a main processor that guarantees code and data protection. 
+                        It provides hardware-level isolation, ensuring that sensitive operations are performed in a secure environment 
+                        that cannot be accessed by the operating system, hypervisor, or other applications.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-[24px]">
+                    <h3 class="text-[24px] font-bold mb-4">How does Phala compare to other cloud providers?</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Unlike traditional cloud providers, Phala offers hardware-level security guarantees with real-time attestation. 
+                        We provide verifiable security where you can cryptographically prove your AI is running securely, 
+                        not just trusting our security claims.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-[24px]">
+                    <h3 class="text-[24px] font-bold mb-4">What's the performance impact of TEE protection?</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Our TEE implementation has less than 5% performance overhead compared to bare metal execution. 
+                        For GPU-intensive AI workloads, the impact is even lower, typically under 3%, 
+                        making it suitable for production deployments.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-[24px]">
+                    <h3 class="text-[24px] font-bold mb-4">Is Phala compatible with existing AI frameworks?</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Yes, Phala supports all major AI frameworks including PyTorch, TensorFlow, Hugging Face, and more. 
+                        You can migrate existing models with minimal code changes, often just requiring containerization with Docker.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-[24px]">
+                    <h3 class="text-[24px] font-bold mb-4">What compliance standards does Phala meet?</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Phala is SOC 2 Type II certified, HIPAA ready, and GDPR compliant. We also support FedRAMP requirements 
+                        for government deployments and provide detailed audit trails for enterprise compliance needs.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-[24px]">
+                    <h3 class="text-[24px] font-bold mb-4">How do I get started with Phala?</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Getting started is simple: sign up for Phala Cloud, choose a pre-configured AI model or upload your own, 
+                        and deploy in minutes. We offer $500 in free credits for new users and comprehensive documentation 
+                        to help you get running quickly.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="/support" class="btn-phala">Contact Support</a>
+                <a href="/docs" class="btn-blk ml-4">View Documentation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-black text-white mx-6 mt-16 rounded-[32px]">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-[56px] font-bold mb-6">Ready to Build AI People Trust?</h2>
+            <p class="text-[24px] mb-12 opacity-90">
+                Join 500+ teams deploying trustworthy AI in production
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <a href="https://cloud.phala.network" class="btn-phala">Start with $500 Free Credits</a>
+                <a href="#demo" class="bg-white text-black px-8 py-4 rounded-full font-semibold text-[16px]">Request Demo</a>
+            </div>
+            <p class="text-[14px] text-gray-300 mt-6">No credit card required. Deploy your first model in 5 minutes.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16 mt-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="text-2xl font-bold text-phala-lime mb-4">Phala</div>
+                    <p class="text-gray-400 mb-6">
+                        The New Cloud for Confidential AI. Build AI People Can Trust.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">Products</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Phala Cloud</a></li>
+                        <li><a href="#" class="hover:text-white">Confidential AI</a></li>
+                        <li><a href="#" class="hover:text-white">GPU TEE</a></li>
+                        <li><a href="#" class="hover:text-white">Dstack Framework</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">Resources</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Documentation</a></li>
+                        <li><a href="#" class="hover:text-white">Case Studies</a></li>
+                        <li><a href="#" class="hover:text-white">Blog</a></li>
+                        <li><a href="#" class="hover:text-white">Community</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">Company</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">About</a></li>
+                        <li><a href="#" class="hover:text-white">Careers</a></li>
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                        <li><a href="#" class="hover:text-white">Trust Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex justify-center space-x-12 mb-8 flex-wrap">
+                    <span class="text-[14px]">🛡️ SOC 2 Type II</span>
+                    <span class="text-[14px]">🏥 HIPAA Ready</span>
+                    <span class="text-[14px]">🔓 Open Source</span>
+                    <span class="text-[14px]">⚡ 99.9% Uptime</span>
+                    <span class="text-[14px]">🌍 GDPR Compliant</span>
+                </div>
+                <p class="text-gray-400 text-center">© 2025 Phala Network. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Use case data
+        const useCases = [
+            {
+                name: "Financial + AI",
+                input1: "Financial Data",
+                input2: "AI Models", 
+                output: "Trusted Financial AI",
+                card1: "Market Data",
+                card2: "AI Model",
+                question: "What should I invest in AI?",
+                response: "Here's a stock list<br/>$NVIDIA $3.2<br/>$META $3.2<br/>$COIN $3.2",
+                output1: "DeepSeek",
+                output2: "Coinbase API",
+                output3: "Research.pdf"
+            },
+            {
+                name: "Model + Third Party Data",
+                input1: "Private Data",
+                input2: "Foundation Model",
+                output: "Private New Model",
+                card1: "Resume Data",
+                card2: "Llama 3",
+                question: "Create personalized model",
+                response: "Processing multiple resumes<br/>to create custom model<br/>with privacy protection",
+                output1: "Resumes",
+                output2: "Llama 3",
+                output3: "LinkedIn API"
+            },
+            {
+                name: "SaaS + AI",
+                input1: "Customer Data",
+                input2: "Service AI",
+                output: "Trusted Customer Service",
+                card1: "Customer Data",
+                card2: "OpenAI",
+                question: "Hey, can you help me?",
+                response: "Ticket Created ✅<br/>Searching user order<br/>history...",
+                output1: "Customer CSV",
+                output2: "OpenAI",
+                output3: "Hubspot"
+            }
+        ];
+
+        let currentUseCase = 0;
+
+        function selectUseCase(index) {
+            currentUseCase = index;
+            updateContent();
+            updateButtons();
+        }
+
+        function updateContent() {
+            const useCase = useCases[currentUseCase];
+            
+            // Update text elements
+            document.getElementById('input1').textContent = useCase.input1;
+            document.getElementById('input2').textContent = useCase.input2;
+            document.getElementById('output').textContent = useCase.output;
+            document.getElementById('card1').textContent = useCase.card1;
+            document.getElementById('card2').textContent = useCase.card2;
+            document.getElementById('question').textContent = useCase.question;
+            document.getElementById('response').innerHTML = useCase.response;
+            document.getElementById('output1').textContent = useCase.output1;
+            document.getElementById('output2').textContent = useCase.output2;
+            document.getElementById('output3').textContent = useCase.output3;
+        }
+
+        function updateButtons() {
+            const buttons = document.querySelectorAll('.use-case-btn');
+            buttons.forEach((btn, index) => {
+                if (index === currentUseCase) {
+                    btn.classList.add('bg-phala-lime', 'text-phala-dark');
+                    btn.classList.remove('bg-gray-200', 'text-gray-700');
+                } else {
+                    btn.classList.remove('bg-phala-lime', 'text-phala-dark');
+                    btn.classList.add('bg-gray-200', 'text-gray-700');
+                }
+            });
+        }
+
+        // Drag and Drop Functionality
+        const dragItems = document.querySelectorAll('.drag-item');
+        const dropZone = document.getElementById('tee-drop-zone');
+        const outputArea = document.getElementById('output-area');
+
+        dragItems.forEach(item => {
+            item.addEventListener('dragstart', (e) => {
+                item.classList.add('dragging');
+                dropZone.classList.add('highlight');
+            });
+
+            item.addEventListener('dragend', (e) => {
+                item.classList.remove('dragging');
+                dropZone.classList.remove('highlight');
+            });
+        });
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            outputArea.classList.add('active');
+            outputArea.innerHTML = '<span class="text-green-600 font-semibold">🤖 AI Processing Complete!</span>';
+            
+            setTimeout(() => {
+                outputArea.classList.remove('active');
+                outputArea.innerHTML = '<span class="text-gray-400">AI Output appears here</span>';
+            }, 2000);
+        });
+
+        // Auto-cycle use cases every 6 seconds
+        setInterval(() => {
+            selectUseCase((currentUseCase + 1) % useCases.length);
+        }, 6000);
+
+        // Simple tab functionality for The Only AI Trust Layer
+        function showSimpleTab(tabName) {
+            // Hide all simple tab content
+            document.querySelectorAll('.simple-tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Remove active styling from all simple tabs
+            document.querySelectorAll('[id^="simple-tab-"]').forEach(tab => {
+                tab.classList.remove('border-b-4');
+                tab.querySelector('span').classList.remove('font-semibold');
+                tab.querySelector('span').classList.add('font-medium');
+            });
+            
+            // Show selected content
+            document.getElementById('simple-content-' + tabName).classList.remove('hidden');
+            
+            // Add active styling to selected tab
+            const activeTab = document.getElementById('simple-tab-' + tabName);
+            if (tabName === 'easy') {
+                activeTab.classList.add('border-b-4', 'border-phala-lime');
+            } else if (tabName === 'open') {
+                activeTab.classList.add('border-b-4', 'border-phala-blue');
+            } else if (tabName === 'private') {
+                activeTab.classList.add('border-b-4', 'border-phala-purple');
+            }
+            activeTab.querySelector('span').classList.add('font-semibold');
+            activeTab.querySelector('span').classList.remove('font-medium');
+        }
+
+        // Initialize
+        updateContent();
+        updateButtons();
+    </script>
+</body>
+</html>
