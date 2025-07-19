@@ -368,75 +368,87 @@
             
             <!-- Confidential AI Models -->
             <div class="mb-16">
-                <div class="flex justify-between items-center mb-8">
-                    <div>
-                        <h3 class="text-2xl font-bold text-phala-dark mb-2">Confidential AI Models</h3>
-                        <p class="text-phala-gray">Pre-configured secure AI models ready to deploy</p>
+                <div class="inline-flex justify-start items-center gap-6 w-full">
+                    <!-- Left: Title and CTA -->
+                    <div class="flex-1 h-96 relative bg-white rounded-2xl overflow-hidden p-12">
+                        <div class="h-64 inline-flex flex-col justify-between items-start">
+                            <div class="flex flex-col justify-start items-start gap-4">
+                                <h3 class="text-3xl font-semibold text-phala-dark">Confidential<br/>AI Models</h3>
+                                <p class="w-60 text-base text-phala-gray">Pre-configured secure AI models ready to deploy</p>
+                            </div>
+                            <a href="#models" class="h-10 px-6 py-2.5 bg-black rounded-full inline-flex justify-center items-center">
+                                <span class="text-white text-sm font-semibold">Browse Models</span>
+                            </a>
+                        </div>
                     </div>
-                    <a href="#models" class="btn-phala">Browse Models</a>
-                </div>
 
-                <!-- Model Cards -->
-                <div class="bg-phala-blue rounded-2xl p-8 overflow-hidden">
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                        <!-- Llama Model -->
-                        <div class="bg-white p-6 rounded-xl">
-                            <div class="w-12 h-12 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">
-                                <span class="text-xl">🤖</span>
+                    <!-- Right: Model Cards -->
+                    <div class="w-[1038px] h-96 relative bg-phala-blue rounded-2xl overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-sky-200 via-sky-300 to-blue-400"></div>
+                        <div class="left-[32px] top-[32px] absolute inline-flex justify-start items-center gap-4">
+                            <!-- Llama Model -->
+                            <div class="w-60 h-72 relative bg-white rounded-lg overflow-hidden">
+                                <div class="w-16 h-16 left-[24px] top-[24px] absolute bg-white rounded-full border border-gray-300 overflow-hidden flex items-center justify-center">
+                                    <span class="text-2xl">🤖</span>
+                                </div>
+                                <div class="left-[24px] top-[163px] absolute text-2xl font-semibold text-phala-dark">Llama-3.1-8B</div>
+                                <div class="left-[24px] top-[232px] absolute inline-flex flex-col justify-center items-start gap-2">
+                                    <div class="text-base text-phala-dark">Price</div>
+                                    <div class="text-base font-bold text-phala-dark">$50.37/month</div>
+                                </div>
+                                <div class="p-3 left-[176px] top-[236px] absolute bg-zinc-100 rounded-full inline-flex justify-start items-center">
+                                    <span class="text-xl">→</span>
+                                </div>
+                                <div class="w-6 h-1 left-[24px] top-[200px] absolute bg-teal-600 rounded-full"></div>
                             </div>
-                            <h4 class="font-semibold text-phala-dark mb-2">Llama-3.1-8B</h4>
-                            <div class="text-sm text-phala-gray mb-4">
-                                <div>Price</div>
-                                <div class="font-semibold">$2.88/hour</div>
-                            </div>
-                            <a href="#llama" class="w-full bg-gray-100 text-phala-dark py-2 px-4 rounded-lg font-semibold text-sm text-center block">
-                                Deploy →
-                            </a>
-                        </div>
 
-                        <!-- GPT-4o-mini Model -->
-                        <div class="bg-white p-6 rounded-xl">
-                            <div class="w-12 h-12 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">
-                                <span class="text-xl">🧠</span>
+                            <!-- GPT-4o-mini Model -->
+                            <div class="w-60 h-72 relative bg-white rounded-lg overflow-hidden">
+                                <div class="w-16 h-16 left-[24px] top-[24px] absolute bg-white rounded-full border border-gray-300 overflow-hidden flex items-center justify-center">
+                                    <span class="text-2xl">🧠</span>
+                                </div>
+                                <div class="left-[24px] top-[163px] absolute text-2xl font-semibold text-phala-dark">GPT-4o-mini</div>
+                                <div class="left-[24px] top-[232px] absolute inline-flex flex-col justify-center items-start gap-2">
+                                    <div class="text-base text-phala-dark">Price</div>
+                                    <div class="text-base font-bold text-phala-dark">$50.37/month</div>
+                                </div>
+                                <div class="p-3 left-[176px] top-[236px] absolute bg-zinc-100 rounded-full inline-flex justify-start items-center">
+                                    <span class="text-xl">→</span>
+                                </div>
+                                <div class="w-6 h-1 left-[24px] top-[200px] absolute bg-teal-600 rounded-full"></div>
                             </div>
-                            <h4 class="font-semibold text-phala-dark mb-2">GPT-4o-mini</h4>
-                            <div class="text-sm text-phala-gray mb-4">
-                                <div>Price</div>
-                                <div class="font-semibold">$4.50/hour</div>
-                            </div>
-                            <a href="#gpt4o" class="w-full bg-gray-100 text-phala-dark py-2 px-4 rounded-lg font-semibold text-sm text-center block">
-                                Deploy →
-                            </a>
-                        </div>
 
-                        <!-- DeepSeek Model -->
-                        <div class="bg-white p-6 rounded-xl">
-                            <div class="w-12 h-12 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">
-                                <span class="text-xl">🔍</span>
+                            <!-- DeepSeek Model -->
+                            <div class="w-60 h-72 relative bg-white rounded-lg overflow-hidden">
+                                <div class="w-16 h-16 left-[24px] top-[24px] absolute bg-white rounded-full border border-gray-300 overflow-hidden flex items-center justify-center">
+                                    <span class="text-2xl">🔍</span>
+                                </div>
+                                <div class="left-[24px] top-[163px] absolute text-2xl font-semibold text-phala-dark">DeepSeek-V3</div>
+                                <div class="left-[24px] top-[232px] absolute inline-flex flex-col justify-center items-start gap-2">
+                                    <div class="text-base text-phala-dark">Price</div>
+                                    <div class="text-base font-bold text-phala-dark">$30.25/month</div>
+                                </div>
+                                <div class="p-3 left-[176px] top-[236px] absolute bg-zinc-100 rounded-full inline-flex justify-start items-center">
+                                    <span class="text-xl">→</span>
+                                </div>
+                                <div class="w-6 h-1 left-[24px] top-[200px] absolute bg-purple-600 rounded-full"></div>
                             </div>
-                            <h4 class="font-semibold text-phala-dark mb-2">DeepSeek-V3</h4>
-                            <div class="text-sm text-phala-gray mb-4">
-                                <div>Price</div>
-                                <div class="font-semibold">$1.50/hour</div>
-                            </div>
-                            <a href="#deepseek" class="w-full bg-gray-100 text-phala-dark py-2 px-4 rounded-lg font-semibold text-sm text-center block">
-                                Deploy →
-                            </a>
-                        </div>
 
-                        <!-- Custom Model -->
-                        <div class="bg-white p-6 rounded-xl">
-                            <div class="w-12 h-12 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">
-                                <span class="text-xl">⚙️</span>
+                            <!-- Custom Model -->
+                            <div class="w-60 h-72 relative bg-white rounded-lg overflow-hidden">
+                                <div class="w-16 h-16 left-[24px] top-[24px] absolute bg-white rounded-full border border-gray-300 overflow-hidden flex items-center justify-center">
+                                    <span class="text-2xl">⚙️</span>
+                                </div>
+                                <div class="left-[24px] top-[163px] absolute text-2xl font-semibold text-phala-dark">Custom Model</div>
+                                <div class="left-[24px] top-[232px] absolute inline-flex flex-col justify-center items-start gap-2">
+                                    <div class="text-base text-phala-dark">Price</div>
+                                    <div class="text-base font-bold text-phala-dark">Quote</div>
+                                </div>
+                                <div class="p-3 left-[176px] top-[236px] absolute bg-zinc-100 rounded-full inline-flex justify-start items-center">
+                                    <span class="text-xl">→</span>
+                                </div>
+                                <div class="w-6 h-1 left-[24px] top-[200px] absolute bg-orange-600 rounded-full"></div>
                             </div>
-                            <h4 class="font-semibold text-phala-dark mb-2">Custom Model</h4>
-                            <div class="text-sm text-phala-gray mb-4">
-                                <div>Price</div>
-                                <div class="font-semibold">Quote</div>
-                            </div>
-                            <a href="#custom" class="w-full bg-gray-100 text-phala-dark py-2 px-4 rounded-lg font-semibold text-sm text-center block">
-                                Contact →
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -451,27 +463,28 @@
             
             <!-- Phala Cloud -->
             <div class="mb-16">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="inline-flex justify-start items-center gap-6 w-full">
                     <!-- Left: Cloud Icon -->
-                    <div class="bg-phala-lime rounded-2xl p-16 flex items-center justify-center">
-                        <div class="text-center">
-                            <div class="w-32 h-24 bg-white rounded-3xl flex items-center justify-center mb-8">
-                                <span class="text-6xl">☁️</span>
-                            </div>
+                    <div class="w-96 h-96 relative bg-phala-lime rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-[80px] overflow-hidden">
+                        <div class="w-72 h-52 left-[85px] top-[80px] absolute bg-white rounded-2xl flex items-center justify-center">
+                            <span class="text-8xl">☁️</span>
                         </div>
                     </div>
 
                     <!-- Right: Content -->
-                    <div>
-                        <h3 class="text-3xl font-bold text-phala-dark mb-4">Phala Cloud</h3>
-                        <p class="text-lg text-phala-gray mb-8">All-in-one confidential compute platform for AI workloads</p>
+                    <div class="flex-1 h-96 relative bg-white rounded-2xl overflow-hidden p-12">
+                        <div class="inline-flex flex-col justify-start items-start gap-4 mb-32">
+                            <h3 class="text-3xl font-semibold text-phala-dark">Phala Cloud</h3>
+                            <p class="text-base text-phala-gray">All-in-one confidential compute platform for AI workloads</p>
+                        </div>
                         
-                        <div class="mb-8">
-                            <span class="bg-phala-lime text-phala-dark px-6 py-2 rounded-full font-semibold">
-                                Starting at $50.37/month
-                            </span>
-                            <a href="https://cloud.phala.network" class="bg-phala-dark text-white px-6 py-2 rounded-full font-semibold ml-4">
-                                Start Building
+                        <div class="absolute bottom-12 left-10 right-10 p-2 bg-phala-lime rounded-full inline-flex justify-between items-center">
+                            <div class="px-4 flex justify-start items-center gap-3.5">
+                                <span class="text-xl font-medium text-phala-dark">Starting at</span>
+                                <span class="text-xl font-bold text-phala-dark">$50.37/month</span>
+                            </div>
+                            <a href="https://cloud.phala.network" class="h-10 px-6 py-2.5 bg-black rounded-full flex justify-center items-center">
+                                <span class="text-white text-sm font-semibold">Start Building</span>
                             </a>
                         </div>
                     </div>
@@ -507,27 +520,90 @@
                         </div>
                     </div>
 
-                    <!-- Main Content Area -->
-                    <div class="bg-white rounded-2xl border border-phala-lime p-10">
-                        <h3 class="text-xl font-semibold text-phala-dark mb-10 max-w-md">
-                            Write code, dockerize, and deploy it as trustless TEE apps.
-                        </h3>
-                        <a href="https://cloud.phala.network" class="bg-black text-white px-6 py-3 rounded-full font-semibold text-sm">
-                            Try Now
-                        </a>
-                        
-                        <!-- Code Example Area -->
-                        <div class="mt-10 bg-gray-50 rounded-xl p-8 min-h-64">
-                            <div class="text-gray-500 mb-4">// Deploy your AI model with confidence</div>
-                            <div class="space-y-2 font-mono text-sm">
-                                <div><span class="text-blue-600">import</span> phala <span class="text-blue-600">from</span> <span class="text-green-600">'@phala/sdk'</span></div>
-                                <div></div>
-                                <div><span class="text-blue-600">const</span> model = <span class="text-blue-600">await</span> phala.<span class="text-purple-600">deploy</span>({</div>
-                                <div class="ml-4">image: <span class="text-green-600">'my-ai-model'</span>,</div>
-                                <div class="ml-4">security: <span class="text-green-600">'tee'</span>,</div>
-                                <div class="ml-4">attestation: <span class="text-green-600">'real-time'</span></div>
-                                <div>})</div>
+                    <!-- Three Cards Layout -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Card 1: Docker Deploy -->
+                        <div class="h-[520px] relative bg-white rounded-2xl border border-phala-lime overflow-hidden p-10">
+                            <h3 class="text-xl font-semibold text-phala-dark mb-10 max-w-md">
+                                Write code, dockerize, and deploy it as trustless TEE apps.
+                            </h3>
+                            <a href="https://cloud.phala.network" class="absolute top-[132px] left-[40px] bg-black text-white px-6 py-2.5 rounded-full font-semibold text-sm inline-flex items-center">
+                                Try Now
+                            </a>
+                            
+                            <!-- Docker logo placeholder -->
+                            <div class="absolute top-[40px] right-[40px] w-36 h-7 bg-black rounded-lg flex items-center justify-center">
+                                <span class="text-white font-bold">🐳 docker</span>
                             </div>
+                            
+                            <!-- Code Example Area -->
+                            <div class="absolute bottom-0 left-0 right-0 h-80 bg-phala-lime overflow-hidden">
+                                <div class="absolute inset-x-10 top-14 bottom-14 bg-white rounded-2xl p-6 shadow-lg">
+                                    <div class="flex gap-2 mb-4">
+                                        <div class="w-4 h-4 bg-zinc-100 rounded-full"></div>
+                                        <div class="w-4 h-4 bg-zinc-100 rounded-full"></div>
+                                        <div class="w-4 h-4 bg-zinc-100 rounded-full"></div>
+                                    </div>
+                                    <div class="font-mono text-sm text-phala-dark">
+                                        # Deploy the webshell Dstack<br/>
+                                        example phala cvms create
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Hardware Maintenance -->
+                        <div class="h-[520px] relative bg-white rounded-2xl border border-phala-lime overflow-hidden p-10">
+                            <h3 class="text-xl font-semibold text-phala-dark mb-6">
+                                We deal with the pain of hardware maintenance
+                            </h3>
+                            
+                            <div class="mt-16 space-y-4">
+                                <div class="flex gap-4">
+                                    <div class="w-16 h-16 rounded-full border border-gray-300 flex items-center justify-center bg-white">
+                                        <span class="text-2xl">💻</span>
+                                    </div>
+                                    <div class="w-16 h-16 rounded-full border border-gray-300 flex items-center justify-center bg-white">
+                                        <span class="text-2xl text-red-600">🔴</span>
+                                    </div>
+                                    <div class="w-16 h-16 rounded-full border border-gray-300 flex items-center justify-center bg-white">
+                                        <span class="text-2xl text-green-600">💚</span>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-phala-gray">have their own TEE</p>
+                            </div>
+                            
+                            <a href="#hardware" class="absolute bottom-10 left-10 bg-black text-white px-6 py-2.5 rounded-full font-semibold text-sm inline-flex items-center">
+                                See Hardware
+                            </a>
+                        </div>
+
+                        <!-- Card 3: Templates -->
+                        <div class="h-[520px] relative bg-white rounded-2xl border border-phala-lime overflow-hidden p-10">
+                            <h3 class="text-xl font-semibold text-phala-dark mb-10">
+                                Deploy production-grade TEE workloads in minutes.
+                            </h3>
+                            
+                            <!-- Template preview window -->
+                            <div class="absolute left-7 top-44 right-7 bg-white rounded-2xl border-[12px] border-phala-lime overflow-hidden">
+                                <div class="flex gap-2 p-3 border-b">
+                                    <div class="w-2 h-2 bg-zinc-100 rounded-full"></div>
+                                    <div class="w-2 h-2 bg-zinc-100 rounded-full"></div>
+                                    <div class="w-2 h-2 bg-zinc-100 rounded-full"></div>
+                                </div>
+                                <div class="p-6 bg-gray-50 h-48">
+                                    <div class="text-sm text-gray-600 mb-2">Templates</div>
+                                    <div class="space-y-2">
+                                        <div class="bg-white p-2 rounded text-sm">Financial AI</div>
+                                        <div class="bg-white p-2 rounded text-sm">Healthcare ML</div>
+                                        <div class="bg-white p-2 rounded text-sm">Data Analytics</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <a href="#templates" class="absolute bottom-10 left-10 bg-black text-white px-6 py-2.5 rounded-full font-semibold text-sm inline-flex items-center">
+                                Browse Templates
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -542,39 +618,72 @@
                         </div>
                     </div>
 
-                    <!-- Main Content Area -->
-                    <div class="bg-white rounded-2xl border border-phala-blue p-10">
-                        <h3 class="text-xl font-semibold text-phala-dark mb-10 max-w-md">
-                            Fully open-source infrastructure you can audit, fork, and customize.
-                        </h3>
-                        <a href="https://github.com/dstack-TEE/dstack" class="bg-black text-white px-6 py-3 rounded-full font-semibold text-sm">
-                            View Code
-                        </a>
-                        
-                        <!-- Features Area -->
-                        <div class="mt-10 bg-gray-50 rounded-xl p-8 min-h-64">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div>
-                                    <div class="text-3xl mb-4">🔓</div>
-                                    <h4 class="text-lg font-bold mb-2">Open Source</h4>
-                                    <p class="text-gray-600 mb-4">100% open code, community driven</p>
-                                    <ul class="text-sm text-gray-600 space-y-1">
-                                        <li>• Dstack framework</li>
-                                        <li>• MIT licensed</li>
-                                        <li>• Community contributions</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <div class="text-3xl mb-4">🔍</div>
-                                    <h4 class="text-lg font-bold mb-2">Real-time Transparency</h4>
-                                    <p class="text-gray-600 mb-4">Live attestation and verification</p>
-                                    <ul class="text-sm text-gray-600 space-y-1">
-                                        <li>• 10K+ daily attestations</li>
-                                        <li>• Public verification</li>
-                                        <li>• Audit trails</li>
-                                    </ul>
-                                </div>
+                    <!-- Three Cards Layout -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Card 1: Open Source -->
+                        <div class="h-[520px] relative bg-white rounded-2xl border border-phala-blue overflow-hidden p-10">
+                            <h3 class="text-xl font-semibold text-phala-dark mb-10">
+                                Fully open-source infrastructure you can audit, fork, and customize.
+                            </h3>
+                            
+                            <div class="mt-24">
+                                <div class="text-3xl mb-4">🔓</div>
+                                <h4 class="text-lg font-bold mb-2">Open Source</h4>
+                                <p class="text-gray-600 mb-4">100% open code, community driven</p>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Dstack framework</li>
+                                    <li>• MIT licensed</li>
+                                    <li>• Community contributions</li>
+                                </ul>
                             </div>
+                            
+                            <a href="https://github.com/dstack-TEE/dstack" class="absolute bottom-10 left-10 bg-black text-white px-6 py-2.5 rounded-full font-semibold text-sm inline-flex items-center">
+                                View Code
+                            </a>
+                        </div>
+
+                        <!-- Card 2: Audited Cloud -->
+                        <div class="h-[520px] relative bg-white rounded-2xl border border-phala-blue overflow-hidden p-10">
+                            <h3 class="text-xl font-semibold text-phala-dark mb-10">
+                                Live attestation and verification for every running workload.
+                            </h3>
+                            
+                            <div class="mt-24">
+                                <div class="text-3xl mb-4">🔍</div>
+                                <h4 class="text-lg font-bold mb-2">Real-time Transparency</h4>
+                                <p class="text-gray-600 mb-4">Live attestation and verification</p>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• 10K+ daily attestations</li>
+                                    <li>• Public verification</li>
+                                    <li>• Audit trails</li>
+                                </ul>
+                            </div>
+                            
+                            <a href="https://proof.t16z.com/" class="absolute bottom-10 left-10 bg-black text-white px-6 py-2.5 rounded-full font-semibold text-sm inline-flex items-center">
+                                Verify Now
+                            </a>
+                        </div>
+
+                        <!-- Card 3: Trust Center -->
+                        <div class="h-[520px] relative bg-white rounded-2xl border border-phala-blue overflow-hidden p-10">
+                            <h3 class="text-xl font-semibold text-phala-dark mb-10">
+                                Complete transparency with public trust center and compliance reports.
+                            </h3>
+                            
+                            <div class="mt-24">
+                                <div class="text-3xl mb-4">🛡️</div>
+                                <h4 class="text-lg font-bold mb-2">Zero Trust by Design</h4>
+                                <p class="text-gray-600 mb-4">Complete transparency</p>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• SOC 2 Type II</li>
+                                    <li>• HIPAA ready</li>
+                                    <li>• GDPR compliant</li>
+                                </ul>
+                            </div>
+                            
+                            <a href="#trust" class="absolute bottom-10 left-10 bg-black text-white px-6 py-2.5 rounded-full font-semibold text-sm inline-flex items-center">
+                                Trust Center
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -589,39 +698,72 @@
                         </div>
                     </div>
 
-                    <!-- Main Content Area -->
-                    <div class="bg-white rounded-2xl border border-phala-purple p-10">
-                        <h3 class="text-xl font-semibold text-phala-dark mb-10 max-w-md">
-                            Hardware-level isolation using Trusted Execution Environments with customer-controlled keys.
-                        </h3>
-                        <a href="#demo" class="bg-black text-white px-6 py-3 rounded-full font-semibold text-sm">
-                            Enterprise Demo
-                        </a>
-                        
-                        <!-- Features Area -->
-                        <div class="mt-10 bg-gray-50 rounded-xl p-8 min-h-64">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div>
-                                    <div class="text-3xl mb-4">🔒</div>
-                                    <h4 class="text-lg font-bold mb-2">TEE Protection</h4>
-                                    <p class="text-gray-600 mb-4">Hardware-level isolation</p>
-                                    <ul class="text-sm text-gray-600 space-y-1">
-                                        <li>• CPU/GPU TEE</li>
-                                        <li>• <5% performance overhead</li>
-                                        <li>• Zero security breaches</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <div class="text-3xl mb-4">🔑</div>
-                                    <h4 class="text-lg font-bold mb-2">Customer-Controlled Keys</h4>
-                                    <p class="text-gray-600 mb-4">Zero-trust key management</p>
-                                    <ul class="text-sm text-gray-600 space-y-1">
-                                        <li>• Customer keys only</li>
-                                        <li>• Hardware isolation</li>
-                                        <li>• Zero-trust HTTP</li>
-                                    </ul>
-                                </div>
+                    <!-- Three Cards Layout -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Card 1: Confidential Compute -->
+                        <div class="h-[520px] relative bg-white rounded-2xl border border-phala-purple overflow-hidden p-10">
+                            <h3 class="text-xl font-semibold text-phala-dark mb-10">
+                                Hardware-level isolation using Trusted Execution Environments.
+                            </h3>
+                            
+                            <div class="mt-24">
+                                <div class="text-3xl mb-4">🔒</div>
+                                <h4 class="text-lg font-bold mb-2">TEE Protection</h4>
+                                <p class="text-gray-600 mb-4">Hardware-level isolation</p>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• CPU/GPU TEE</li>
+                                    <li>• <5% overhead</li>
+                                    <li>• Zero breaches</li>
+                                </ul>
                             </div>
+                            
+                            <a href="#tee" class="absolute bottom-10 left-10 bg-black text-white px-6 py-2.5 rounded-full font-semibold text-sm inline-flex items-center">
+                                Learn TEE
+                            </a>
+                        </div>
+
+                        <!-- Card 2: Zero-Trust KMS -->
+                        <div class="h-[520px] relative bg-white rounded-2xl border border-phala-purple overflow-hidden p-10">
+                            <h3 class="text-xl font-semibold text-phala-dark mb-10">
+                                Zero-trust key management with customer-controlled encryption keys.
+                            </h3>
+                            
+                            <div class="mt-24">
+                                <div class="text-3xl mb-4">🔑</div>
+                                <h4 class="text-lg font-bold mb-2">Customer-Controlled Keys</h4>
+                                <p class="text-gray-600 mb-4">Zero-trust key management</p>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Customer keys</li>
+                                    <li>• Hardware isolation</li>
+                                    <li>• Zero-trust HTTP</li>
+                                </ul>
+                            </div>
+                            
+                            <a href="#kms" class="absolute bottom-10 left-10 bg-black text-white px-6 py-2.5 rounded-full font-semibold text-sm inline-flex items-center">
+                                Key Management
+                            </a>
+                        </div>
+
+                        <!-- Card 3: On-Premise Privacy -->
+                        <div class="h-[520px] relative bg-white rounded-2xl border border-phala-purple overflow-hidden p-10">
+                            <h3 class="text-xl font-semibold text-phala-dark mb-10">
+                                Cloud convenience with on-premise privacy guarantees.
+                            </h3>
+                            
+                            <div class="mt-24">
+                                <div class="text-3xl mb-4">🏢</div>
+                                <h4 class="text-lg font-bold mb-2">Private as On-Premise</h4>
+                                <p class="text-gray-600 mb-4">Enterprise-grade privacy</p>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• 500+ teams</li>
+                                    <li>• $2M ARR</li>
+                                    <li>• Enterprise grade</li>
+                                </ul>
+                            </div>
+                            
+                            <a href="#demo" class="absolute bottom-10 left-10 bg-black text-white px-6 py-2.5 rounded-full font-semibold text-sm inline-flex items-center">
+                                Enterprise Demo
+                            </a>
                         </div>
                     </div>
                 </div>
