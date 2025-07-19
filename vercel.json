@@ -1,5 +1,7 @@
 {
   "name": "phala-rebrand-complete",
   "version": 2,
-  "public": true
+  "public": true,
+  "buildCommand": "",
+  "outputDirectory": "."
 }
