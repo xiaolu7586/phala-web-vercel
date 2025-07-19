@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phala Network - The New Cloud for Confidential AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'phala-lime': '#CDFA50',
+                        'phala-green': '#C4F144',
+                        'phala-blue': '#8DD7FF',
+                        'phala-purple': '#AABBFF',
+                        'phala-dark': '#1E2119',
+                        'phala-gray': '#61645B',
+                    },
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .hero-bg {
+            background: #F0F1EE;
+            background-image: url('https://placehold.co/1564x1012');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-lime { background: #CDFA50; }
+        .card-blue { background: #8DD7FF; }
+        .card-purple { background: #AABBFF; }
+        
+        .drag-item {
+            cursor: grab;
+            transition: all 0.3s ease;
+        }
+        
+        .drag-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .drag-item.dragging {
+            cursor: grabbing;
+            transform: scale(1.1);
+            z-index: 1000;
+        }
+        
+        .tee-box {
+            background: #0D0D0D;
+            border-radius: 16px;
+            position: relative;
+            min-height: 300px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .tee-box.highlight {
+            border-color: #CDFA50;
+            box-shadow: 0 0 20px rgba(205, 250, 80, 0.3);
+        }
+        
+        .output-area {
+            min-height: 100px;
+            border: 2px dashed #ccc;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .output-area.active {
+            border-color: #CDFA50;
+            background: rgba(205, 250, 80, 0.1);
+        }
+        
+        .blob-blur {
+            filter: blur(100px);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="font-montserrat bg-gray-50">
+    <!-- Navigation -->
+    <nav class="absolute top-0 left-0 w-full z-50 px-12 py-6">
+        <div class="flex justify-between items-center">
+            <div class="w-12 h-12 bg-phala-lime"></div>
+            <div class="hidden md:flex items-center gap-9 text-white">
+                <div class="flex items-center gap-1.5">
+                    <span class="text-sm">AI Solutions</span>
+                    <div class="w-2 h-1 border border-white"></div>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <span class="text-sm">Developers</span>
+                    <div class="w-2 h-1 border border-white"></div>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <span class="text-sm">Security</span>
+                    <div class="w-2 h-1 border border-white"></div>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <span class="text-sm">Network</span>
+                    <div class="w-2 h-1 border border-white"></div>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <span class="text-sm">Enterprise</span>
+                    <div class="w-2 h-1 border border-white"></div>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                    <div class="w-4.5 h-4 bg-phala-dark"></div>
+                </div>
+                <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                    <div class="w-4.5 h-4 bg-phala-dark"></div>
+                </div>
+                <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                    <div class="w-5 h-3.5 bg-phala-dark"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg h-screen flex items-center justify-center text-white relative">
+        <div class="text-center z-10">
+            <div class="mb-8">
+                <div class="inline-flex items-center gap-2 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full border border-white/50">
+                    <div class="w-4 h-4 bg-phala-lime rounded-full"></div>
+                    <span class="text-sm font-medium text-white">Safe AGI</span>
+                </div>
+            </div>
+            <div class="flex items-center justify-center gap-4 mb-8">
+                <h1 class="text-5xl font-bold">BUILD AI</h1>
+                <div class="bg-black/50 backdrop-blur-sm px-4 py-1.5 rounded-xl">
+                    <span class="text-5xl font-bold text-phala-lime">PEOPLE CAN TRUST</span>
+                </div>
+            </div>
+            <h2 class="text-3xl font-semibold mb-16">Deploy today, trust AI instantly.</h2>
+            <div class="flex items-center justify-center gap-4">
+                <button class="bg-phala-green text-phala-dark px-6 py-3 rounded-full font-semibold text-sm">
+                    Get Started
+                </button>
+                <button class="bg-white text-phala-dark px-6 py-3 rounded-full font-semibold text-sm">
+                    Request Demo
+                </button>
+            </div>
+        </div>
+        <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2">
+            <div class="bg-white/80 backdrop-blur-sm p-3 rounded-full">
+                <div class="w-6 h-6 flex items-center justify-center">
+                    <div class="w-0.5 h-4 bg-phala-dark"></div>
+                    <div class="w-4 h-2 bg-phala-dark ml-1"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- When Your Users Trust AI -->
+    <section class="py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="bg-white rounded-t-2xl rounded-br-[80px] rounded-bl-2xl p-12 mb-12">
+                <div class="max-w-4xl">
+                    <h2 class="text-4xl font-bold text-phala-dark mb-3">When Your Users Trust AI</h2>
+                    <p class="text-lg text-phala-gray">Trust creates a powerful cycle that drives business growth and market leadership</p>
+                </div>
+                <div class="flex items-center gap-2 mt-8">
+                    <div class="w-6 h-1.5 bg-phala-lime rounded-full"></div>
+                    <div class="w-6 h-1.5 bg-phala-blue rounded-full"></div>
+                    <div class="w-6 h-1.5 bg-phala-purple rounded-full"></div>
+                </div>
+            </div>
+
+            <!-- Three Cards with Animation -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Side: Three Value Cards -->
+                <div class="space-y-8">
+                    <!-- Card 1: Trust AI -->
+                    <div class="card-lime p-12 rounded-2xl relative overflow-hidden cursor-pointer transition-all hover:scale-105" onclick="selectUseCase(0)">
+                        <div class="absolute inset-0 opacity-50">
+                            <img src="https://placehold.co/948x474" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-phala-lime/30 to-transparent blob-blur"></div>
+                        <div class="relative z-10">
+                            <div class="text-8xl font-medium text-phala-dark mb-16">1</div>
+                            <h3 class="text-2xl font-semibold text-phala-dark mb-4">Trust AI</h3>
+                            <p class="text-phala-dark">Users gain confidence in AI systems with verifiable security</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Unlock Use Cases -->
+                    <div class="card-blue p-12 rounded-2xl relative overflow-hidden cursor-pointer transition-all hover:scale-105" onclick="selectUseCase(1)">
+                        <div class="absolute inset-0 opacity-50">
+                            <img src="https://placehold.co/922x461" class="w-full h-full object-cover transform rotate-180" />
+                        </div>
+                        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-phala-blue/30 to-transparent blob-blur"></div>
+                        <div class="relative z-10">
+                            <div class="text-8xl font-medium text-phala-dark mb-16">2</div>
+                            <h3 class="text-2xl font-semibold text-phala-dark mb-4">Unlock Use Cases</h3>
+                            <p class="text-phala-dark">Enable sensitive data processing previously impossible</p>
+                        </div>
+                    </div>
+
+                    <!-- Win the Market Card -->
+                    <div class="card-purple p-12 rounded-2xl relative overflow-hidden cursor-pointer transition-all hover:scale-105" onclick="selectUseCase(2)">
+                        <div class="absolute inset-0 opacity-50">
+                            <img src="https://placehold.co/888x568" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-phala-purple/30 to-transparent blob-blur"></div>
+                        <div class="relative z-10">
+                            <div class="text-8xl font-medium text-phala-dark absolute bottom-12 right-12">3</div>
+                            <h3 class="text-2xl font-semibold text-phala-dark mb-4">Win the Market</h3>
+                            <p class="text-phala-dark mb-8">Trust drives adoption, revenue, and competitive advantage</p>
+                            <div class="w-48 h-48 border-2 border-phala-dark rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Interactive Animation -->
+                <div class="space-y-8">
+                    <!-- Use Case Selector Buttons -->
+                    <div class="flex gap-4 justify-center">
+                        <button class="px-4 py-2 rounded-lg bg-phala-lime text-phala-dark font-semibold use-case-btn active" onclick="selectUseCase(0)">Financial</button>
+                        <button class="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 font-semibold use-case-btn" onclick="selectUseCase(1)">Data + Model</button>
+                        <button class="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 font-semibold use-case-btn" onclick="selectUseCase(2)">SaaS + AI</button>
+                    </div>
+
+                    <!-- Drag and Drop Animation Area -->
+                    <div class="bg-gray-100 rounded-3xl p-8 min-h-96">
+                        <div class="text-center mb-6">
+                            <h4 class="text-lg font-semibold text-gray-700 mb-2">
+                                Drag <span class="text-blue-600" id="input1">Financial Data</span> and <span class="text-yellow-600" id="input2">AI Models</span> into the TEE
+                            </h4>
+                            <p class="text-gray-500">Get <span class="text-green-600" id="output">Trusted Financial AI</span> in secure environment</p>
+                        </div>
+
+                        <!-- Draggable Input Items -->
+                        <div class="flex justify-around mb-8">
+                            <div class="drag-item bg-blue-200 p-4 rounded-lg border-2 border-dashed border-blue-400" draggable="true">
+                                <div class="text-sm font-semibold text-blue-700" id="card1">Market Data</div>
+                            </div>
+                            <div class="drag-item bg-yellow-200 p-4 rounded-lg border-2 border-dashed border-yellow-400" draggable="true">
+                                <div class="text-sm font-semibold text-yellow-700" id="card2">AI Model</div>
+                            </div>
+                        </div>
+
+                        <!-- TEE Black Box (Drop Zone) -->
+                        <div class="tee-box mx-auto mb-8 p-6 text-white text-center max-w-sm" id="tee-drop-zone">
+                            <div class="text-lg font-bold mb-4 text-white">Secured & Private</div>
+                            <div class="bg-pink-200 text-black p-4 rounded-lg mb-4">
+                                <div class="text-blue-600 text-sm border border-blue-300 rounded p-2 mb-2" id="question">
+                                    What should I invest in AI?
+                                </div>
+                                <div class="bg-green-200 p-3 rounded text-sm" id="response">
+                                    <div>Here's a stock list</div>
+                                    <div class="mt-2 space-y-1">
+                                        <div>$NVIDIA $3.2</div>
+                                        <div>$META $3.2</div>
+                                        <div>$COIN $3.2</div>
+                                    </div>
+                                    <button class="bg-yellow-400 px-3 py-1 rounded mt-2 text-xs font-bold">Buy</button>
+                                </div>
+                            </div>
+                            <div class="output-area" id="output-area">
+                                <span class="text-gray-400">AI Output appears here</span>
+                            </div>
+                        </div>
+
+                        <!-- Output Examples -->
+                        <div class="flex justify-around">
+                            <div class="bg-blue-200 p-3 rounded-lg border-2 border-dashed border-blue-400">
+                                <div class="text-xs font-semibold text-blue-700" id="output1">DeepSeek</div>
+                            </div>
+                            <div class="bg-yellow-200 p-3 rounded-lg border-2 border-dashed border-yellow-400">
+                                <div class="text-xs font-semibold text-yellow-700" id="output2">Coinbase API</div>
+                            </div>
+                            <div class="bg-green-200 p-3 rounded-lg border-2 border-dashed border-green-400">
+                                <div class="text-xs font-semibold text-green-700" id="output3">Research.pdf</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Dots -->
+            <div class="flex justify-between items-center mt-8">
+                <div class="w-16 h-16 bg-black rounded-full border-4 border-white flex items-center justify-center">
+                    <div class="w-6 h-6 text-white">→</div>
+                </div>
+                <div class="w-16 h-16 bg-black rounded-full border-4 border-white flex items-center justify-center">
+                    <div class="w-6 h-6 text-white">→</div>
+                </div>
+                <div class="w-16 h-16 bg-black rounded-full border-4 border-white flex items-center justify-center">
+                    <div class="w-6 h-6 text-white">→</div>
+                </div>
+            </div>
+
+            <!-- Reinforces Trust -->
+            <div class="bg-white rounded-2xl p-12 mt-8">
+                <h3 class="text-2xl font-semibold text-phala-dark">Reinforces Trust</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="py-16 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="max-w-4xl mx-auto mb-16">
+                <div class="flex items-center justify-center gap-4 mb-6">
+                    <span class="text-5xl font-semibold text-phala-dark">Trusted By More Than</span>
+                    <span class="text-5xl font-bold text-green-500">50,000</span>
+                    <span class="text-5xl font-semibold text-phala-dark">Users</span>
+                </div>
+                <p class="text-lg text-phala-gray">Trusted by industry leaders and developers worldwide</p>
+            </div>
+
+            <!-- Logo Row -->
+            <div class="flex items-center justify-between mb-16">
+                <div class="w-26 h-26 bg-white rounded-full opacity-30 flex items-center justify-center">
+                    <div class="w-15 h-10 bg-gray-500"></div>
+                </div>
+                <div class="w-26 h-26 bg-white rounded-full opacity-50 flex items-center justify-center">
+                    <div class="w-15 h-10 bg-gray-500"></div>
+                </div>
+                <div class="w-26 h-26 bg-white rounded-full opacity-70 flex items-center justify-center">
+                    <div class="w-15 h-10 bg-gray-500"></div>
+                </div>
+                <div class="w-26 h-26 bg-white rounded-full opacity-90 flex items-center justify-center">
+                    <div class="w-15 h-10 bg-gray-500"></div>
+                </div>
+                <div class="w-26 h-26 bg-white rounded-full flex items-center justify-center">
+                    <div class="w-15 h-10 bg-gray-500"></div>
+                </div>
+                <div class="w-26 h-26 bg-white rounded-full flex items-center justify-center">
+                    <div class="w-15 h-10 bg-gray-500"></div>
+                </div>
+                <div class="w-26 h-26 bg-white rounded-full opacity-90 flex items-center justify-center">
+                    <div class="w-15 h-10 bg-gray-500"></div>
+                </div>
+                <div class="w-26 h-26 bg-white rounded-full opacity-70 flex items-center justify-center">
+                    <div class="w-15 h-10 bg-gray-500"></div>
+                </div>
+                <div class="w-26 h-26 bg-white rounded-full opacity-50 flex items-center justify-center">
+                    <div class="w-15 h-10 bg-gray-500"></div>
+                </div>
+                <div class="w-26 h-26 bg-white rounded-full opacity-30 flex items-center justify-center">
+                    <div class="w-15 h-10 bg-gray-500"></div>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex items-center justify-center gap-4">
+                <button class="bg-phala-green text-phala-dark px-6 py-3 rounded-full font-semibold">
+                    Explore All TEE Apps
+                </button>
+                <button class="bg-phala-dark text-white px-6 py-3 rounded-full font-semibold">
+                    Explore Cases
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confidential AI Section -->
+    <section class="py-16 px-6 bg-orange-50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-orange-600 mb-12">Confidential AI</h2>
+            
+            <!-- Confidential AI Models -->
+            <div class="mb-16">
+                <div class="flex justify-between items-center mb-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-phala-dark mb-2">Confidential AI Models</h3>
+                        <p class="text-phala-gray">Pre-configured secure AI models ready to deploy</p>
+                    </div>
+                    <button class="bg-phala-dark text-white px-6 py-3 rounded-full font-semibold">
+                        Browse Models
+                    </button>
+                </div>
+
+                <!-- Model Cards -->
+                <div class="bg-phala-blue rounded-2xl p-8 overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <!-- Llama Model -->
+                        <div class="bg-white p-6 rounded-xl">
+                            <div class="w-12 h-12 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">
+                                <span class="text-xl">🔄</span>
+                            </div>
+                            <h4 class="font-semibold text-phala-dark mb-2">Llama-3.1-8B</h4>
+                            <div class="text-sm text-phala-gray mb-4">
+                                <div>Price</div>
+                                <div class="font-semibold">$50.37/month</div>
+                            </div>
+                            <button class="w-full bg-gray-100 text-phala-dark py-2 rounded-lg font-semibold text-sm">
+                                →
+                            </button>
+                        </div>
+
+                        <!-- GPT-4o-mini Model -->
+                        <div class="bg-white p-6 rounded-xl">
+                            <div class="w-12 h-12 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">
+                                <span class="text-xl">🔄</span>
+                            </div>
+                            <h4 class="font-semibold text-phala-dark mb-2">GPT-4o-mini</h4>
+                            <div class="text-sm text-phala-gray mb-4">
+                                <div>Price</div>
+                                <div class="font-semibold">$50.37/month</div>
+                            </div>
+                            <button class="w-full bg-gray-100 text-phala-dark py-2 rounded-lg font-semibold text-sm">
+                                →
+                            </button>
+                        </div>
+
+                        <!-- GPT-4o-mini Model (2) -->
+                        <div class="bg-white p-6 rounded-xl">
+                            <div class="w-12 h-12 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">
+                                <span class="text-xl">🔄</span>
+                            </div>
+                            <h4 class="font-semibold text-phala-dark mb-2">GPT-4o-mini</h4>
+                            <div class="text-sm text-phala-gray mb-4">
+                                <div>Price</div>
+                                <div class="font-semibold">$50.37/month</div>
+                            </div>
+                            <button class="w-full bg-gray-100 text-phala-dark py-2 rounded-lg font-semibold text-sm">
+                                →
+                            </button>
+                        </div>
+
+                        <!-- Custom Model -->
+                        <div class="bg-white p-6 rounded-xl">
+                            <div class="w-12 h-12 bg-gray-200 rounded-xl mb-4 flex items-center justify-center">
+                                <span class="text-xl">🔄</span>
+                            </div>
+                            <h4 class="font-semibold text-phala-dark mb-2">Custom Model</h4>
+                            <div class="text-sm text-phala-gray mb-4">
+                                <div>Price</div>
+                                <div class="font-semibold">Quote</div>
+                            </div>
+                            <button class="w-full bg-gray-100 text-phala-dark py-2 rounded-lg font-semibold text-sm">
+                                →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Private Cloud Compute Section -->
+    <section class="py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-orange-600 mb-12">Private Cloud Compute</h2>
+            
+            <!-- Phala Cloud -->
+            <div class="mb-16">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Left: Cloud Icon -->
+                    <div class="bg-phala-lime rounded-2xl p-16 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="w-32 h-24 bg-white rounded-3xl flex items-center justify-center mb-8">
+                                <span class="text-6xl">☁️</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Content -->
+                    <div>
+                        <h3 class="text-3xl font-bold text-phala-dark mb-4">Phala Cloud</h3>
+                        <p class="text-lg text-phala-gray mb-8">All-in-one confidential compute platform for AI workloads</p>
+                        
+                        <div class="mb-8">
+                            <span class="bg-phala-lime text-phala-dark px-6 py-2 rounded-full font-semibold">
+                                Starting at $50.37/month
+                            </span>
+                            <button class="bg-phala-dark text-white px-6 py-2 rounded-full font-semibold ml-4">
+                                Start Building
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Only AI Trust Layer (Part of Phala Cloud) -->
+            <div class="space-y-8">
+                <!-- Tab Navigation -->
+                <div class="bg-white rounded-2xl p-6 max-w-md">
+                    <div class="flex items-center gap-6">
+                        <div class="px-2 py-3 border-b-4 border-phala-lime">
+                            <span class="text-2xl font-semibold text-phala-dark">Easy</span>
+                        </div>
+                        <div class="px-2 py-3">
+                            <span class="text-2xl font-medium text-phala-dark">Open</span>
+                        </div>
+                        <div class="px-2 py-3">
+                            <span class="text-2xl font-medium text-phala-dark">Private</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Easy Tab Content -->
+                <div class="bg-phala-green rounded-t-2xl rounded-br-[80px] rounded-bl-2xl p-12">
+                    <div class="flex items-center gap-12">
+                        <span class="text-4xl font-medium text-phala-dark">Easy</span>
+                        <div class="w-0.5 h-12 bg-phala-dark rounded-full"></div>
+                        <span class="text-3xl font-normal text-phala-gray">Build in Minutes, Not Months</span>
+                    </div>
+                </div>
+
+                <!-- Four Feature Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Try Now Card -->
+                    <div class="bg-white rounded-2xl border border-phala-lime p-8">
+                        <h4 class="text-lg font-semibold text-phala-dark mb-6">
+                            Write code, dockerize, and deploy it as trustless TEE apps.
+                        </h4>
+                        <button class="bg-black text-white px-6 py-3 rounded-full font-semibold text-sm">
+                            Try Now
+                        </button>
+                        
+                        <!-- Code Example Area -->
+                        <div class="mt-6 bg-phala-lime rounded-xl p-6">
+                            <div class="bg-white rounded-lg p-4">
+                                <div class="text-phala-dark text-sm font-mono">
+                                    # Deploy the webshell Dstack<br/>
+                                    example phala cvms create
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Docker Card -->
+                    <div class="bg-white rounded-2xl p-8">
+                        <div class="w-16 h-16 bg-gray-100 rounded-xl mb-6 flex items-center justify-center">
+                            <span class="text-2xl">🐳</span>
+                            <span class="ml-2 text-sm font-bold">docker</span>
+                        </div>
+                        <h4 class="text-lg font-semibold text-phala-dark mb-4">
+                            We deal with the pain of hardware maintenance
+                        </h4>
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-sm font-semibold">Intel</span>
+                            <span class="text-sm font-semibold">AMD</span>
+                            <span class="text-sm font-semibold">NVIDIA</span>
+                        </div>
+                        <p class="text-sm text-phala-gray mb-6">have their own TEE</p>
+                        <button class="bg-black text-white px-6 py-3 rounded-full font-semibold text-sm">
+                            See Hardware
+                        </button>
+                    </div>
+
+                    <!-- Templates Card -->
+                    <div class="bg-white rounded-2xl p-8">
+                        <h4 class="text-lg font-semibold text-phala-dark mb-6">
+                            Deploy production-grade TEE workloads in minutes.
+                        </h4>
+                        <div class="bg-gray-50 rounded-xl p-6 mb-6">
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span>Templates</span>
+                                    <span>→</span>
+                                </div>
+                                <div class="bg-white p-2 rounded">Financial AI</div>
+                                <div class="bg-white p-2 rounded">Healthcare ML</div>
+                                <div class="bg-white p-2 rounded">Data Analytics</div>
+                            </div>
+                        </div>
+                        <button class="bg-black text-white px-6 py-3 rounded-full font-semibold text-sm">
+                            Browse Templates
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Use case data
+        const useCases = [
+            {
+                name: "Financial + AI",
+                input1: "Financial Data",
+                input2: "AI Models", 
+                output: "Trusted Financial AI",
+                card1: "Market Data",
+                card2: "AI Model",
+                question: "What should I invest in AI?",
+                response: "Here's a stock list<br/>$NVIDIA $3.2<br/>$META $3.2<br/>$COIN $3.2",
+                output1: "DeepSeek",
+                output2: "Coinbase API",
+                output3: "Research.pdf"
+            },
+            {
+                name: "Model + Third Party Data",
+                input1: "Private Data",
+                input2: "Foundation Model",
+                output: "Private New Model",
+                card1: "Resume Data",
+                card2: "Llama 3",
+                question: "Create personalized model",
+                response: "Processing multiple resumes<br/>to create custom model<br/>with privacy protection",
+                output1: "Resumes",
+                output2: "Llama 3",
+                output3: "LinkedIn API"
+            },
+            {
+                name: "SaaS + AI",
+                input1: "Customer Data",
+                input2: "Service AI",
+                output: "Trusted Customer Service",
+                card1: "Customer Data",
+                card2: "OpenAI",
+                question: "Hey, can you help me?",
+                response: "Ticket Created ✅<br/>Searching user order<br/>history...",
+                output1: "Customer CSV",
+                output2: "OpenAI",
+                output3: "Hubspot"
+            }
+        ];
+
+        let currentUseCase = 0;
+
+        function selectUseCase(index) {
+            currentUseCase = index;
+            updateContent();
+            updateButtons();
+        }
+
+        function updateContent() {
+            const useCase = useCases[currentUseCase];
+            
+            // Update text elements
+            document.getElementById('input1').textContent = useCase.input1;
+            document.getElementById('input2').textContent = useCase.input2;
+            document.getElementById('output').textContent = useCase.output;
+            document.getElementById('card1').textContent = useCase.card1;
+            document.getElementById('card2').textContent = useCase.card2;
+            document.getElementById('question').textContent = useCase.question;
+            document.getElementById('response').innerHTML = useCase.response;
+            document.getElementById('output1').textContent = useCase.output1;
+            document.getElementById('output2').textContent = useCase.output2;
+            document.getElementById('output3').textContent = useCase.output3;
+        }
+
+        function updateButtons() {
+            const buttons = document.querySelectorAll('.use-case-btn');
+            buttons.forEach((btn, index) => {
+                if (index === currentUseCase) {
+                    btn.classList.add('bg-phala-lime', 'text-phala-dark');
+                    btn.classList.remove('bg-gray-200', 'text-gray-700');
+                } else {
+                    btn.classList.remove('bg-phala-lime', 'text-phala-dark');
+                    btn.classList.add('bg-gray-200', 'text-gray-700');
+                }
+            });
+        }
+
+        // Drag and Drop Functionality
+        const dragItems = document.querySelectorAll('.drag-item');
+        const dropZone = document.getElementById('tee-drop-zone');
+        const outputArea = document.getElementById('output-area');
+
+        dragItems.forEach(item => {
+            item.addEventListener('dragstart', (e) => {
+                item.classList.add('dragging');
+                dropZone.classList.add('highlight');
+            });
+
+            item.addEventListener('dragend', (e) => {
+                item.classList.remove('dragging');
+                dropZone.classList.remove('highlight');
+            });
+        });
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            outputArea.classList.add('active');
+            outputArea.innerHTML = '<span class="text-green-600 font-semibold">🤖 AI Processing Complete!</span>';
+            
+            setTimeout(() => {
+                outputArea.classList.remove('active');
+                outputArea.innerHTML = '<span class="text-gray-400">AI Output appears here</span>';
+            }, 2000);
+        });
+
+        // Auto-cycle use cases every 6 seconds
+        setInterval(() => {
+            selectUseCase((currentUseCase + 1) % useCases.length);
+        }, 6000);
+
+        // Initialize
+        updateContent();
+        updateButtons();
+    </script>
+</body>
+</html>
