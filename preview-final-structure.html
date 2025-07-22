@@ -456,6 +456,130 @@
                     </div>
                 </div>
             </div>
+
+            <!-- GPU TEE Section -->
+            <div class="mt-16">
+                <h3 class="text-3xl font-bold text-phala-dark mb-4">GPU TEE: Hardware-Secure Confidential AI</h3>
+                <p class="text-lg text-phala-gray mb-12">Run AI workloads with 99% performance, 100% privacy</p>
+                
+                <!-- GPU TEE Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Performance Card -->
+                    <div class="bg-white rounded-2xl p-8 border border-gray-200 hover:border-phala-lime transition-colors">
+                        <div class="w-16 h-16 bg-phala-lime rounded-xl mb-6 flex items-center justify-center">
+                            <span class="text-2xl font-bold text-phala-dark">⚡</span>
+                        </div>
+                        <h4 class="text-xl font-semibold text-phala-dark mb-4">< 9% Performance Overhead</h4>
+                        <p class="text-phala-gray mb-6">Unlike competitors who sacrifice speed for security, Phala's GPU TEE delivers near-native performance (up to 99% efficiency for large models)</p>
+                        
+                        <!-- Benchmark Visualization -->
+                        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-sm font-medium">Performance Comparison</span>
+                                <span class="text-xs text-gray-500">Higher is better</span>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs w-16">Native GPU</span>
+                                    <div class="flex-1 bg-gray-200 rounded-full h-3">
+                                        <div class="bg-green-500 h-3 rounded-full" style="width: 100%"></div>
+                                    </div>
+                                    <span class="text-xs w-8">100%</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs w-16">GPU TEE</span>
+                                    <div class="flex-1 bg-gray-200 rounded-full h-3">
+                                        <div class="bg-phala-lime h-3 rounded-full" style="width: 91%"></div>
+                                    </div>
+                                    <span class="text-xs w-8">91%</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs w-16">CPU TEE</span>
+                                    <div class="flex-1 bg-gray-200 rounded-full h-3">
+                                        <div class="bg-gray-400 h-3 rounded-full" style="width: 45%"></div>
+                                    </div>
+                                    <span class="text-xs w-8">45%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-phala-dark text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                            Read Benchmark Report
+                        </button>
+                    </div>
+
+                    <!-- Hardware Protection Card -->
+                    <div class="bg-white rounded-2xl p-8 border border-gray-200 hover:border-phala-blue transition-colors">
+                        <div class="w-16 h-16 bg-phala-blue rounded-xl mb-6 flex items-center justify-center">
+                            <span class="text-2xl font-bold text-phala-dark">🛡️</span>
+                        </div>
+                        <h4 class="text-xl font-semibold text-phala-dark mb-4">Hardware-Level Protection</h4>
+                        <p class="text-phala-gray mb-6">NVIDIA Hopper GPU TEE provides tamper-proof computation that traditional cloud providers can't match</p>
+                        
+                        <!-- Security Features -->
+                        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span class="text-sm">Memory Encryption</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span class="text-sm">Secure Boot</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span class="text-sm">Attestation</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span class="text-sm">Isolated Execution</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-phala-dark text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                            Learn About NVIDIA CC
+                        </button>
+                    </div>
+
+                    <!-- Cost Advantage Card -->
+                    <div class="bg-white rounded-2xl p-8 border border-gray-200 hover:border-phala-purple transition-colors">
+                        <div class="w-16 h-16 bg-phala-purple rounded-xl mb-6 flex items-center justify-center">
+                            <span class="text-2xl font-bold text-phala-dark">💰</span>
+                        </div>
+                        <h4 class="text-xl font-semibold text-phala-dark mb-4">Cost + Security Advantage</h4>
+                        <p class="text-phala-gray mb-6">Get enterprise-grade confidential computing without premium pricing</p>
+                        
+                        <!-- GPU Instance Cards -->
+                        <div class="space-y-3 mb-6">
+                            <!-- H200 Instance -->
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-semibold text-phala-dark">H200 GPU TEE</span>
+                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                </div>
+                                <div class="text-sm text-phala-gray mb-1">80GB HBM3e, TEE-enabled</div>
+                                <div class="text-lg font-bold text-phala-dark">$2.15/hour</div>
+                            </div>
+                            
+                            <!-- B200 Instance -->
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-semibold text-phala-dark">B200 GPU TEE</span>
+                                    <span class="bg-phala-lime text-phala-dark px-2 py-1 rounded text-xs font-bold">NEW</span>
+                                </div>
+                                <div class="text-sm text-phala-gray mb-1">192GB HBM3e, TEE-enabled</div>
+                                <div class="text-lg font-bold text-phala-dark">$4.50/hour</div>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-phala-dark text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                            Get GPU Instance
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
