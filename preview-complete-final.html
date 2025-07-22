@@ -457,41 +457,16 @@
             <!-- GPU TEE Section -->
             <div class="mt-16">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <!-- Left Side: H200 + Content -->
+                    <!-- Left Side: Content + Performance Graph -->
                     <div class="space-y-6">
-                        <!-- H200 GPU Visual -->
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-16 h-16 bg-phala-lime rounded-xl flex items-center justify-center">
-                                <span class="text-2xl font-bold text-phala-dark">🖥️</span>
-                            </div>
-                            <div>
-                                <div class="text-lg font-bold text-phala-dark">NVIDIA H200</div>
-                                <div class="text-sm text-phala-gray">TEE-enabled GPU</div>
-                            </div>
-                        </div>
-                        
                         <!-- Headline -->
                         <h3 class="text-3xl font-bold text-phala-dark mb-4">Deploy Confidential GPUs, On-Demand</h3>
                         
-                        <!-- Subtitle -->
-                        <p class="text-lg text-phala-gray mb-6">Phala connects you to hardware-secured GPU servers for instant, private AI computing. 100% confidential with only 5% performance trade-off.</p>
-                        
-                        <!-- Primary CTA -->
-                        <button class="bg-phala-lime text-phala-dark px-8 py-4 rounded-lg font-bold text-lg hover:bg-phala-green transition-colors mb-4">
-                            Rent Confidential H200 - $2.50/hour
-                        </button>
-                        
-                        <!-- Supporting Text -->
-                        <p class="text-sm text-phala-gray">Start in seconds, run confidentially for as long as you need.</p>
-                    </div>
-
-                    <!-- Right Side: Performance Graph + Secondary CTA -->
-                    <div class="space-y-8">
                         <!-- Performance Graph -->
-                        <div class="bg-white rounded-2xl p-8 border border-gray-200">
-                            <h4 class="text-xl font-semibold text-phala-dark mb-6">Performance vs Privacy</h4>
+                        <div class="bg-white rounded-2xl p-6 border border-gray-200 mb-6">
+                            <h4 class="text-lg font-semibold text-phala-dark mb-4">Performance vs Privacy</h4>
                             
-                            <div class="space-y-6">
+                            <div class="space-y-4">
                                 <!-- Native GPU -->
                                 <div>
                                     <div class="flex justify-between items-center mb-2">
@@ -502,8 +477,8 @@
                                         </div>
                                     </div>
                                     <div class="flex gap-1">
-                                        <div class="flex-1 bg-green-500 h-4 rounded-l-lg"></div>
-                                        <div class="flex-1 bg-gray-200 h-4 rounded-r-lg"></div>
+                                        <div class="flex-1 bg-green-500 h-3 rounded-l-lg"></div>
+                                        <div class="flex-1 bg-gray-200 h-3 rounded-r-lg"></div>
                                     </div>
                                 </div>
                                 
@@ -517,17 +492,36 @@
                                         </div>
                                     </div>
                                     <div class="flex gap-1">
-                                        <div class="bg-phala-lime h-4 rounded-l-lg" style="width: 95%"></div>
-                                        <div class="bg-phala-lime h-4 rounded-r-lg" style="width: 5%"></div>
+                                        <div class="bg-phala-lime h-3 rounded-l-lg" style="width: 95%"></div>
+                                        <div class="bg-phala-lime h-3 rounded-r-lg" style="width: 5%"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
+                        <!-- Subtitle -->
+                        <p class="text-lg text-phala-gray mb-6">Phala connects you to hardware-secured GPU servers for instant, private AI computing. 100% confidential with only 5% performance trade-off.</p>
+                        
                         <!-- Secondary CTA -->
+                        <button class="bg-phala-dark text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors mb-4">
+                            Learn More About NVIDIA Confidential Compute
+                        </button>
+                        
+                        <!-- Supporting Text -->
+                        <p class="text-sm text-phala-gray">Start in seconds, run confidentially for as long as you need.</p>
+                    </div>
+
+                    <!-- Right Side: H200 Machine Image + Primary CTA -->
+                    <div class="space-y-6">
+                        <!-- H200 Machine Image -->
+                        <div class="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 flex items-center justify-center">
+                            <img src="nvidia-h200.png" alt="NVIDIA H200 GPU Server" class="w-full max-w-md h-auto">
+                        </div>
+                        
+                        <!-- Primary CTA -->
                         <div class="text-center">
-                            <button class="bg-phala-dark text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
-                                Learn More About NVIDIA Confidential Compute
+                            <button class="bg-phala-lime text-phala-dark px-8 py-4 rounded-lg font-bold text-lg hover:bg-phala-green transition-colors w-full">
+                                Rent Confidential H200 - $2.50/hour
                             </button>
                         </div>
                     </div>
