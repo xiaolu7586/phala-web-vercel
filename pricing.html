@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phala Cloud Pricing - Simple, Transparent, Pay-as-you-go</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'stone-50': '#F8FAFC',
+                        'stone-900': '#1C1917', 
+                        'stone-950': '#0C0A09',
+                        'lime-300': '#BEF264',
+                        'lime-400': '#A3E635',
+                        'zinc-600': '#52525B',
+                        'neutral-200': '#E5E5E5',
+                        'neutral-600': '#525252'
+                    },
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .figma-btn-primary {
+            background: #BEF264;
+            color: #1C1917;
+            border-radius: 99px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 1;
+            transition: all 0.2s;
+        }
+        
+        .figma-btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(190, 242, 100, 0.3);
+        }
+        
+        .figma-btn-secondary {
+            background: #1C1917;
+            color: white;
+            border-radius: 99px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 1;
+            transition: all 0.2s;
+        }
+        
+        .figma-btn-secondary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(28, 25, 23, 0.3);
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid #BEF264;
+        }
+        
+        .machine-type-card {
+            background: #F8FAFC;
+            border-radius: 16px;
+            transition: all 0.2s;
+        }
+        
+        .machine-type-card:hover {
+            background: #F0F4F8;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="font-montserrat bg-stone-50">
+    <!-- Navigation (same as main page) -->
+    <nav class="fixed top-0 w-full z-50 px-20 py-6 bg-white shadow-[0px_6px_28px_0px_rgba(0,0,0,0.04)]">
+        <div class="w-full flex justify-between items-center">
+            <a href="index.html" class="w-12 h-12 bg-lime-300"></a>
+            <div class="flex justify-end items-center gap-9">
+                <div class="flex justify-start items-center gap-1.5">
+                    <div class="text-center text-stone-900 text-sm font-normal font-montserrat">AI Solutions</div>
+                    <div class="w-2 h-1 outline outline-1 outline-stone-900"></div>
+                </div>
+                <div class="flex justify-start items-center gap-1.5">
+                    <div class="text-center text-stone-900 text-sm font-normal font-montserrat">Developers</div>
+                    <div class="w-2 h-1 outline outline-1 outline-stone-900"></div>
+                </div>
+                <div class="flex justify-start items-center gap-1.5">
+                    <div class="text-center text-stone-900 text-sm font-normal font-montserrat">Security</div>
+                    <div class="w-2 h-1 outline outline-1 outline-stone-900"></div>
+                </div>
+                <div class="flex justify-start items-center gap-1.5">
+                    <div class="text-center text-stone-900 text-sm font-normal font-montserrat">Network</div>
+                    <div class="w-2 h-1 outline outline-1 outline-stone-900"></div>
+                </div>
+                <div class="flex justify-start items-center gap-1.5">
+                    <div class="text-center text-stone-900 text-sm font-normal font-montserrat">Enterprise</div>
+                    <div class="w-2 h-1 outline outline-1 outline-stone-900"></div>
+                </div>
+            </div>
+            <div class="flex justify-start items-center gap-3">
+                <div class="w-8 h-8 bg-white rounded-full overflow-hidden">
+                    <div class="w-4 h-4 bg-stone-900 mx-auto mt-2"></div>
+                </div>
+                <div class="w-8 h-8 bg-white rounded-full overflow-hidden">
+                    <div class="w-5 h-4 bg-stone-900 mx-auto mt-2"></div>
+                </div>
+                <div class="w-8 h-8 bg-white rounded-full overflow-hidden">
+                    <div class="w-5 h-3.5 bg-stone-900 mx-auto mt-2"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-40 pb-20 px-20">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-6xl font-bold text-stone-900 leading-[67.20px] mb-6">
+                Simple, Transparent Pricing
+            </h1>
+            <p class="text-xl text-zinc-600 max-w-3xl mx-auto mb-8">
+                Pay only for what you use. No hidden fees, no surprises. Start with $400 free credits.
+            </p>
+            <div class="inline-flex items-center gap-2 bg-lime-300/20 px-4 py-2 rounded-full">
+                <div class="w-2 h-2 bg-lime-400 rounded-full"></div>
+                <span class="text-sm font-medium text-stone-900">Per-second billing • No minimum usage • Cancel anytime</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Account Tiers Section -->
+    <section class="py-20 px-20">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-semibold text-stone-900 text-center mb-16">Choose Your Account Tier</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Free Tier -->
+                <div class="pricing-card p-8">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-semibold text-stone-900 mb-2">Free Tier</h3>
+                        <p class="text-zinc-600">Perfect for trying out Phala Cloud</p>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="text-4xl font-bold text-stone-900">$400</div>
+                        <div class="text-sm text-zinc-600">in free credits (never expire)</div>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-lime-300 flex items-center justify-center mt-0.5">
+                                <span class="text-xs">✓</span>
+                            </div>
+                            <span class="text-sm text-zinc-600">6 months free medium CVM</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-lime-300 flex items-center justify-center mt-0.5">
+                                <span class="text-xs">✓</span>
+                            </div>
+                            <span class="text-sm text-zinc-600">Access to all CPU instances</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-lime-300 flex items-center justify-center mt-0.5">
+                                <span class="text-xs">✓</span>
+                            </div>
+                            <span class="text-sm text-zinc-600">No time restrictions</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-gray-300 flex items-center justify-center mt-0.5">
+                                <span class="text-xs">×</span>
+                            </div>
+                            <span class="text-sm text-zinc-600">GPU instances not included</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="https://cloud.phala.network" class="figma-btn-secondary w-full px-6 py-3 flex justify-center items-center">
+                        Get Started Free
+                    </a>
+                </div>
+
+                <!-- Developer Tier -->
+                <div class="pricing-card featured p-8 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-lime-300 text-stone-900 px-4 py-1 rounded-full text-xs font-semibold">
+                        MOST POPULAR
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-semibold text-stone-900 mb-2">Developer</h3>
+                        <p class="text-zinc-600">For growing projects and teams</p>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="text-4xl font-bold text-stone-900">Pay as you go</div>
+                        <div class="text-sm text-zinc-600">Starting at $0.069/hour</div>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-lime-300 flex items-center justify-center mt-0.5">
+                                <span class="text-xs">✓</span>
+                            </div>
+                            <span class="text-sm text-zinc-600">Up to 16 CVMs</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-lime-300 flex items-center justify-center mt-0.5">
+                                <span class="text-xs">✓</span>
+                            </div>
+                            <span class="text-sm text-zinc-600">16 vCPUs maximum</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-lime-300 flex items-center justify-center mt-0.5">
+                                <span class="text-xs">✓</span>
+                            </div>
+                            <span class="text-sm text-zinc-600">32GB RAM maximum</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-lime-300 flex items-center justify-center mt-0.5">
+                                <span class="text-xs">✓</span>
+                            </div>
+                            <span class="text-sm text-zinc-600">640GB storage maximum</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="https://cloud.phala.network" class="figma-btn-primary w-full px-6 py-3 flex justify-center items-center">
+                        Start Building
+                    </a>
+                </div>
+
+                <!-- Enterprise Tier -->
+                <div class="pricing-card p-8">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-semibold text-stone-900 mb-2">Enterprise</h3>
+                        <p class="text-zinc-600">Unlimited scale with dedicated support</p>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="text-4xl font-bold text-stone-900">Custom</div>
+                        <div class="text-sm text-zinc-600">Contact sales for pricing</div>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-lime-300 flex items-center justify-center mt-0.5">
+                                <span class="text-xs">✓</span>
+                            </div>
+                            <span class="text-sm text-zinc-600">Unlimited resources</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-lime-300 flex items-center justify-center mt-0.5">
+                                <span class="text-xs">✓</span>
+                            </div>
+                            <span class="text-sm text-zinc-600">Dedicated nodes</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-lime-300 flex items-center justify-center mt-0.5">
+                                <span class="text-xs">✓</span>
+                            </div>
+                            <span class="text-sm text-zinc-600">Priority support</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-lime-300 flex items-center justify-center mt-0.5">
+                                <span class="text-xs">✓</span>
+                            </div>
+                            <span class="text-sm text-zinc-600">Custom SLAs</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#contact" class="figma-btn-secondary w-full px-6 py-3 flex justify-center items-center">
+                        Contact Sales
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compute Unit Pricing -->
+    <section class="py-20 px-20 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-semibold text-stone-900 mb-6">Compute Unit Pricing</h2>
+                <p class="text-xl text-zinc-600 max-w-3xl mx-auto">
+                    Simple and predictable pricing based on Compute Units (CU)
+                </p>
+            </div>
+
+            <!-- CU Definition -->
+            <div class="bg-lime-300/10 border-2 border-lime-300 rounded-2xl p-8 mb-12 max-w-3xl mx-auto">
+                <div class="flex items-center justify-center gap-4">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-stone-900">1 CU</div>
+                        <div class="text-sm text-zinc-600">Compute Unit</div>
+                    </div>
+                    <div class="text-2xl text-zinc-600">=</div>
+                    <div class="flex gap-4">
+                        <div class="text-center">
+                            <div class="text-2xl font-semibold text-stone-900">1 vCPU</div>
+                        </div>
+                        <div class="text-2xl text-zinc-600">+</div>
+                        <div class="text-center">
+                            <div class="text-2xl font-semibold text-stone-900">2GB RAM</div>
+                        </div>
+                        <div class="text-2xl text-zinc-600">+</div>
+                        <div class="text-center">
+                            <div class="text-2xl font-semibold text-stone-900">40GB SSD</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-6">
+                    <span class="text-3xl font-bold text-stone-900">$0.069</span>
+                    <span class="text-xl text-zinc-600">per hour</span>
+                </div>
+            </div>
+
+            <!-- Machine Types -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="machine-type-card p-6">
+                    <h4 class="text-xl font-semibold text-stone-900 mb-2">tdx.medium</h4>
+                    <div class="text-3xl font-bold text-stone-900 mb-4">$0.069<span class="text-lg font-normal text-zinc-600">/hour</span></div>
+                    <ul class="space-y-2 text-sm text-zinc-600">
+                        <li>• 1 Compute Unit</li>
+                        <li>• 1 vCPU</li>
+                        <li>• 2GB RAM</li>
+                        <li>• 40GB SSD Storage</li>
+                    </ul>
+                </div>
+
+                <div class="machine-type-card p-6">
+                    <h4 class="text-xl font-semibold text-stone-900 mb-2">tdx.large</h4>
+                    <div class="text-3xl font-bold text-stone-900 mb-4">$0.139<span class="text-lg font-normal text-zinc-600">/hour</span></div>
+                    <ul class="space-y-2 text-sm text-zinc-600">
+                        <li>• 2 Compute Units</li>
+                        <li>• 2 vCPUs</li>
+                        <li>• 4GB RAM</li>
+                        <li>• 80GB SSD Storage</li>
+                    </ul>
+                </div>
+
+                <div class="machine-type-card p-6">
+                    <h4 class="text-xl font-semibold text-stone-900 mb-2">tdx.2xlarge</h4>
+                    <div class="text-3xl font-bold text-stone-900 mb-4">$0.279<span class="text-lg font-normal text-zinc-600">/hour</span></div>
+                    <ul class="space-y-2 text-sm text-zinc-600">
+                        <li>• 4 Compute Units</li>
+                        <li>• 4 vCPUs</li>
+                        <li>• 8GB RAM</li>
+                        <li>• 160GB SSD Storage</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GPU Instances -->
+    <section class="py-20 px-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-semibold text-stone-900 mb-6">GPU Instances</h2>
+                <p class="text-xl text-zinc-600 max-w-3xl mx-auto">
+                    High-performance GPU computing with TEE security
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="pricing-card p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center">
+                            <span class="text-2xl text-white font-bold">H200</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-stone-900">h200.shared</h3>
+                            <p class="text-sm text-zinc-600">NVIDIA H200 GPU</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="text-4xl font-bold text-stone-900">Contact Sales</div>
+                        <div class="text-sm text-zinc-600">Custom pricing available</div>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3">
+                            <span class="text-lime-400">•</span>
+                            <span class="text-sm text-zinc-600">1× NVIDIA H200 GPU</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-lime-400">•</span>
+                            <span class="text-sm text-zinc-600">140GB HBM3 VRAM</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-lime-400">•</span>
+                            <span class="text-sm text-zinc-600">TEE-enabled security</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-lime-400">•</span>
+                            <span class="text-sm text-zinc-600">Ideal for AI inference</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#contact" class="figma-btn-secondary w-full px-6 py-3 flex justify-center items-center">
+                        Request Access
+                    </a>
+                </div>
+
+                <div class="pricing-card p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center">
+                            <span class="text-2xl text-white font-bold">8×</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-stone-900">h200.dedicated</h3>
+                            <p class="text-sm text-zinc-600">Full Node Access</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="text-4xl font-bold text-stone-900">Enterprise</div>
+                        <div class="text-sm text-zinc-600">Dedicated infrastructure</div>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3">
+                            <span class="text-lime-400">•</span>
+                            <span class="text-sm text-zinc-600">8× NVIDIA H200 GPUs</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-lime-400">•</span>
+                            <span class="text-sm text-zinc-600">1120GB total VRAM</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-lime-400">•</span>
+                            <span class="text-sm text-zinc-600">Dedicated node</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-lime-400">•</span>
+                            <span class="text-sm text-zinc-600">For large-scale AI training</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#contact" class="figma-btn-primary w-full px-6 py-3 flex justify-center items-center">
+                        Contact Enterprise Sales
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="py-20 px-20 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-semibold text-stone-900 text-center mb-16">Why Choose Phala Cloud?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-lime-300 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+                        <span class="text-3xl">🔒</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-stone-900 mb-4">TEE Security</h3>
+                    <p class="text-zinc-600">Hardware-level security with Intel TDX, AMD SEV, and NVIDIA GPU TEEs</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-lime-300 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+                        <span class="text-3xl">⚡</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-stone-900 mb-4">Per-Second Billing</h3>
+                    <p class="text-zinc-600">Pay only for what you use with transparent, second-level billing</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-lime-300 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+                        <span class="text-3xl">🚀</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-stone-900 mb-4">One-Click Deploy</h3>
+                    <p class="text-zinc-600">Deploy Docker containers with TEE protection in minutes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="mx-20 my-20">
+        <div class="w-full h-[480px] bg-stone-900 rounded-2xl overflow-hidden">
+            <div class="px-16 py-14 text-center">
+                <h2 class="text-5xl font-semibold text-white leading-[57.60px] mb-6">
+                    Start Building with $400 Free Credits
+                </h2>
+                <p class="text-2xl font-medium text-neutral-200 leading-7 mb-12 max-w-3xl mx-auto">
+                    No credit card required. Deploy your first confidential AI model in minutes.
+                </p>
+                <div class="flex gap-4 justify-center mb-6">
+                    <a href="https://cloud.phala.network" class="figma-btn-primary px-8 py-4 text-lg flex items-center">
+                        Get Started Now
+                    </a>
+                    <a href="#" class="bg-white text-stone-900 px-8 py-4 flex items-center rounded-[99px] font-semibold text-lg">
+                        View Documentation
+                    </a>
+                </div>
+                <p class="text-sm font-medium text-neutral-200">
+                    Questions? <a href="#" class="text-lime-300 underline">Talk to our team</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as main page) -->
+    <footer class="h-[484px] bg-stone-900 overflow-hidden">
+        <div class="px-20 py-16">
+            <div class="grid grid-cols-5 gap-8 mb-12">
+                <div class="flex flex-col gap-6">
+                    <div class="w-12 h-12 bg-lime-300"></div>
+                    <div class="w-7 h-7 bg-stone-900"></div>
+                    <div class="w-20 h-4 bg-white"></div>
+                    <p class="text-base font-normal text-white leading-tight">
+                        © 2025 Phala Cloud. Build AI People Can Trust.
+                    </p>
+                </div>
+                <div></div>
+                <div class="flex flex-col gap-6">
+                    <h5 class="text-lime-400 text-base font-semibold">AI Solutions</h5>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Confidential AI Models</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">GPU TEE Inference</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Agent Framework</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">MCP Hosting</a>
+                </div>
+                <div class="flex flex-col gap-6">
+                    <h5 class="text-lime-400 text-base font-semibold">Developers</h5>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Quick Start</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Documentation Hub</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Builder Tools</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Community</a>
+                </div>
+                <div class="flex flex-col gap-6">
+                    <h5 class="text-lime-400 text-base font-semibold">Security</h5>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">TEE Technology</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Trust Center</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Verification</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

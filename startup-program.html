@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phala Startup Program - Build the Future of Confidential AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'stone-50': '#F8FAFC',
+                        'stone-900': '#1C1917', 
+                        'stone-950': '#0C0A09',
+                        'lime-300': '#BEF264',
+                        'lime-400': '#A3E635',
+                        'zinc-600': '#52525B',
+                        'neutral-200': '#E5E5E5',
+                        'neutral-600': '#525252',
+                        'blue-500': '#3B82F6',
+                        'purple-500': '#A855F7'
+                    },
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .figma-btn-primary {
+            background: #BEF264;
+            color: #1C1917;
+            border-radius: 99px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 1;
+            transition: all 0.2s;
+        }
+        
+        .figma-btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(190, 242, 100, 0.3);
+        }
+        
+        .figma-btn-secondary {
+            background: #1C1917;
+            color: white;
+            border-radius: 99px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 1;
+            transition: all 0.2s;
+        }
+        
+        .figma-btn-secondary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(28, 25, 23, 0.3);
+        }
+        
+        .benefit-card {
+            background: white;
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: #BEF264;
+            border-radius: 50%;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #BEF264 0%, #A3E635 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="font-montserrat bg-stone-50">
+    <!-- Navigation (same as main page) -->
+    <nav class="fixed top-0 w-full z-50 px-20 py-6 bg-white shadow-[0px_6px_28px_0px_rgba(0,0,0,0.04)]">
+        <div class="w-full flex justify-between items-center">
+            <a href="index.html" class="w-12 h-12 bg-lime-300"></a>
+            <div class="flex justify-end items-center gap-9">
+                <div class="flex justify-start items-center gap-1.5">
+                    <div class="text-center text-stone-900 text-sm font-normal font-montserrat">AI Solutions</div>
+                    <div class="w-2 h-1 outline outline-1 outline-stone-900"></div>
+                </div>
+                <div class="flex justify-start items-center gap-1.5">
+                    <div class="text-center text-stone-900 text-sm font-normal font-montserrat">Developers</div>
+                    <div class="w-2 h-1 outline outline-1 outline-stone-900"></div>
+                </div>
+                <div class="flex justify-start items-center gap-1.5">
+                    <div class="text-center text-stone-900 text-sm font-normal font-montserrat">Security</div>
+                    <div class="w-2 h-1 outline outline-1 outline-stone-900"></div>
+                </div>
+                <div class="flex justify-start items-center gap-1.5">
+                    <div class="text-center text-stone-900 text-sm font-normal font-montserrat">Network</div>
+                    <div class="w-2 h-1 outline outline-1 outline-stone-900"></div>
+                </div>
+                <div class="flex justify-start items-center gap-1.5">
+                    <div class="text-center text-stone-900 text-sm font-normal font-montserrat">Enterprise</div>
+                    <div class="w-2 h-1 outline outline-1 outline-stone-900"></div>
+                </div>
+            </div>
+            <div class="flex justify-start items-center gap-3">
+                <div class="w-8 h-8 bg-white rounded-full overflow-hidden">
+                    <div class="w-4 h-4 bg-stone-900 mx-auto mt-2"></div>
+                </div>
+                <div class="w-8 h-8 bg-white rounded-full overflow-hidden">
+                    <div class="w-5 h-4 bg-stone-900 mx-auto mt-2"></div>
+                </div>
+                <div class="w-8 h-8 bg-white rounded-full overflow-hidden">
+                    <div class="w-5 h-3.5 bg-stone-900 mx-auto mt-2"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-40 pb-20 px-4 md:px-20 relative overflow-hidden">
+        <div class="absolute right-0 top-0 w-[600px] h-[600px] bg-lime-300/20 rounded-full blur-3xl"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <!-- Left Side: Content -->
+                <div class="max-w-2xl">
+                    <div class="inline-flex items-center gap-2 bg-lime-300/20 px-4 py-2 rounded-full mb-8">
+                        <div class="w-2 h-2 bg-lime-400 rounded-full"></div>
+                        <span class="text-sm font-medium text-stone-900">Now Accepting Applications</span>
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-6xl font-bold text-stone-900 leading-tight mb-6">
+                        Phala Startup Program
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-stone-900 mb-8">
+                        Build the Future of <span class="gradient-text">Confidential AI</span>
+                    </h2>
+                    
+                    <!-- Key Benefits -->
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-lime-300 rounded-full flex items-center justify-center">
+                                <span class="text-xs font-bold text-stone-900">✓</span>
+                            </div>
+                            <span class="text-lg text-stone-900 font-medium">Up to $1,000 in cloud credits</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-lime-300 rounded-full flex items-center justify-center">
+                                <span class="text-xs font-bold text-stone-900">✓</span>
+                            </div>
+                            <span class="text-lg text-stone-900 font-medium">Direct access to Phala engineering team</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-lime-300 rounded-full flex items-center justify-center">
+                                <span class="text-xs font-bold text-stone-900">✓</span>
+                            </div>
+                            <span class="text-lg text-stone-900 font-medium">Investor introductions & demo day</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Proof -->
+                    <div class="flex items-center gap-8 text-sm text-zinc-600 mb-8">
+                        <div class="flex items-center gap-2">
+                            <span class="text-2xl font-bold text-stone-900">50+</span>
+                            <span>Startups</span>
+                        </div>
+                        <div class="w-1 h-8 bg-zinc-300"></div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-2xl font-bold text-stone-900">$5M+</span>
+                            <span>Credits</span>
+                        </div>
+                        <div class="w-1 h-8 bg-zinc-300"></div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-2xl font-bold text-stone-900">85%</span>
+                            <span>Success</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-lg text-zinc-600">
+                        Book a 15-minute call to discuss your startup and how Phala can accelerate your growth →
+                    </p>
+                </div>
+                
+                <!-- Right Side: Booking Form -->
+                <div class="bg-white rounded-2xl shadow-xl p-8">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-semibold text-stone-900 mb-2">Book Your Strategy Call</h3>
+                        <p class="text-zinc-600">Get a decision within 48 hours</p>
+                    </div>
+                    
+                    <!-- Cal.com Embed -->
+                    <div style="width:100%;height:600px;overflow:scroll" id="my-cal-inline-safe"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section class="py-20 px-4 md:px-20 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-semibold text-stone-900 mb-6">Recent Success Stories</h2>
+                <p class="text-xl text-zinc-600 max-w-3xl mx-auto">
+                    Join the startups already building the future with Phala
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-stone-50 p-6 rounded-2xl">
+                    <div class="mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl mb-3 flex items-center justify-center">
+                            <span class="text-white font-bold text-xs">A</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-stone-900">Apillon</h3>
+                        <p class="text-sm text-zinc-600">Web3 Development Platform</p>
+                    </div>
+                    <p class="text-sm text-zinc-600 mb-4">
+                        "Phala's TEE infrastructure enables us to provide secure, decentralized cloud services. The startup program accelerated our development timeline significantly."
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-sm font-semibold text-stone-900">Enterprise Ready</div>
+                        <a href="https://apillon.io/" target="_blank" class="text-xs text-zinc-500 hover:text-stone-900">apillon.io →</a>
+                    </div>
+                </div>
+
+                <div class="bg-stone-50 p-6 rounded-2xl">
+                    <div class="mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl mb-3 flex items-center justify-center">
+                            <span class="text-white font-bold text-xs">B</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-stone-900">Blormmy</h3>
+                        <p class="text-sm text-zinc-600">AI-Powered Platform</p>
+                    </div>
+                    <p class="text-sm text-zinc-600 mb-4">
+                        "The confidential computing capabilities from Phala allowed us to build privacy-first AI solutions that our enterprise clients demanded."
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-sm font-semibold text-stone-900">Privacy-First AI</div>
+                        <a href="https://blormmy.com/" target="_blank" class="text-xs text-zinc-500 hover:text-stone-900">blormmy.com →</a>
+                    </div>
+                </div>
+
+                <div class="bg-stone-50 p-6 rounded-2xl">
+                    <div class="mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-xl mb-3 flex items-center justify-center">
+                            <span class="text-white font-bold text-xs">K</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-stone-900">Kosher Capital</h3>
+                        <p class="text-sm text-zinc-600">Financial Technology</p>
+                    </div>
+                    <p class="text-sm text-zinc-600 mb-4">
+                        "Phala's secure infrastructure was crucial for handling sensitive financial data. The technical support helped us achieve regulatory compliance faster."
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-sm font-semibold text-stone-900">Compliant FinTech</div>
+                        <a href="https://koshercapital.net/" target="_blank" class="text-xs text-zinc-500 hover:text-stone-900">koshercapital.net →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Eligibility Section -->
+    <section class="py-20 px-4 md:px-20">
+        <div class="max-w-5xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-semibold text-stone-900 mb-8">Perfect for:</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-2xl">🏥</span>
+                    </div>
+                    <h3 class="font-semibold text-stone-900 mb-2">Healthcare AI</h3>
+                    <p class="text-sm text-zinc-600">Patient data, medical imaging, drug discovery</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="w-12 h-12 bg-green-100 rounded-xl mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-2xl">💰</span>
+                    </div>
+                    <h3 class="font-semibold text-stone-900 mb-2">FinTech AI</h3>
+                    <p class="text-sm text-zinc-600">Risk assessment, fraud detection, compliance</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="w-12 h-12 bg-purple-100 rounded-xl mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-2xl">🏢</span>
+                    </div>
+                    <h3 class="font-semibold text-stone-900 mb-2">Enterprise AI</h3>
+                    <p class="text-sm text-zinc-600">Private LLMs, secure analytics, data processing</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="w-12 h-12 bg-orange-100 rounded-xl mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-2xl">🌐</span>
+                    </div>
+                    <h3 class="font-semibold text-stone-900 mb-2">Web3 AI</h3>
+                    <p class="text-sm text-zinc-600">Autonomous agents, on-chain AI, DeFi</p>
+                </div>
+            </div>
+            <p class="text-lg text-zinc-600 mt-8 max-w-2xl mx-auto">
+                Early-stage startups (pre-seed to Series A) with strong technical teams building privacy-preserving AI solutions.
+            </p>
+        </div>
+    </section>
+
+    <!-- Simple Process Section -->
+    <section class="py-20 px-4 md:px-20 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-semibold text-stone-900 mb-8">Simple 3-Step Process</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-lime-300 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-stone-900">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-stone-900 mb-2">Book a Call</h3>
+                    <p class="text-zinc-600">15-minute strategy call to discuss your startup</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-lime-300 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-stone-900">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-stone-900 mb-2">Technical Review</h3>
+                    <p class="text-zinc-600">We evaluate your use case and technical needs</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-lime-300 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-stone-900">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-stone-900 mb-2">Get Credits</h3>
+                    <p class="text-zinc-600">Access your credits and start building</p>
+                </div>
+            </div>
+            <div class="bg-lime-300/10 border border-lime-300 rounded-2xl p-6">
+                <p class="text-lg font-semibold text-stone-900">⚡ Fast Track: Decision within 48 hours</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Quick FAQ -->
+    <section class="py-20 px-4 md:px-20 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-semibold text-stone-900 text-center mb-12">Quick Questions</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-stone-50 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold text-stone-900 mb-3">Do you take equity?</h3>
+                    <p class="text-zinc-600">No equity taken. This is pure support to help you succeed.</p>
+                </div>
+                
+                <div class="bg-stone-50 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold text-stone-900 mb-3">International startups?</h3>
+                    <p class="text-zinc-600">Yes! We welcome applications from startups worldwide.</p>
+                </div>
+                
+                <div class="bg-stone-50 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold text-stone-900 mb-3">Need TEE experience?</h3>
+                    <p class="text-zinc-600">No prior experience needed. We provide full technical support.</p>
+                </div>
+                
+                <div class="bg-stone-50 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold text-stone-900 mb-3">Selection rate?</h3>
+                    <p class="text-zinc-600">~20% acceptance rate. Quality over current traction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="mx-4 md:mx-20 my-20">
+        <div class="w-full bg-gradient-to-br from-lime-300 to-lime-400 rounded-2xl overflow-hidden">
+            <div class="px-8 md:px-16 py-16 text-center">
+                <h2 class="text-3xl md:text-5xl font-semibold text-stone-900 leading-tight mb-6">
+                    Still Have Questions?
+                </h2>
+                <p class="text-xl font-medium text-stone-900 leading-7 mb-8 max-w-2xl mx-auto">
+                    Book a quick call to discuss your startup and see if we're a good fit.
+                </p>
+                
+                <a href="#my-cal-inline-safe" onclick="document.getElementById('my-cal-inline-safe').scrollIntoView({ behavior: 'smooth' });" class="figma-btn-secondary px-12 py-4 text-xl inline-flex items-center">
+                    Book Strategy Call
+                </a>
+                
+                <p class="text-sm text-stone-900 mt-6">
+                    Questions? <a href="mailto:startups@phala.network" class="underline font-semibold">startups@phala.network</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as main page) -->
+    <footer class="h-[484px] bg-stone-900 overflow-hidden">
+        <div class="px-20 py-16">
+            <div class="grid grid-cols-5 gap-8 mb-12">
+                <div class="flex flex-col gap-6">
+                    <div class="w-12 h-12 bg-lime-300"></div>
+                    <div class="w-7 h-7 bg-stone-900"></div>
+                    <div class="w-20 h-4 bg-white"></div>
+                    <p class="text-base font-normal text-white leading-tight">
+                        © 2025 Phala Cloud. Build AI People Can Trust.
+                    </p>
+                </div>
+                <div></div>
+                <div class="flex flex-col gap-6">
+                    <h5 class="text-lime-400 text-base font-semibold">AI Solutions</h5>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Confidential AI Models</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">GPU TEE Inference</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Agent Framework</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">MCP Hosting</a>
+                </div>
+                <div class="flex flex-col gap-6">
+                    <h5 class="text-lime-400 text-base font-semibold">Developers</h5>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Quick Start</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Documentation Hub</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Builder Tools</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Community</a>
+                </div>
+                <div class="flex flex-col gap-6">
+                    <h5 class="text-lime-400 text-base font-semibold">Security</h5>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">TEE Technology</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Trust Center</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Verification</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Cal.com Script -->
+    <script type="text/javascript">
+        (function (C, A, L) { 
+            let p = function (a, ar) { a.q.push(ar); }; 
+            let d = C.document; 
+            C.Cal = C.Cal || function () { 
+                let cal = C.Cal; 
+                let ar = arguments; 
+                if (!cal.loaded) { 
+                    cal.ns = {}; 
+                    cal.q = cal.q || []; 
+                    d.head.appendChild(d.createElement("script")).src = A; 
+                    cal.loaded = true; 
+                } 
+                if (ar[0] === L) { 
+                    const api = function () { p(api, arguments); }; 
+                    const namespace = ar[1]; 
+                    api.q = api.q || []; 
+                    if(typeof namespace === "string"){ 
+                        cal.ns[namespace] = cal.ns[namespace] || api; 
+                        p(cal.ns[namespace], ar); 
+                        p(cal, ["initNamespace", namespace]); 
+                    } else p(cal, ar); 
+                    return;
+                } 
+                p(cal, ar); 
+            }; 
+        })(window, "https://app.cal.com/embed/embed.js", "init");
+        
+        Cal("init", "safe", {origin:"https://app.cal.com"});
+        
+        Cal.ns.safe("inline", {
+            elementOrSelector:"#my-cal-inline-safe",
+            config: {"layout":"month_view"},
+            calLink: "forms/dc97b836-34d1-41e2-8ea0-457722092796",
+        });
+        
+        Cal.ns.safe("ui", {
+            "cssVarsPerTheme":{
+                "light":{"cal-brand":"#292929"},
+                "dark":{"cal-brand":"#CDFA50"}
+            },
+            "hideEventTypeDetails":false,
+            "layout":"month_view"
+        });
+    </script>
+</body>
+</html>
