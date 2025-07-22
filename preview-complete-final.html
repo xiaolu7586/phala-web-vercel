@@ -456,124 +456,80 @@
 
             <!-- GPU TEE Section -->
             <div class="mt-16">
-                <h3 class="text-3xl font-bold text-phala-dark mb-4">GPU TEE: Hardware-Secure Confidential AI</h3>
-                <p class="text-lg text-phala-gray mb-12">Run AI workloads with 99% performance, 100% privacy</p>
-                
-                <!-- GPU TEE Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Performance Card -->
-                    <div class="bg-white rounded-2xl p-8 border border-gray-200 hover:border-phala-lime transition-colors">
-                        <div class="w-16 h-16 bg-phala-lime rounded-xl mb-6 flex items-center justify-center">
-                            <span class="text-2xl font-bold text-phala-dark">⚡</span>
-                        </div>
-                        <h4 class="text-xl font-semibold text-phala-dark mb-4">< 9% Performance Overhead</h4>
-                        <p class="text-phala-gray mb-6">Unlike competitors who sacrifice speed for security, Phala's GPU TEE delivers near-native performance (up to 99% efficiency for large models)</p>
-                        
-                        <!-- Benchmark Visualization -->
-                        <div class="bg-gray-50 rounded-xl p-4 mb-6">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-medium">Performance Comparison</span>
-                                <span class="text-xs text-gray-500">Higher is better</span>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <!-- Left Side: H200 + Content -->
+                    <div class="space-y-6">
+                        <!-- H200 GPU Visual -->
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 bg-phala-lime rounded-xl flex items-center justify-center">
+                                <span class="text-2xl font-bold text-phala-dark">🖥️</span>
                             </div>
-                            <div class="space-y-2">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-xs w-16">Native GPU</span>
-                                    <div class="flex-1 bg-gray-200 rounded-full h-3">
-                                        <div class="bg-green-500 h-3 rounded-full" style="width: 100%"></div>
-                                    </div>
-                                    <span class="text-xs w-8">100%</span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <span class="text-xs w-16">GPU TEE</span>
-                                    <div class="flex-1 bg-gray-200 rounded-full h-3">
-                                        <div class="bg-phala-lime h-3 rounded-full" style="width: 91%"></div>
-                                    </div>
-                                    <span class="text-xs w-8">91%</span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <span class="text-xs w-16">CPU TEE</span>
-                                    <div class="flex-1 bg-gray-200 rounded-full h-3">
-                                        <div class="bg-gray-400 h-3 rounded-full" style="width: 45%"></div>
-                                    </div>
-                                    <span class="text-xs w-8">45%</span>
-                                </div>
+                            <div>
+                                <div class="text-lg font-bold text-phala-dark">NVIDIA H200</div>
+                                <div class="text-sm text-phala-gray">TEE-enabled GPU</div>
                             </div>
                         </div>
                         
-                        <button class="w-full bg-phala-dark text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
-                            Read Benchmark Report
+                        <!-- Headline -->
+                        <h3 class="text-3xl font-bold text-phala-dark mb-4">Deploy Confidential GPUs, On-Demand</h3>
+                        
+                        <!-- Subtitle -->
+                        <p class="text-lg text-phala-gray mb-6">Phala connects you to hardware-secured GPU servers for instant, private AI computing. 100% confidential with only 5% performance trade-off.</p>
+                        
+                        <!-- Primary CTA -->
+                        <button class="bg-phala-lime text-phala-dark px-8 py-4 rounded-lg font-bold text-lg hover:bg-phala-green transition-colors mb-4">
+                            Rent Confidential H200 - $2.50/hour
                         </button>
+                        
+                        <!-- Supporting Text -->
+                        <p class="text-sm text-phala-gray">Start in seconds, run confidentially for as long as you need.</p>
                     </div>
 
-                    <!-- Hardware Protection Card -->
-                    <div class="bg-white rounded-2xl p-8 border border-gray-200 hover:border-phala-blue transition-colors">
-                        <div class="w-16 h-16 bg-phala-blue rounded-xl mb-6 flex items-center justify-center">
-                            <span class="text-2xl font-bold text-phala-dark">🛡️</span>
-                        </div>
-                        <h4 class="text-xl font-semibold text-phala-dark mb-4">Hardware-Level Protection</h4>
-                        <p class="text-phala-gray mb-6">NVIDIA Hopper GPU TEE provides tamper-proof computation that traditional cloud providers can't match</p>
-                        
-                        <!-- Security Features -->
-                        <div class="bg-gray-50 rounded-xl p-4 mb-6">
-                            <div class="space-y-3">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                                    <span class="text-sm">Memory Encryption</span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                                    <span class="text-sm">Secure Boot</span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                                    <span class="text-sm">Attestation</span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                                    <span class="text-sm">Isolated Execution</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <button class="w-full bg-phala-dark text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
-                            Learn About NVIDIA CC
-                        </button>
-                    </div>
-
-                    <!-- Cost Advantage Card -->
-                    <div class="bg-white rounded-2xl p-8 border border-gray-200 hover:border-phala-purple transition-colors">
-                        <div class="w-16 h-16 bg-phala-purple rounded-xl mb-6 flex items-center justify-center">
-                            <span class="text-2xl font-bold text-phala-dark">💰</span>
-                        </div>
-                        <h4 class="text-xl font-semibold text-phala-dark mb-4">Cost + Security Advantage</h4>
-                        <p class="text-phala-gray mb-6">Get enterprise-grade confidential computing without premium pricing</p>
-                        
-                        <!-- GPU Instance Cards -->
-                        <div class="space-y-3 mb-6">
-                            <!-- H200 Instance -->
-                            <div class="bg-gray-50 rounded-lg p-4">
-                                <div class="flex justify-between items-center mb-2">
-                                    <span class="font-semibold text-phala-dark">H200 GPU TEE</span>
-                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                                </div>
-                                <div class="text-sm text-phala-gray mb-1">80GB HBM3e, TEE-enabled</div>
-                                <div class="text-lg font-bold text-phala-dark">$2.15/hour</div>
-                            </div>
+                    <!-- Right Side: Performance Graph + Secondary CTA -->
+                    <div class="space-y-8">
+                        <!-- Performance Graph -->
+                        <div class="bg-white rounded-2xl p-8 border border-gray-200">
+                            <h4 class="text-xl font-semibold text-phala-dark mb-6">Performance vs Privacy</h4>
                             
-                            <!-- B200 Instance -->
-                            <div class="bg-gray-50 rounded-lg p-4">
-                                <div class="flex justify-between items-center mb-2">
-                                    <span class="font-semibold text-phala-dark">B200 GPU TEE</span>
-                                    <span class="bg-phala-lime text-phala-dark px-2 py-1 rounded text-xs font-bold">NEW</span>
+                            <div class="space-y-6">
+                                <!-- Native GPU -->
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="font-medium text-phala-dark">Native GPU</span>
+                                        <div class="text-sm text-gray-500">
+                                            <span class="text-green-600 font-bold">100% Performance</span> • 
+                                            <span class="text-red-600 font-bold">0% Privacy</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-1">
+                                        <div class="flex-1 bg-green-500 h-4 rounded-l-lg"></div>
+                                        <div class="flex-1 bg-gray-200 h-4 rounded-r-lg"></div>
+                                    </div>
                                 </div>
-                                <div class="text-sm text-phala-gray mb-1">192GB HBM3e, TEE-enabled</div>
-                                <div class="text-lg font-bold text-phala-dark">$4.50/hour</div>
+                                
+                                <!-- Phala GPU TEE -->
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="font-medium text-phala-dark">Phala GPU TEE</span>
+                                        <div class="text-sm text-gray-500">
+                                            <span class="text-phala-lime font-bold">95% Performance</span> • 
+                                            <span class="text-phala-lime font-bold">100% Privacy</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-1">
+                                        <div class="bg-phala-lime h-4 rounded-l-lg" style="width: 95%"></div>
+                                        <div class="bg-phala-lime h-4 rounded-r-lg" style="width: 5%"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
-                        <button class="w-full bg-phala-dark text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
-                            Get GPU Instance
-                        </button>
+                        <!-- Secondary CTA -->
+                        <div class="text-center">
+                            <button class="bg-phala-dark text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                                Learn More About NVIDIA Confidential Compute
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
