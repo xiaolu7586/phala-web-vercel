@@ -1,7 +1,15 @@
 {
-  "name": "phala-rebrand-complete",
   "version": 2,
   "public": true,
-  "buildCommand": "",
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "routes": [
+    {
+      "src": "/pricing",
+      "dest": "/pricing.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
 }
