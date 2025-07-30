@@ -8,6 +8,10 @@
       "dest": "/pricing.html"
     },
     {
+      "src": "/dstack",
+      "dest": "/dstack-landing.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }

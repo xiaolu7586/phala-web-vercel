@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dstack: Making Confidential Compute Accessible & Verifiable</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'stone-50': '#F8FAFC',
+                        'stone-900': '#1C1917', 
+                        'stone-950': '#0C0A09',
+                        'lime-300': '#BEF264',
+                        'lime-400': '#A3E635',
+                        'zinc-600': '#52525B',
+                        'neutral-200': '#E5E5E5',
+                        'neutral-600': '#525252',
+                        'blue-500': '#3B82F6',
+                        'purple-500': '#A855F7'
+                    },
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .figma-btn-primary {
+            background: #BEF264;
+            color: #1C1917;
+            border-radius: 99px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 1;
+            transition: all 0.2s;
+        }
+        
+        .figma-btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(190, 242, 100, 0.3);
+        }
+        
+        .figma-btn-secondary {
+            background: #1C1917;
+            color: white;
+            border-radius: 99px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 1;
+            transition: all 0.2s;
+        }
+        
+        .figma-btn-secondary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(28, 25, 23, 0.3);
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        }
+        
+        .audit-badge {
+            background: linear-gradient(135deg, #BEF264 0%, #A3E635 100%);
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+        
+        .audit-badge:hover {
+            transform: scale(1.05);
+        }
+        
+        .use-case-card {
+            background: #F8FAFC;
+            border-radius: 16px;
+            transition: all 0.2s;
+        }
+        
+        .use-case-card:hover {
+            background: #F0F4F8;
+            transform: translateY(-2px);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #BEF264 0%, #A3E635 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="font-montserrat bg-stone-50">
+    <!-- Navigation (same as main page) -->
+    <nav class="fixed top-0 w-full z-50 px-20 py-6 bg-white shadow-[0px_6px_28px_0px_rgba(0,0,0,0.04)]">
+        <div class="w-full flex justify-between items-center">
+            <a href="index.html" class="w-12 h-12 bg-lime-300"></a>
+            <div class="flex justify-end items-center gap-9">
+                <div class="flex justify-start items-center gap-1.5">
+                    <div class="text-center text-stone-900 text-sm font-normal font-montserrat">AI Solutions</div>
+                    <div class="w-2 h-1 outline outline-1 outline-stone-900"></div>
+                </div>
+                <div class="flex justify-start items-center gap-1.5">
+                    <div class="text-center text-stone-900 text-sm font-normal font-montserrat">Developers</div>
+                    <div class="w-2 h-1 outline outline-1 outline-stone-900"></div>
+                </div>
+                <div class="flex justify-start items-center gap-1.5">
+                    <div class="text-center text-stone-900 text-sm font-normal font-montserrat">Security</div>
+                    <div class="w-2 h-1 outline outline-1 outline-stone-900"></div>
+                </div>
+                <div class="flex justify-start items-center gap-1.5">
+                    <div class="text-center text-stone-900 text-sm font-normal font-montserrat">Network</div>
+                    <div class="w-2 h-1 outline outline-1 outline-stone-900"></div>
+                </div>
+                <div class="flex justify-start items-center gap-1.5">
+                    <div class="text-center text-stone-900 text-sm font-normal font-montserrat">Enterprise</div>
+                    <div class="w-2 h-1 outline outline-1 outline-stone-900"></div>
+                </div>
+            </div>
+            <div class="flex justify-start items-center gap-3">
+                <div class="w-8 h-8 bg-white rounded-full overflow-hidden">
+                    <div class="w-4 h-4 bg-stone-900 mx-auto mt-2"></div>
+                </div>
+                <div class="w-8 h-8 bg-white rounded-full overflow-hidden">
+                    <div class="w-5 h-4 bg-stone-900 mx-auto mt-2"></div>
+                </div>
+                <div class="w-8 h-8 bg-white rounded-full overflow-hidden">
+                    <div class="w-5 h-3.5 bg-stone-900 mx-auto mt-2"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-40 pb-20 px-4 md:px-20 relative overflow-hidden">
+        <div class="absolute right-0 top-0 w-[600px] h-[600px] bg-lime-300/20 rounded-full blur-3xl"></div>
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <h1 class="text-4xl md:text-6xl font-bold text-stone-900 leading-tight mb-6">
+                <span class="gradient-text">dstack:</span> Making Confidential Compute<br>
+                Accessible & Verifiable
+            </h1>
+            <p class="text-xl md:text-2xl text-zinc-600 max-w-4xl mx-auto mb-8">
+                Run your existing Docker workloads in a secure TEE—no code changes required.
+            </p>
+            
+            <!-- Key Benefits -->
+            <div class="flex flex-wrap justify-center gap-6 mb-12">
+                <div class="inline-flex items-center gap-2 bg-lime-300/20 px-4 py-2 rounded-full">
+                    <div class="w-2 h-2 bg-lime-400 rounded-full"></div>
+                    <span class="text-sm font-medium text-stone-900">Hardware-enforced isolation</span>
+                </div>
+                <div class="inline-flex items-center gap-2 bg-lime-300/20 px-4 py-2 rounded-full">
+                    <div class="w-2 h-2 bg-lime-400 rounded-full"></div>
+                    <span class="text-sm font-medium text-stone-900">Remote attestation</span>
+                </div>
+                <div class="inline-flex items-center gap-2 bg-lime-300/20 px-4 py-2 rounded-full">
+                    <div class="w-2 h-2 bg-lime-400 rounded-full"></div>
+                    <span class="text-sm font-medium text-stone-900">Audit-grade key protection</span>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#features" class="figma-btn-primary px-8 py-4 text-lg inline-flex items-center justify-center">
+                    Explore Technical Details
+                </a>
+                <a href="#use-cases" class="figma-btn-secondary px-8 py-4 text-lg inline-flex items-center justify-center">
+                    View Use Cases
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section id="features" class="py-20 px-4 md:px-20 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-semibold text-stone-900 mb-6">Core Features</h2>
+                <p class="text-xl text-zinc-600 max-w-3xl mx-auto">
+                    Everything you need for confidential computing, built for Docker workloads
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Docker-Native -->
+                <div class="feature-card p-6">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl mb-6 flex items-center justify-center">
+                        <span class="text-2xl">🐳</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-stone-900 mb-3">Docker-Native</h3>
+                    <p class="text-zinc-600 mb-4">Run any container. No code change.</p>
+                </div>
+
+                <!-- True Isolation -->
+                <div class="feature-card p-6">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl mb-6 flex items-center justify-center">
+                        <span class="text-2xl">🔒</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-stone-900 mb-3">True Isolation</h3>
+                    <p class="text-zinc-600 mb-4">Intel TDX VM with hardware-enforced memory security</p>
+                </div>
+
+                <!-- Zero-Trust Keys -->
+                <div class="feature-card p-6">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl mb-6 flex items-center justify-center">
+                        <span class="text-2xl">🔑</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-stone-900 mb-3">Zero-Trust Keys</h3>
+                    <p class="text-zinc-600 mb-4">Attestation-gated encryption. No central vaults.</p>
+                </div>
+
+                <!-- Attested HTTPS -->
+                <div class="feature-card p-6">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl mb-6 flex items-center justify-center">
+                        <span class="text-2xl">🌐</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-stone-900 mb-3">Attested HTTPS</h3>
+                    <p class="text-zinc-600 mb-4">TLS with verified provenance, served under your domain.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audit Badges Section -->
+    <section class="py-20 px-4 md:px-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-semibold text-stone-900 mb-6">Audit Scores</h2>
+                <p class="text-xl text-zinc-600 max-w-3xl mx-auto mb-4">
+                    Validated by Autonomy.Meme framework
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <!-- Accountability Badge -->
+                <div class="audit-badge p-8 text-center">
+                    <div class="text-6xl font-bold text-stone-900 mb-4">100</div>
+                    <div class="text-lg font-semibold text-stone-900 mb-2">/100</div>
+                    <h3 class="text-xl font-semibold text-stone-900">Accountability</h3>
+                </div>
+
+                <!-- Autonomy Badge -->
+                <div class="audit-badge p-8 text-center">
+                    <div class="text-6xl font-bold text-stone-900 mb-4">100</div>
+                    <div class="text-lg font-semibold text-stone-900 mb-2">/100</div>
+                    <h3 class="text-xl font-semibold text-stone-900">Autonomy</h3>
+                </div>
+
+                <!-- Sovereignty Badge -->
+                <div class="audit-badge p-8 text-center">
+                    <div class="text-6xl font-bold text-stone-900 mb-4">100</div>
+                    <div class="text-lg font-semibold text-stone-900 mb-2">/100</div>
+                    <h3 class="text-xl font-semibold text-stone-900">Sovereignty</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="use-cases" class="py-20 px-4 md:px-20 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-semibold text-stone-900 mb-6">Use Cases</h2>
+                <p class="text-xl text-zinc-600 max-w-3xl mx-auto">
+                    Secure your most critical workloads across industries
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Confidential AI -->
+                <div class="use-case-card p-8">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl mb-6 flex items-center justify-center">
+                        <span class="text-3xl">🤖</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-stone-900 mb-4">Confidential AI</h3>
+                    <p class="text-zinc-600 leading-relaxed">
+                        Protect proprietary models and data even from cloud operators
+                    </p>
+                </div>
+
+                <!-- Secure IoT & Edge Workloads -->
+                <div class="use-case-card p-8">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl mb-6 flex items-center justify-center">
+                        <span class="text-3xl">📡</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-stone-900 mb-4">Secure IoT & Edge Workloads</h3>
+                    <p class="text-zinc-600 leading-relaxed">
+                        Guarantee integrity of firmware updates, data aggregation, and control loops
+                    </p>
+                </div>
+
+                <!-- Trustless Infrastructure Services -->
+                <div class="use-case-card p-8">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl mb-6 flex items-center justify-center">
+                        <span class="text-3xl">🔧</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-stone-900 mb-4">Trustless Infrastructure Services</h3>
+                    <p class="text-zinc-600 leading-relaxed">
+                        Host verifiable VPN gateways, oracles, and PKI services
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="mx-4 md:mx-20 my-20">
+        <div class="w-full bg-gradient-to-br from-lime-300 to-lime-400 rounded-2xl overflow-hidden">
+            <div class="px-8 md:px-16 py-16 text-center">
+                <h2 class="text-3xl md:text-5xl font-semibold text-stone-900 leading-tight mb-6">
+                    Ready to Get Started?
+                </h2>
+                <p class="text-xl font-medium text-stone-900 leading-7 mb-8 max-w-2xl mx-auto">
+                    Deploy your first confidential workload with dstack today.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#" class="figma-btn-secondary px-12 py-4 text-xl inline-flex items-center justify-center">
+                        Explore Technical Details
+                    </a>
+                    <a href="#" class="bg-white text-stone-900 px-12 py-4 flex items-center justify-center rounded-[99px] font-semibold text-xl">
+                        View Documentation
+                    </a>
+                </div>
+                
+                <p class="text-sm text-stone-900 mt-6">
+                    Questions? <a href="mailto:support@phala.network" class="underline font-semibold">support@phala.network</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as main page) -->
+    <footer class="h-[484px] bg-stone-900 overflow-hidden">
+        <div class="px-20 py-16">
+            <div class="grid grid-cols-5 gap-8 mb-12">
+                <div class="flex flex-col gap-6">
+                    <div class="w-12 h-12 bg-lime-300"></div>
+                    <div class="w-7 h-7 bg-stone-900"></div>
+                    <div class="w-20 h-4 bg-white"></div>
+                    <p class="text-base font-normal text-white leading-tight">
+                        © 2025 Phala Cloud. Build AI People Can Trust.
+                    </p>
+                </div>
+                <div></div>
+                <div class="flex flex-col gap-6">
+                    <h5 class="text-lime-400 text-base font-semibold">AI Solutions</h5>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Confidential AI Models</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">GPU TEE Inference</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Agent Framework</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">MCP Hosting</a>
+                </div>
+                <div class="flex flex-col gap-6">
+                    <h5 class="text-lime-400 text-base font-semibold">Developers</h5>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Quick Start</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Documentation Hub</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Builder Tools</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Community</a>
+                </div>
+                <div class="flex flex-col gap-6">
+                    <h5 class="text-lime-400 text-base font-semibred">Security</h5>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">TEE Technology</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Trust Center</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Verification</a>
+                    <a href="#" class="text-white text-sm font-medium hover:text-lime-400">Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
