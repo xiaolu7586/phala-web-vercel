@@ -150,6 +150,46 @@
         .bash-string {
             color: #ce9178;
         }
+        
+        .rotating-word {
+            display: inline-block;
+            min-width: 400px;
+            text-align: center;
+            position: relative;
+            height: 80px;
+        }
+        
+        .rotating-word span {
+            opacity: 0;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: rotateWords 4.5s infinite;
+            font-weight: bold;
+        }
+        
+        .rotating-word span:nth-child(1) {
+            animation-delay: 0s;
+        }
+        
+        .rotating-word span:nth-child(2) {
+            animation-delay: 1.5s;
+        }
+        
+        .rotating-word span:nth-child(3) {
+            animation-delay: 3s;
+        }
+        
+        @keyframes rotateWords {
+            0%, 30% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            35%, 100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
     </style>
 </head>
 <body class="font-montserrat bg-stone-50">
@@ -196,36 +236,46 @@
     <!-- 1. Hero Section -->
     <section class="pt-40 pb-20 px-4 md:px-20 relative overflow-hidden">
         <div class="absolute right-0 top-0 w-[600px] h-[600px] bg-lime-300/20 rounded-full blur-3xl"></div>
-        <div class="max-w-7xl mx-auto text-center relative z-10">
-            <h1 class="text-4xl md:text-6xl font-bold text-stone-900 leading-tight mb-6">
-                <span class="gradient-text">dstack</span> — Making Confidential Hardware<br>
-                more Accessible, Verifiable & Decentralized
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            
+            <!-- Hero Title -->
+            <h1 class="font-bold text-stone-900 leading-tight mb-6">
+                <span class="text-stone-900" style="font-size: 32px;">Dstack — Making Confidential Hardware more</span><br>
+                <div class="rotating-word" style="margin-top: 24px;">
+                    <span style="font-size: 72px; color: #9DD705;">Accessible</span>
+                    <span style="font-size: 72px; color: #76B6FF;">Verifiable</span>
+                    <span style="font-size: 72px; color: #7F81FE;">Decentralized</span>
+                </div>
             </h1>
-            <p class="text-xl md:text-2xl text-zinc-600 max-w-4xl mx-auto mb-8">
-                Run any Docker image inside an Intel® TDX enclave — no code changes
+            
+            <!-- Hero Subtitle -->
+            <p class="font-medium mb-16 max-w-3xl mx-auto leading-relaxed font-montserrat" style="font-size: 24px; font-weight: 500; color: #1E2119;">
+                Run any Docker image inside an Intel® TDX enclave<br>
+                <span style="color: #1E2119;">— no code changes</span>
             </p>
             
-            <!-- Key Benefits -->
-            <div class="flex flex-wrap justify-center gap-6 mb-12">
-                <div class="inline-flex items-center gap-2 bg-lime-300/20 px-4 py-2 rounded-full">
-                    <div class="w-2 h-2 bg-lime-400 rounded-full"></div>
-                    <span class="text-sm font-medium text-stone-900">Intel TDX with <5% overhead</span>
+            <!-- Features Row -->
+            <div class="flex justify-center items-center gap-8 md:gap-20 mb-16 flex-wrap">
+                <div class="text-center">
+                    <div class="text-zinc-600 mb-3 font-inter whitespace-nowrap" style="font-size: 14px; font-weight: 400;">Intel TDX with &lt;5% overhead</div>
+                    <div class="w-10 h-1 bg-lime-500 rounded mx-auto"></div>
                 </div>
-                <div class="inline-flex items-center gap-2 bg-lime-300/20 px-4 py-2 rounded-full">
-                    <div class="w-2 h-2 bg-lime-400 rounded-full"></div>
-                    <span class="text-sm font-medium text-stone-900">Hardware-sealed memory</span>
+                <div class="text-center max-w-48">
+                    <div class="text-zinc-600 mb-3 font-inter" style="font-size: 14px; font-weight: 400;">Hardware-sealed memory</div>
+                    <div class="w-10 h-1 bg-blue-500 rounded mx-auto"></div>
                 </div>
-                <div class="inline-flex items-center gap-2 bg-lime-300/20 px-4 py-2 rounded-full">
-                    <div class="w-2 h-2 bg-lime-400 rounded-full"></div>
-                    <span class="text-sm font-medium text-stone-900">On-chain key release</span>
+                <div class="text-center max-w-48">
+                    <div class="text-zinc-600 mb-3 font-inter" style="font-size: 14px; font-weight: 400;">On-chain key release</div>
+                    <div class="w-10 h-1 bg-purple-500 rounded mx-auto"></div>
                 </div>
             </div>
             
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#" class="figma-btn-primary px-8 py-4 text-lg inline-flex items-center justify-center">
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                <a href="#" class="bg-lime-500 text-stone-900 px-8 py-4 rounded-full text-base font-semibold hover:bg-lime-600 transition-all hover:-translate-y-0.5">
                     Join our Community
                 </a>
-                <a href="https://github.com/Dstack-TEE/dstack" class="figma-btn-secondary px-8 py-4 text-lg inline-flex items-center justify-center">
+                <a href="https://github.com/Dstack-TEE/dstack" class="bg-stone-800 text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-stone-900 transition-all hover:-translate-y-0.5">
                     Get Started on GitHub
                 </a>
             </div>
