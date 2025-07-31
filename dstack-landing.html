@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dstack: Making Confidential Compute Accessible & Verifiable</title>
+    <title>dstack — Making Confidential Hardware more Accessible, Verifiable & Decentralized</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -103,6 +103,53 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        
+        .code-block {
+            background: #1e1e1e;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .code-block pre {
+            margin: 0;
+            padding: 20px;
+            color: #e6e6e6;
+            font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+        
+        .copy-button {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #e6e6e6;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .copy-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .bash-comment {
+            color: #6a9955;
+        }
+        
+        .bash-command {
+            color: #569cd6;
+        }
+        
+        .bash-string {
+            color: #ce9178;
+        }
     </style>
 </head>
 <body class="font-montserrat bg-stone-50">
@@ -146,103 +193,118 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- 1. Hero Section -->
     <section class="pt-40 pb-20 px-4 md:px-20 relative overflow-hidden">
         <div class="absolute right-0 top-0 w-[600px] h-[600px] bg-lime-300/20 rounded-full blur-3xl"></div>
         <div class="max-w-7xl mx-auto text-center relative z-10">
             <h1 class="text-4xl md:text-6xl font-bold text-stone-900 leading-tight mb-6">
-                <span class="gradient-text">dstack:</span> Making Confidential Compute<br>
-                Accessible & Verifiable
+                <span class="gradient-text">dstack</span> — Making Confidential Hardware<br>
+                more Accessible, Verifiable & Decentralized
             </h1>
             <p class="text-xl md:text-2xl text-zinc-600 max-w-4xl mx-auto mb-8">
-                Run your existing Docker workloads in a secure TEE—no code changes required.
+                Run any Docker image inside an Intel® TDX enclave — no code changes
             </p>
             
             <!-- Key Benefits -->
             <div class="flex flex-wrap justify-center gap-6 mb-12">
                 <div class="inline-flex items-center gap-2 bg-lime-300/20 px-4 py-2 rounded-full">
                     <div class="w-2 h-2 bg-lime-400 rounded-full"></div>
-                    <span class="text-sm font-medium text-stone-900">Hardware-enforced isolation</span>
+                    <span class="text-sm font-medium text-stone-900">Intel TDX with <5% overhead</span>
                 </div>
                 <div class="inline-flex items-center gap-2 bg-lime-300/20 px-4 py-2 rounded-full">
                     <div class="w-2 h-2 bg-lime-400 rounded-full"></div>
-                    <span class="text-sm font-medium text-stone-900">Remote attestation</span>
+                    <span class="text-sm font-medium text-stone-900">Hardware-sealed memory</span>
                 </div>
                 <div class="inline-flex items-center gap-2 bg-lime-300/20 px-4 py-2 rounded-full">
                     <div class="w-2 h-2 bg-lime-400 rounded-full"></div>
-                    <span class="text-sm font-medium text-stone-900">Audit-grade key protection</span>
+                    <span class="text-sm font-medium text-stone-900">On-chain key release</span>
                 </div>
             </div>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#features" class="figma-btn-primary px-8 py-4 text-lg inline-flex items-center justify-center">
-                    Explore Technical Details
+                <a href="#" class="figma-btn-primary px-8 py-4 text-lg inline-flex items-center justify-center">
+                    Join our Community
                 </a>
-                <a href="#use-cases" class="figma-btn-secondary px-8 py-4 text-lg inline-flex items-center justify-center">
-                    View Use Cases
+                <a href="https://github.com/Dstack-TEE/dstack" class="figma-btn-secondary px-8 py-4 text-lg inline-flex items-center justify-center">
+                    Get Started on GitHub
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Key Features Section -->
+    <!-- 2. Why dstack -->
     <section id="features" class="py-20 px-4 md:px-20 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-semibold text-stone-900 mb-6">Core Features</h2>
+                <h2 class="text-4xl md:text-5xl font-semibold text-stone-900 mb-6">Why dstack</h2>
                 <p class="text-xl text-zinc-600 max-w-3xl mx-auto">
-                    Everything you need for confidential computing, built for Docker workloads
+                    Intel TDX follows Confidential Computing standards with <5% overhead
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Docker-Native -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+                <!-- Drop-in for Docker -->
                 <div class="feature-card p-6">
                     <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl mb-6 flex items-center justify-center">
                         <span class="text-2xl">🐳</span>
                     </div>
-                    <h3 class="text-xl font-semibold text-stone-900 mb-3">Docker-Native</h3>
-                    <p class="text-zinc-600 mb-4">Run any container. No code change.</p>
+                    <h3 class="text-xl font-semibold text-stone-900 mb-3">Drop-in for Docker</h3>
+                    <p class="text-zinc-600 mb-4">Run any Docker image inside an Intel® TDX enclave</p>
                 </div>
 
-                <!-- True Isolation -->
+                <!-- Intel TDX Sealed Memory -->
                 <div class="feature-card p-6">
                     <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl mb-6 flex items-center justify-center">
                         <span class="text-2xl">🔒</span>
                     </div>
-                    <h3 class="text-xl font-semibold text-stone-900 mb-3">True Isolation</h3>
-                    <p class="text-zinc-600 mb-4">Intel TDX VM with hardware-enforced memory security</p>
+                    <h3 class="text-xl font-semibold text-stone-900 mb-3">Intel TDX Sealed Memory</h3>
+                    <p class="text-zinc-600 mb-4">Hardware-enforced memory isolation with <5% overhead</p>
                 </div>
 
-                <!-- Zero-Trust Keys -->
+                <!-- Provable Runtime -->
                 <div class="feature-card p-6">
                     <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl mb-6 flex items-center justify-center">
-                        <span class="text-2xl">🔑</span>
+                        <span class="text-2xl">✅</span>
                     </div>
-                    <h3 class="text-xl font-semibold text-stone-900 mb-3">Zero-Trust Keys</h3>
-                    <p class="text-zinc-600 mb-4">Attestation-gated encryption. No central vaults.</p>
+                    <h3 class="text-xl font-semibold text-stone-900 mb-3">Provable Runtime</h3>
+                    <p class="text-zinc-600 mb-4">Remote attestation with crypto-proofs of execution</p>
                 </div>
 
-                <!-- Attested HTTPS -->
+                <!-- Keyless Vault -->
                 <div class="feature-card p-6">
                     <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl mb-6 flex items-center justify-center">
+                        <span class="text-2xl">🔑</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-stone-900 mb-3">Keyless Vault</h3>
+                    <p class="text-zinc-600 mb-4">Smart contract key release with on-chain verification</p>
+                </div>
+
+                <!-- Verified HTTPS -->
+                <div class="feature-card p-6">
+                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-2xl mb-6 flex items-center justify-center">
                         <span class="text-2xl">🌐</span>
                     </div>
-                    <h3 class="text-xl font-semibold text-stone-900 mb-3">Attested HTTPS</h3>
-                    <p class="text-zinc-600 mb-4">TLS with verified provenance, served under your domain.</p>
+                    <h3 class="text-xl font-semibold text-stone-900 mb-3">Verified HTTPS</h3>
+                    <p class="text-zinc-600 mb-4">TLS with verified provenance served under your domain</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Audit Badges Section -->
+    <!-- 3. Audit Snapshot -->
     <section class="py-20 px-4 md:px-20">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-semibold text-stone-900 mb-6">Audit Scores</h2>
+                <h2 class="text-4xl md:text-5xl font-semibold text-stone-900 mb-6">Audit Snapshot</h2>
                 <p class="text-xl text-zinc-600 max-w-3xl mx-auto mb-4">
-                    Validated by Autonomy.Meme framework
+                    Conducted by zkSecurity (May 26 – Jun 13 2025)
                 </p>
+                <p class="text-lg text-zinc-600 max-w-3xl mx-auto mb-6">
+                    All high-severity findings were remediated pre-launch.
+                </p>
+                <a href="https://www.notion.so/Get-the-Full-Audit-Report-2400317e04a180a89ecaf858193a3fb6?pvs=21" class="inline-flex items-center text-stone-900 font-semibold hover:text-lime-600 transition-colors">
+                    <strong>Read the full report →</strong>
+                </a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -270,14 +332,11 @@
         </div>
     </section>
 
-    <!-- Use Cases Section -->
+    <!-- 4. Built For -->
     <section id="use-cases" class="py-20 px-4 md:px-20 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-semibold text-stone-900 mb-6">Use Cases</h2>
-                <p class="text-xl text-zinc-600 max-w-3xl mx-auto">
-                    Secure your most critical workloads across industries
-                </p>
+                <h2 class="text-4xl md:text-5xl font-semibold text-stone-900 mb-6">Built For</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -288,36 +347,182 @@
                     </div>
                     <h3 class="text-2xl font-semibold text-stone-900 mb-4">Confidential AI</h3>
                     <p class="text-zinc-600 leading-relaxed">
-                        Protect proprietary models and data even from cloud operators
+                        Keep models & data private—even from cloud operators
                     </p>
                 </div>
 
-                <!-- Secure IoT & Edge Workloads -->
+                <!-- Edge / IoT -->
                 <div class="use-case-card p-8">
                     <div class="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl mb-6 flex items-center justify-center">
                         <span class="text-3xl">📡</span>
                     </div>
-                    <h3 class="text-2xl font-semibold text-stone-900 mb-4">Secure IoT & Edge Workloads</h3>
+                    <h3 class="text-2xl font-semibold text-stone-900 mb-4">Edge / IoT</h3>
                     <p class="text-zinc-600 leading-relaxed">
-                        Guarantee integrity of firmware updates, data aggregation, and control loops
+                        Tamper-proof firmware and sensor data with enclave-level guarantees
                     </p>
                 </div>
 
-                <!-- Trustless Infrastructure Services -->
+                <!-- Trustless Infrastructure -->
                 <div class="use-case-card p-8">
                     <div class="w-16 h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl mb-6 flex items-center justify-center">
                         <span class="text-3xl">🔧</span>
                     </div>
-                    <h3 class="text-2xl font-semibold text-stone-900 mb-4">Trustless Infrastructure Services</h3>
+                    <h3 class="text-2xl font-semibold text-stone-900 mb-4">Trustless Infrastructure</h3>
                     <p class="text-zinc-600 leading-relaxed">
-                        Host verifiable VPN gateways, oracles, and PKI services
+                        Verifiable VPNs, oracles, and PKI with crypto-proofs of execution
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA Section -->
+    <!-- 5. Quick Start (≤ 5 mins) -->
+    <section class="py-20 px-4 md:px-20 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-semibold text-stone-900 mb-6">Quick Start (≤ 5 mins)</h2>
+                <p class="text-sm text-gray-500 italic mb-4">
+                    Prereqs: bare-metal host with Intel TDX, Ubuntu 24.04, public IP, domain DNS.
+                </p>
+                <p class="text-xl text-zinc-600 max-w-4xl mx-auto">
+                    Set up dstack on your own Intel TDX host in just a few steps.
+                </p>
+            </div>
+
+            <!-- 3-Step Layout -->
+            <div class="space-y-12">
+                <!-- Step 1 -->
+                <div class="max-w-5xl mx-auto">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-lime-300 rounded-full flex items-center justify-center">
+                            <span class="text-lg font-bold text-stone-900">1</span>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-stone-900">Clone & Build Artifacts</h3>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-button" onclick="copyCode(this)" data-code="git clone https://github.com/Dstack-TEE/meta-dstack.git --recursive
+cd meta-dstack
+./build.sh hostcfg     # generates build-config.sh
+./build.sh dl 0.5.2    # pulls pre-built guest image">Copy</button>
+                        <pre><span class="bash-command">git clone</span> <span class="bash-string">https://github.com/Dstack-TEE/meta-dstack.git</span> --recursive
+<span class="bash-command">cd</span> meta-dstack
+<span class="bash-command">./build.sh</span> hostcfg     <span class="bash-comment"># generates build-config.sh</span>
+<span class="bash-command">./build.sh</span> dl 0.5.2    <span class="bash-comment"># pulls pre-built guest image</span></pre>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="max-w-5xl mx-auto">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-lime-300 rounded-full flex items-center justify-center">
+                            <span class="text-lg font-bold text-stone-900">2</span>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-stone-900">Launch Core Services</h3>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-button" onclick="copyCode(this)" data-code="cd build
+./dstack-kms -c kms.toml &        # key-management service
+sudo ./dstack-gateway -c gateway.toml &  # HTTPS + WireGuard
+./dstack-vmm -c vmm.toml &        # spins up TDX CVMs">Copy</button>
+                        <pre><span class="bash-command">cd</span> build
+<span class="bash-command">./dstack-kms</span> -c kms.toml &        <span class="bash-comment"># key-management service</span>
+<span class="bash-command">sudo ./dstack-gateway</span> -c gateway.toml &  <span class="bash-comment"># HTTPS + WireGuard</span>
+<span class="bash-command">./dstack-vmm</span> -c vmm.toml &        <span class="bash-comment"># spins up TDX CVMs</span></pre>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="max-w-5xl mx-auto">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-lime-300 rounded-full flex items-center justify-center">
+                            <span class="text-lg font-bold text-stone-900">3</span>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-stone-900">Ship Your First Container</h3>
+                    </div>
+                    <div class="bg-stone-50 rounded-2xl p-8">
+                        <ol class="text-lg text-zinc-700 space-y-3">
+                            <li><strong>1.</strong> Open <code class="bg-white px-2 py-1 rounded text-stone-900 font-mono">http://&lt;HOST-IP&gt;:9080</code></li>
+                            <li><strong>2.</strong> Upload your docker-compose.yml</li>
+                            <li><strong>3.</strong> Click "Deploy"</li>
+                        </ol>
+                    </div>
+                    
+                    <!-- Success Info Box -->
+                    <div class="bg-lime-300/20 border-l-4 border-lime-400 rounded-r-xl p-6 mt-6">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">✅</span>
+                            <p class="text-lg text-stone-900 font-medium">
+                                dstack will attest the VM, issue encryption keys, and serve your app over HTTPS.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cloud Shortcut Banner -->
+            <div class="mt-16 max-w-5xl mx-auto">
+                <div class="bg-gradient-to-r from-lime-300/20 to-lime-400/20 border-2 border-lime-300 rounded-2xl p-8 text-center">
+                    <h3 class="text-xl font-semibold text-stone-900 mb-4">Need a cloud shortcut?</h3>
+                    <p class="text-lg text-zinc-600 mb-6">
+                        👉 Try Phala Cloud for one-click dstack deployments:
+                    </p>
+                    <a href="https://docs.phala.network/phala-cloud/getting-started/start-from-cloud-ui" class="figma-btn-primary px-8 py-4 text-lg inline-flex items-center justify-center">
+                        Start from Phala Cloud UI →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Deep Dive Topics -->
+    <section class="py-20 px-4 md:px-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-semibold text-stone-900 mb-6">Deep Dive Topics</h2>
+            </div>
+
+            <div class="max-w-5xl mx-auto space-y-8">
+                <!-- Chain-of-Trust walkthrough -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm">
+                    <h3 class="text-xl font-semibold text-stone-900 mb-4">
+                        <strong>Chain-of-Trust walkthrough</strong>
+                    </h3>
+                    <p class="text-lg text-zinc-600 leading-relaxed">
+                        trace a workload's hash from Intel TDX ➜ remote verifier ➜ on-chain Key Manager that releases secrets only when the quote matches.
+                    </p>
+                </div>
+
+                <!-- Gateway & ZT-HTTPS -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm">
+                    <h3 class="text-xl font-semibold text-stone-900 mb-4">
+                        <strong>Gateway & ZT-HTTPS</strong>
+                    </h3>
+                    <p class="text-lg text-zinc-600 leading-relaxed">
+                        how dstack-gateway combines WireGuard tunneling, automatic TLS, and a reverse-proxy so only attested endpoints are reachable.
+                    </p>
+                </div>
+
+                <!-- Hands-on recipes -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm">
+                    <h3 class="text-xl font-semibold text-stone-900 mb-4">
+                        <strong>Hands-on recipes</strong>
+                    </h3>
+                    <p class="text-lg text-zinc-600 leading-relaxed">
+                        spin up a private LLM in an enclave, build a verifiable oracle, or host a confidential Jupyter notebook—no code rewrites.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center mt-12">
+                <a href="https://github.com/Dstack-TEE/dstack/tree/master/docs" class="figma-btn-primary px-8 py-4 text-lg inline-flex items-center justify-center">
+                    <strong>Read the full guides in /docs →</strong>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Ready to Get Started? -->
     <section class="mx-4 md:mx-20 my-20">
         <div class="w-full bg-gradient-to-br from-lime-300 to-lime-400 rounded-2xl overflow-hidden">
             <div class="px-8 md:px-16 py-16 text-center">
@@ -330,10 +535,10 @@
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="#" class="figma-btn-secondary px-12 py-4 text-xl inline-flex items-center justify-center">
-                        Explore Technical Details
+                        Launch on GitHub
                     </a>
                     <a href="#" class="bg-white text-stone-900 px-12 py-4 flex items-center justify-center rounded-[99px] font-semibold text-xl">
-                        View Documentation
+                        Join our Community
                     </a>
                 </div>
                 
@@ -381,5 +586,20 @@
             </div>
         </div>
     </footer>
+    
+    <script>
+        function copyCode(button) {
+            const code = button.getAttribute('data-code');
+            navigator.clipboard.writeText(code).then(function() {
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.style.background = 'rgba(190, 242, 100, 0.3)';
+                setTimeout(function() {
+                    button.textContent = originalText;
+                    button.style.background = 'rgba(255, 255, 255, 0.1)';
+                }, 2000);
+            });
+        }
+    </script>
 </body>
 </html>
