@@ -12,6 +12,10 @@
       "dest": "/dstack-landing.html"
     },
     {
+      "src": "/phala-dstack-audit.pdf",
+      "dest": "/phala-dstack-audit.pdf"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
