@@ -190,6 +190,78 @@
                 transform: translateX(-50%) translateY(-10px);
             }
         }
+
+        /* Audit Section Styles */
+        .read-report-btn::after {
+            content: '↓';
+            font-size: 12px;
+        }
+
+
+        /* Responsive design for audit section */
+        @media (max-width: 992px) {
+            .metrics-container {
+                gap: 40px !important;
+            }
+            
+            .metric-score {
+                font-size: 72px !important;
+            }
+            
+            .metric-title {
+                font-size: 22px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .audit-card {
+                padding: 24px !important;
+                margin-bottom: 32px !important;
+            }
+
+            .audit-card-content {
+                height: 240px !important;
+            }
+
+            .metrics-container {
+                grid-template-columns: 1fr !important;
+                gap: 40px !important;
+            }
+
+            .metric-score {
+                font-size: 64px !important;
+            }
+
+            .metric-total {
+                font-size: 24px !important;
+            }
+
+            .metric-title {
+                font-size: 20px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .audit-card {
+                padding: 20px !important;
+            }
+
+            .audit-card-content {
+                height: 200px !important;
+            }
+
+            .metric-score {
+                font-size: 56px !important;
+            }
+
+            .metric-total {
+                font-size: 20px !important;
+            }
+
+            .metric-title {
+                font-size: 18px !important;
+            }
+        }
     </style>
 </head>
 <body class="font-montserrat bg-stone-50">
@@ -282,7 +354,61 @@
         </div>
     </section>
 
-    <!-- 2. Why dstack -->
+    <!-- 2. Audit Snapshot -->
+    <section class="py-20 px-4 md:px-20" style="padding: 60px 20px;">
+        <div class="max-w-7xl mx-auto" style="max-width: 1200px;">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-semibold text-stone-900 mb-6" style="font-family: 'Montserrat', sans-serif; font-size: 48px; font-weight: 700; color: #1a202c; margin-bottom: 16px; letter-spacing: -0.02em;">Audit Snapshot</h2>
+                <p class="text-xl text-zinc-600 max-w-3xl mx-auto mb-4" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; color: #718096; margin-bottom: 8px; letter-spacing: 0.01em;">
+                    Conducted by zkSecurity (May 26 - Jun 13 2025)
+                </p>
+                <p class="text-lg text-zinc-600 max-w-3xl mx-auto mb-6" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; color: #718096; margin-bottom: 48px; letter-spacing: 0.01em;">
+                    All high-severity findings were remediated pre-launch.
+                </p>
+            </div>
+            
+            <div class="audit-card" style="background: linear-gradient(135deg, #a3e635 0%, #84cc16 100%); border-radius: 24px; padding: 40px; margin-bottom: 48px; position: relative; overflow: hidden;">
+                <div style="content: ''; position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; background: rgba(255, 255, 255, 0.95); border-radius: 16px; z-index: 1;"></div>
+                <div class="audit-card-content" id="auditContent" style="position: relative; z-index: 2; text-align: center; height: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-bottom: 41px; overflow: hidden; transition: height 0.3s ease;">
+                    <div class="pdf-container" id="pdfContainer" style="width: 100%; height: 200px; opacity: 1; overflow: hidden; margin-top: 20px; transition: height 0.3s ease;">
+                        <iframe class="pdf-viewer" id="pdfViewer" src="./phala-dstack-audit.pdf" title="Audit Report PDF" style="width: 100%; height: 100%; border: none; border-radius: 8px; background: #f8f9fa;"></iframe>
+                    </div>
+                    <button class="read-report-btn" id="toggleBtn" onclick="togglePDF()" style="background: #ffffff; color: #1a202c; padding: 12px 24px; border-radius: 24px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; border: 1px solid #e2e8f0; transition: all 0.2s ease; letter-spacing: 0.01em; position: absolute; bottom: 41px; left: 50%; transform: translateX(-50%); cursor: pointer; z-index: 10;">Read the full report</button>
+                </div>
+            </div>
+            
+            <div class="metrics-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; margin-top: 20px;">
+                <div class="metric-item" style="text-align: center;">
+                    <div class="metric-score" style="font-family: 'Montserrat', sans-serif; font-size: 84px; font-weight: 700; color: #1a202c; line-height: 1; margin-bottom: 8px; letter-spacing: -0.03em;">
+                        100<span class="metric-total" style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 400; color: #718096; margin-left: 4px;">/100</span>
+                    </div>
+                    <h3 class="metric-title" style="font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 600; color: #1a202c; margin-bottom: 12px; letter-spacing: -0.01em;">Accountability</h3>
+                    <div class="metric-indicator green" style="width: 60px; height: 4px; margin: 0 auto 20px; border-radius: 2px; background-color: #84cc16;"></div>
+                    <p class="metric-description" style="font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 500; color: #718096; line-height: 1.5; letter-spacing: 0.01em;">Real-time security<br>verifications</p>
+                </div>
+                
+                <div class="metric-item" style="text-align: center;">
+                    <div class="metric-score" style="font-family: 'Montserrat', sans-serif; font-size: 84px; font-weight: 700; color: #1a202c; line-height: 1; margin-bottom: 8px; letter-spacing: -0.03em;">
+                        100<span class="metric-total" style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 400; color: #718096; margin-left: 4px;">/100</span>
+                    </div>
+                    <h3 class="metric-title" style="font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 600; color: #1a202c; margin-bottom: 12px; letter-spacing: -0.01em;">Autonomy</h3>
+                    <div class="metric-indicator blue" style="width: 60px; height: 4px; margin: 0 auto 20px; border-radius: 2px; background-color: #3b82f6;"></div>
+                    <p class="metric-description" style="font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 500; color: #718096; line-height: 1.5; letter-spacing: 0.01em;">Real-time security<br>verifications</p>
+                </div>
+                
+                <div class="metric-item" style="text-align: center;">
+                    <div class="metric-score" style="font-family: 'Montserrat', sans-serif; font-size: 84px; font-weight: 700; color: #1a202c; line-height: 1; margin-bottom: 8px; letter-spacing: -0.03em;">
+                        100<span class="metric-total" style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 400; color: #718096; margin-left: 4px;">/100</span>
+                    </div>
+                    <h3 class="metric-title" style="font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 600; color: #1a202c; margin-bottom: 12px; letter-spacing: -0.01em;">Sovereignty</h3>
+                    <div class="metric-indicator purple" style="width: 60px; height: 4px; margin: 0 auto 20px; border-radius: 2px; background-color: #8b5cf6;"></div>
+                    <p class="metric-description" style="font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 500; color: #718096; line-height: 1.5; letter-spacing: 0.01em;">Annual recurring revenue<br>from enterprise</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Why dstack -->
     <section id="features" class="py-20 px-4 md:px-20 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
@@ -341,46 +467,6 @@
         </div>
     </section>
 
-    <!-- 3. Audit Snapshot -->
-    <section class="py-20 px-4 md:px-20">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-semibold text-stone-900 mb-6">Audit Snapshot</h2>
-                <p class="text-xl text-zinc-600 max-w-3xl mx-auto mb-4">
-                    Conducted by zkSecurity (May 26 – Jun 13 2025)
-                </p>
-                <p class="text-lg text-zinc-600 max-w-3xl mx-auto mb-6">
-                    All high-severity findings were remediated pre-launch.
-                </p>
-                <a href="https://www.notion.so/Get-the-Full-Audit-Report-2400317e04a180a89ecaf858193a3fb6?pvs=21" class="inline-flex items-center text-stone-900 font-semibold hover:text-lime-600 transition-colors">
-                    <strong>Read the full report →</strong>
-                </a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                <!-- Accountability Badge -->
-                <div class="audit-badge p-8 text-center">
-                    <div class="text-6xl font-bold text-stone-900 mb-4">100</div>
-                    <div class="text-lg font-semibold text-stone-900 mb-2">/100</div>
-                    <h3 class="text-xl font-semibold text-stone-900">Accountability</h3>
-                </div>
-
-                <!-- Autonomy Badge -->
-                <div class="audit-badge p-8 text-center">
-                    <div class="text-6xl font-bold text-stone-900 mb-4">100</div>
-                    <div class="text-lg font-semibold text-stone-900 mb-2">/100</div>
-                    <h3 class="text-xl font-semibold text-stone-900">Autonomy</h3>
-                </div>
-
-                <!-- Sovereignty Badge -->
-                <div class="audit-badge p-8 text-center">
-                    <div class="text-6xl font-bold text-stone-900 mb-4">100</div>
-                    <div class="text-lg font-semibold text-stone-900 mb-2">/100</div>
-                    <h3 class="text-xl font-semibold text-stone-900">Sovereignty</h3>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- 4. Built For -->
     <section id="use-cases" class="py-20 px-4 md:px-20 bg-white">
@@ -649,6 +735,32 @@ sudo ./dstack-gateway -c gateway.toml &  # HTTPS + WireGuard
                     button.style.background = 'rgba(255, 255, 255, 0.1)';
                 }, 2000);
             });
+        }
+
+        let isExpanded = false;
+
+        function togglePDF() {
+            const pdfContainer = document.getElementById('pdfContainer');
+            const toggleBtn = document.getElementById('toggleBtn');
+            const auditContent = document.getElementById('auditContent');
+
+            if (!isExpanded) {
+                // Expand - show more PDF content
+                pdfContainer.style.height = '400px';
+                pdfContainer.style.overflowY = 'auto';
+                auditContent.style.height = '500px';
+                toggleBtn.innerHTML = 'Hide the report';
+                
+                isExpanded = true;
+            } else {
+                // Collapse - show default height
+                pdfContainer.style.height = '200px';
+                pdfContainer.style.overflowY = 'hidden';
+                auditContent.style.height = '300px';
+                toggleBtn.innerHTML = 'Read the full report';
+                
+                isExpanded = false;
+            }
         }
     </script>
 </body>
